@@ -44,7 +44,8 @@ public class Database implements WindowListener{
     public PreparedStatement preparedStatement = null;
     public ResultSet resultSet = null;
     
-    //realiza a coneexão no banco de dados;
+
+//realiza a coneexão no banco de dados----------------------------------------------------------------------------------------------------------------//
     public void connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver"); //carrega o driver do mysql
@@ -56,20 +57,22 @@ public class Database implements WindowListener{
             JOptionPane.showMessageDialog(null, "CONNECT - " + e.getMessage());
         }
     }
-    
+//--------------------------------------------------------------------------------------------------------------------------------------------------//    
+
+//Salva uma procuração, passando como atributo o objeto Procuração equivalente----------------------------------------------------------------------//    
     public void salva(Procuracao proc) throws ParseException{
         //salva as entidades
         try {
             int i = 0;
-            while (i< proc.getQtent()){
-                preparedStatement = conn.prepareStatement("insert into entidade values(default, ?, ?, ?, ?)"); //prepara os argumentos;
+            while (i< proc.getQtent()){ //enquanto houver entidades elas são inseridas na tabela entidade--------------------------------------//
+                preparedStatement = conn.prepareStatement("insert into entidade values(default, ?, ?, ?, ?)"); //prepara os argumentos;--------//
                 preparedStatement.setString(1, proc.getEntidades().get(i).getNome());
                 preparedStatement.setString(2, proc.getEntidades().get(i).getResponsavel());
                 preparedStatement.setString(3, proc.getEntidades().get(i).getCpf());
-                preparedStatement.setString(4, proc.getEntidades().get(i).getCnpj());            
-                preparedStatement.executeUpdate(); //executa o update na tabela
-                preparedStatement = null;
-                i++;
+                preparedStatement.setString(4, proc.getEntidades().get(i).getCnpj());
+                preparedStatement.executeUpdate(); //executa o update na tabela 
+                preparedStatement = null; 
+                i++; 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "SALVAENT -" + e.getMessage());
@@ -77,7 +80,7 @@ public class Database implements WindowListener{
         //salva os procuradores
         try {
             int i = 0;
-            while (i< proc.getQtproc()){
+            while (i< proc.getQtproc()){ //enquanto houver procuradores ele grava os procuradores na tabela equivalente
                 preparedStatement = conn.prepareStatement("insert into procurador values(default, ?, ?, ?)"); //prepara os argumentos;
                 preparedStatement.setString(1, proc.getProcuradores().get(i).getNome());
                 preparedStatement.setString(2, proc.getProcuradores().get(i).getCpf());
@@ -94,17 +97,17 @@ public class Database implements WindowListener{
             
         //salva a procuracao
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        if(proc.dtini != null){
+        if(proc.dtini != null){ //se houver uma data inicial recebe o valor em uma variavel auxiliar
             java.util.Date d1 = sdf.parse(proc.dtini);
             di = new Date(d1.getTime());
         }
         
-        if(proc.dtfin    != null){
+        if(proc.dtfin    != null){//se houver uma data final recebe o valor em uma variavel auxiliar
             java.util.Date d2 = sdf.parse(proc.dtfin);
             df = new Date(d2.getTime());
         }
         
-        try{    
+        try{  //insere os valores finais na tabela procuracao enquanto houver procuradores e entidades nas listas passadas.  
             int i = 0;
             int j;
             String sql;
@@ -130,7 +133,9 @@ public class Database implements WindowListener{
             JOptionPane.showMessageDialog(null, "SALVAPROC" + "\n" + preparedStatement.toString() + "\n" + e.getMessage() + " - " + e.getSQLState());
         }
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
 
+//retorna o código equivalente à última entrada na tabela+1 -------------------------------------------------------------------------------------------//    
     public int getProcod(){
         try {
             preparedStatement = conn.prepareStatement("SELECT MAX(id) FROM procuracao");
@@ -152,7 +157,9 @@ public class Database implements WindowListener{
         }
         return 1;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
+//Retorna o índice do último Procurador na tabela------------------------------------------------------------------------------------------------------//    
     public int getLastProc(){
         try {
             PreparedStatement prepared;
@@ -168,7 +175,9 @@ public class Database implements WindowListener{
         }
         return -1;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
+//Retorna o índice da ultima Entidade na tabela--------------------------------------------------------------------------------------------------------//    
     public int getLastEnt(){
         try {
             PreparedStatement prepared;
@@ -184,7 +193,9 @@ public class Database implements WindowListener{
         }
         return -1;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//Retorna o caminho da Procuracao com o Id passado como paramentro-------------------------------------------------------------------------------------//    
     public String getCaminho(int codProc){
         try {
             PreparedStatement prepared;
@@ -202,7 +213,9 @@ public class Database implements WindowListener{
         }
         return null;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
+//Retorna uma lista com todos os PROCURADORES da procuracao passada como parametro---------------------------------------------------------------------//    
     public List<Procurador> getProcuradores(int procod){
         
         List<Procurador> ret = new ArrayList<>();
@@ -222,7 +235,9 @@ public class Database implements WindowListener{
         }
         return ret;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//Retorna uma lista com todos as ENTIDADES da procuracao passada como parametro------------------------------------------------------------------------//        
     public List<Entidade> getEntidades(int procod){
         
         List<Entidade> ret = new ArrayList<>();
@@ -242,7 +257,9 @@ public class Database implements WindowListener{
         }
         return ret;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//Retorna a Data Inicial da procuracao passada como parametro------------------------------------------------------------------------------------------//
     public String getDtini(int procod){
         try{
             PreparedStatement prepared;
@@ -259,7 +276,9 @@ public class Database implements WindowListener{
         }
         return null;
     }
-    
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//Retorna a Data Final da procuracao passada como parametro--------------------------------------------------------------------------------------------//    
     public String getDtfin(int procod){
         try{
             PreparedStatement prepared;
@@ -276,7 +295,9 @@ public class Database implements WindowListener{
         }
         return null;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
+//Retorna o Conjunto da procuracao passada como parametro----------------------------------------------------------------------------------------------//    
     public String getConjunto(int procod){
         try{
             PreparedStatement prepared;
@@ -293,11 +314,14 @@ public class Database implements WindowListener{
         }
         return null;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
+//Abre uma tabela com o resultado da pesquisa de Procuradores por nome---------------------------------------------------------------------------------//        
     public void getProcuradoresbyNome(String nome) {
-        String[] colunas = new String[]{"Nome","Data Inicial", "Data Final", "Caminho"};
+        String[] colunas = new String[]{"Nome","Data Inicial", "Data Final", "Caminho"}; //seta o cabeçalho
         List <Procurador> p = new ArrayList<>();
-        try{
+        try{ //seleciona atributos das procuraçoes que contenham um procurador com o nome parecido com o digitado
+            
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT DISTINCT procuracao.idprocurador, procuracao.caminho, procuracao.dtinicial, procuracao.dtfinal from procuracao where procuracao.idprocurador = any(SELECT id FROM procurador where procurador.nome like ?);");
             prepared.setString(1, nome.concat("%"));
@@ -359,6 +383,7 @@ public class Database implements WindowListener{
         }
         
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//    
     
     public void getEntidadesbyNome(String nome) {
         String[] colunas = new String[]{"Nome","Data Inicial", "Data Final", "Caminho"};
