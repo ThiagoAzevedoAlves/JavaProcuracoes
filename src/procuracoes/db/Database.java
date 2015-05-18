@@ -10,10 +10,6 @@ package procuracoes.db;
  * @author Thiago
  */
 
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -27,18 +23,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procuracao;
 import procuracoes.classes.Procurador;
 import procuracoes.frames.Inicial;
-import procuracoes.frames.Visualiza;
 
-public class Database implements WindowListener{
+public class Database{
     public Connection conn = null;
     public Statement statment = null;
     public PreparedStatement preparedStatement = null;
@@ -451,6 +444,7 @@ public class Database implements WindowListener{
         
     }
     
+    
     public void getEntidadesbyResponsavel(String resp) {
         String[] colunas = new String[]{"Responsavel","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
@@ -585,6 +579,7 @@ public class Database implements WindowListener{
         
     }
     
+    
     public void getEntidadesbyCnpj(String cnpj) {
         String[] colunas = new String[]{"Nome", "Cnpj","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
@@ -651,8 +646,6 @@ public class Database implements WindowListener{
         }
         
     }
-    
-    
     
     
     public void getProcuradoresbyCpf(String cpf) {
@@ -722,67 +715,97 @@ public class Database implements WindowListener{
         
     }
     
+    
     public void criaTabela(String[][] dados, String[] colunas, String titulo){
-        JTable tabela = new JTable(dados,colunas);
-            JScrollPane scroll = new JScrollPane();
-            scroll.setViewportView(tabela);
-            
-            JFrame f = new JFrame();
-            tabela.addMouseListener(new MouseAdapter(){
-                @Override
-                public void mouseClicked(MouseEvent e){
-                    String s = tabela.getModel().getValueAt(tabela.getSelectedRow(), colunas.length-1).toString();
-                    Visualiza v = new Visualiza(s, (s.charAt(15)-48));
-                    v.setVisible(true);
-                    f.dispose();
-                }
-            });
-            f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            f.addWindowListener(this);
-            
-            f.add(scroll);
-            f.setVisible(true);
-            Point dot = new Point(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
-            dot.setLocation(dot.x-400, dot.y-200);
-            f.setLocation(dot);
-            f.setSize(800, 400);
-            f.setResizable(false);
-            f.setTitle(titulo);
+        Tabela t = new Tabela(dados, colunas, titulo);
     }
     
-    @Override
-    public void windowClosing(WindowEvent e) {
-        Inicial i = new Inicial();
-        i.setVisible(true);
+    
+    public int getIdbyNomeProc(String procurador){
+        int ret = 0;
+        try {
+            PreparedStatement prepared = conn.prepareStatement("SELECT id from procurador WHERE nome=?");
+            prepared.setString(1, procurador);
+            resultSet =  prepared.executeQuery();
+            while(resultSet.next()){
+                ret = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
     }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-        //DONOTHING
+    
+    public int getIdbyCpfProc(String cpf){
+        int ret = 0;
+        try {
+            PreparedStatement prepared = conn.prepareStatement("SELECT id from procurador WHERE cpf=?");
+            prepared.setString(1, cpf);
+            resultSet =  prepared.executeQuery();
+            while(resultSet.next()){
+                ret = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
     }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-        //DONOTHING
+    
+    public int getIdExatoProc(int idgeral, String nome){
+        int ret = 0;
+        try {
+            PreparedStatement prepared = conn.prepareStatement("SELECT procurador.id from procurador where (procurador.id = any (SELECT procuracao.idprocurador from procuracao where procuracao.idgeral= ?)) and (procurador.nome=?)");
+            prepared.setInt(1, idgeral);
+            prepared.setString(2, nome);
+            resultSet =  prepared.executeQuery();
+            while(resultSet.next()){
+                ret = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
     }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-        //DONOTHING
+    
+    public void setCpfProcurador(String cpf, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE procurador SET procurador.cpf =? WHERE procurador.id=?");
+            prepared.setString(1, cpf);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Cpf do Procurador alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
     }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        //DONOTHING
+    
+    public void setNomeProcurador(String nome, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE procurador SET procurador.nome =? WHERE procurador.id=?");
+            prepared.setString(1, nome);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Nome do Procurador alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
     }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        //DONOTHING.
+    
+    public void setPoderesProcurador(String poderes, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE procurador SET procurador.poderes =? WHERE procurador.id=?");
+            prepared.setString(1, poderes);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Poderes do Procurador alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
     }
 }
