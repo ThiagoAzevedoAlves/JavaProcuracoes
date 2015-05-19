@@ -10,8 +10,6 @@ package procuracoes.db;
  * @author Thiago
  */
 
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -23,8 +21,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procuracao;
@@ -736,6 +732,7 @@ public class Database{
         return ret;
     }
     
+    
     public int getIdbyCpfProc(String cpf){
         int ret = 0;
         try {
@@ -750,6 +747,7 @@ public class Database{
         }
         return ret;
     }
+    
     
     public int getIdExatoProc(int idgeral, String nome){
         int ret = 0;
@@ -767,6 +765,24 @@ public class Database{
         return ret;
     }
     
+    
+    public int getIdExatoEnt(int idgeral, String nome){
+        int ret = 0;
+        try {
+            PreparedStatement prepared = conn.prepareStatement("SELECT entidade.id from entidade where (entidade.id = any(SELECT procuracao.identidade from procuracao where procuracao.idgeral= ?)) and (entidade.nome=?)");
+            prepared.setInt(1, idgeral);
+            prepared.setString(2, nome);
+            resultSet =  prepared.executeQuery();
+            while(resultSet.next()){
+                ret = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
+    }
+    
+    
     public void setCpfProcurador(String cpf, int id){
         try {
             PreparedStatement prepared = conn.prepareStatement("UPDATE procurador SET procurador.cpf =? WHERE procurador.id=?");
@@ -780,6 +796,7 @@ public class Database{
             JOptionPane.showMessageDialog(null, ex.toString());
         }        
     }
+    
     
     public void setNomeProcurador(String nome, int id){
         try {
@@ -795,6 +812,7 @@ public class Database{
         }        
     }
     
+    
     public void setPoderesProcurador(String poderes, int id){
         try {
             PreparedStatement prepared = conn.prepareStatement("UPDATE procurador SET procurador.poderes =? WHERE procurador.id=?");
@@ -803,6 +821,78 @@ public class Database{
             
             if (prepared.executeUpdate() > 0){
                 JOptionPane.showMessageDialog(null, "Poderes do Procurador alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
+    }
+
+
+    public void setNomeEntidade(String nome, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE entidade SET entidade.nome =? WHERE entidade.id=?");
+            prepared.setString(1, nome);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Nome da Entidade alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
+    }
+    
+    
+    public void setCnpjEntidade(String cpf, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE entidade SET entidade.cnpj =? WHERE entidade.id=?");
+            prepared.setString(1, cpf);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Cnpj da Entidade alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
+    }
+    
+    public void setRespEntidade(String cpf, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE entidade SET entidade.responsavel =? WHERE entidade.id=?");
+            prepared.setString(1, cpf);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Nome do Responsavel alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
+    }
+    
+    public void setCpfEntidade(String cpf, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE entidade SET entidade.cpf =? WHERE entidade.id=?");
+            prepared.setString(1, cpf);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Cpf do Responsavel alterado com sucesso!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }        
+    }
+
+    public void setConjunto(String conjunto, int id){
+        try {
+            PreparedStatement prepared = conn.prepareStatement("UPDATE procuracao SET procuracao.conjunto=? WHERE procuracao.idgeral=?");
+            prepared.setString(1, conjunto);
+            prepared.setInt(2, id);
+            
+            if (prepared.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(null, "Tipo de Conjunto alterado com sucesso!");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.toString());

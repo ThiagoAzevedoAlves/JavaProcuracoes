@@ -6,6 +6,7 @@
 package procuracoes.frames;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +20,8 @@ public class Ajuda extends javax.swing.JFrame {
     public Ajuda() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
+        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        this.setIconImage(image.getImage());
     }
 
     /**

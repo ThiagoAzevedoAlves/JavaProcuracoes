@@ -5,11 +5,13 @@
  */
 package procuracoes.frames;
 
+import java.awt.Color;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procuracao;
@@ -35,6 +37,9 @@ public class Insere extends javax.swing.JFrame {
         db.connect();
         jLcod.setText(String.valueOf(db.getProcod()));
         jTcaminho.setText("D:/JavaImoveis/"+ Integer.toString(db.getProcod()) + ".pdf");
+        this.getContentPane().setBackground(Color.white);
+        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        this.setIconImage(image.getImage());
     }
     
     public void setProcuradores(){
@@ -94,6 +99,7 @@ public class Insere extends javax.swing.JFrame {
         if (!validaCPF(this.jTproccpf.getText())) return 3;
         return 4;
     }
+    
     public int revisaEnt(){
         if (this.jTentnome.getText().compareTo("") == 0) return 1;
         if (!validaCPF(this.jtentcpf.getText())) return 2;
@@ -280,18 +286,19 @@ public class Insere extends javax.swing.JFrame {
         setTitle("Procurações");
         setResizable(false);
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Conjunto:");
 
         jCconjunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Em Conjunto", "Isolado", "Em conjunto ou Isoladamente", "Não Consta" }));
-        
+
         jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel23.setText("Caminho:");
 
         jTcaminho.setText("D:/JavaImoveis/");
-        
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -319,6 +326,7 @@ public class Insere extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -332,7 +340,7 @@ public class Insere extends javax.swing.JFrame {
                 jTnprocFocusLost(evt);
             }
         });
-        
+
         jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel19.setText("Nome:");
 
@@ -345,7 +353,7 @@ public class Insere extends javax.swing.JFrame {
                 jCProcItemStateChanged(evt);
             }
         });
-        
+
         jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel24.setText("Poderes:");
 
@@ -419,6 +427,7 @@ public class Insere extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -430,7 +439,7 @@ public class Insere extends javax.swing.JFrame {
                 jCEntItemStateChanged(evt);
             }
         });
-        
+
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setText("Quantidade de Empresas:");
 
@@ -439,7 +448,7 @@ public class Insere extends javax.swing.JFrame {
                 jTnentFocusLost(evt);
             }
         });
-        
+
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel11.setText("Nome:");
 
@@ -532,6 +541,7 @@ public class Insere extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -603,6 +613,7 @@ public class Insere extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLcod.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N

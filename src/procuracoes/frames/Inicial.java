@@ -5,9 +5,12 @@
  */
 package procuracoes.frames;
 import SK.gnome.morena.MorenaException;
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Inicial extends javax.swing.JFrame {
@@ -17,9 +20,12 @@ public class Inicial extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(660, 343, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/logo.jpg")).getImage(), 0, 0, 660, 343, null);
+        g2.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logo.jpg")).getImage(), 0, 0, 660, 343, null);
         g2.dispose();
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
+        this.getContentPane().setBackground(Color.white);
+        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        this.setIconImage(image.getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +46,8 @@ public class Inicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartório Mezzari - 1º Registro de Imóveis de Pelotas");
+        setIconImage(getIconImage());
+        setIconImages(null);
         setResizable(false);
 
         jMenu2.setText("Incluir");

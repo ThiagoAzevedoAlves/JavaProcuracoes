@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Color;
 import procuracoes.db.Database;
 
 /**
@@ -131,6 +132,7 @@ public class BuscaProcuracao extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Visualiza v;
         v = new Visualiza(db.getCaminho(Integer.valueOf(this.jTextField1.getText())), Integer.valueOf(this.jTextField1.getText()));
+        v.getContentPane().setBackground(Color.white);
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
