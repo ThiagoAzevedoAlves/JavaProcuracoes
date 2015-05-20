@@ -926,4 +926,27 @@ public class Database{
         }
         return 0;
     }
+
+    public int apagaProc(int id){
+        int ret = 0;
+        try {
+            String SQL = "DELETE from procurador where procurador.id = any (SELECT procuracao.idprocurador from procuracao where procuracao.idgeral=?);";
+            String SQL2 = "DELETE from entidade where entidade.id = any (SELECT procuracao.identidade from procuracao where procuracao.idgeral=?);";
+            String SQL3 = "DELETE from procuracao where procuracao.idgeral=?";
+            PreparedStatement prepared = conn.prepareStatement(SQL);
+            prepared.setInt(1, id);
+            prepared.executeUpdate();
+            prepared = conn.prepareStatement(SQL2);
+            prepared.setInt(1, id);
+            prepared.executeUpdate();
+            prepared = conn.prepareStatement(SQL3);
+            prepared.setInt(1, id);
+            prepared.executeUpdate();
+            ret=1;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
+    }
+
 }

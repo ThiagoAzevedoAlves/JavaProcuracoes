@@ -23,8 +23,9 @@ import procuracoes.frames.Visualiza;
  * @author Thiago
  */
 public class Tabela implements WindowListener{
-
+    
     Tabela(String[][] dados, String[] colunas, String titulo){
+        
         JTable tabela = new JTable(dados,colunas);
             JScrollPane scroll = new JScrollPane();
             scroll.setViewportView(tabela);

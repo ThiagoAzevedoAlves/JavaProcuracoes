@@ -1,2 +1,21 @@
+Base:
 
-r0-- Adição da opção de editar uma procuração(somente o procurador por enquanto);
+ - Conexão com banco de dados existente;
+ - Criacão de classes básicas para comunicação com o banco de dados;
+ - Criação de uma Janela Principal incluindo um Menu para as funcionalidades do sistema
+	com atalhos pre-configurados;
+ - Criação da Janela de Inclusão Manual de Procurações;
+ - Criação de um método de Digitalização de arquivos e conversão para PDF;
+ - Criação da Janela de Inclusão de Arquivos Digitalizados;
+ - Criação da Janela de Visualização de Procurações;
+ - Criação dos métodos de busca de Procurações, Entidades e Procuradores;
+ - Criação das Janelas de Busca;
+ - Criação da Janela de Ajuda;
+
+Revisões:
+
+r0 - inclusão dos métodos de alteração de Procuradores,
+	inclusão do Plano de Fundo da Janela Principal;
+r1 - inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
+	inclusão do Ícone da aplicação;
+r2 - inclusão dos métodos de alteração de Data Inicial e Data Final das Procurações;
