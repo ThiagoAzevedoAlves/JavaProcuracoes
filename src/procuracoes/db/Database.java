@@ -898,4 +898,32 @@ public class Database{
             JOptionPane.showMessageDialog(null, ex.toString());
         }        
     }
+    
+    public int setDtini(int procod, String dt){
+        try{
+            PreparedStatement prepared;
+            prepared = conn.prepareStatement("UPDATE procuracao SET dtinicial=? where idgeral= ?");
+            prepared.setString(1, dt);
+            prepared.setInt(2, procod);
+            prepared.executeUpdate();
+            return 1;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "GETDATAINICIAL - "+ e.getMessage());
+        }
+        return 0;
+    }
+    
+    public int setDtfin(int procod, String dt){
+        try{
+            PreparedStatement prepared;
+            prepared = conn.prepareStatement("UPDATE procuracao SET dtfinal=? where idgeral= ?");
+            prepared.setString(1, dt);
+            prepared.setInt(2, procod);
+            prepared.executeUpdate();
+            return 1;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "GETDATAINICIAL - "+ e.getMessage());
+        }
+        return 0;
+    }
 }

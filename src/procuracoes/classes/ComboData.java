@@ -52,11 +52,12 @@ public class ComboData {
                     j++;
                 }
                 while(j<=31){
-                    z[j-1] = "";
+                    z[j-1] = null;
+                    j++;
                 }
                 JComboBox diaux = new JComboBox(z);
+                int i = cal.get(Calendar.MONTH); //interessante, declaração usada com o objetivo de atrasar a jvm, pois sem ela ele não monta o modelo corretamente não sei o porque
                 dia.setModel(diaux.getModel());
-                dia.repaint();
             }
         };
         mes = new JComboBox(m);
@@ -67,6 +68,7 @@ public class ComboData {
             i++;
         }
         ano = new JComboBox(a);
+        ano.setSelectedIndex(215);
 
     }
 

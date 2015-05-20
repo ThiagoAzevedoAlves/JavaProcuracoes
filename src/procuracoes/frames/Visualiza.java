@@ -1,16 +1,17 @@
 package procuracoes.frames;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -37,6 +38,8 @@ public class Visualiza extends javax.swing.JFrame {
     public List<Procurador> procuradores;
     public List<Entidade> entidades;
     public int cod;
+    static String mensagem = null;//usado nos Dialogos de edição de data
+    static JDialog dialog = null;//usado nos Dialogos de edição de data
     
     public Visualiza(String caminho, int cod) {
         
@@ -245,6 +248,11 @@ public class Visualiza extends javax.swing.JFrame {
         jLdtfin.setBackground(new java.awt.Color(255, 255, 255));
         jLdtfin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLdtfin.setText("<00/00/0000>");
+        jLdtfin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLdtfinMouseClicked(evt);
+            }
+        });
 
         jSeparator2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -689,6 +697,7 @@ public class Visualiza extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLentcnpjMouseClicked
 
+    
     private void jLentrespMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLentrespMouseClicked
         String aux = null;
         String nomeaux = jLentnome.getText();
@@ -713,6 +722,7 @@ public class Visualiza extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLentrespMouseClicked
 
+    
     private void jLentcpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLentcpfMouseClicked
         String aux = null;
         String nomeaux = jLentnome.getText();
@@ -737,6 +747,7 @@ public class Visualiza extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLentcpfMouseClicked
 
+    
     private void jLconjuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLconjuntoMouseClicked
         String aux = null;
         int resp;
@@ -753,26 +764,88 @@ public class Visualiza extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLconjuntoMouseClicked
 
+    
     private void jLdtiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLdtiniMouseClicked
-        String aux = null;
-        int resp;
+        
+        int resp; //resposta de sim ou nao na pergunta: deseja realmente editar?
         ComboData cb = new ComboData(Integer.valueOf(jLdtini.getText().split("-")[0]), Integer.valueOf(jLdtini.getText().split("-")[1]), Integer.valueOf(jLdtini.getText().split("-")[2]));
-        Object data[] = {"Escolha a Data Inicial da Procuracao:", cb.dia, cb.mes, cb.ano};
+        JButton botao =new JButton("Ok");
+        botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
+                    String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
+                    aux = aux.concat("-");
+                    aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
+                    aux = aux.concat("-");
+                    aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
+                    mensagem = aux;
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        JOptionPane option = new JOptionPane();
+        Object data[] = {"Escolha a Data Inicial da Procuracao:", cb.dia, cb.mes, cb.ano, botao};
         if (evt.getClickCount() > 1){
             resp = JOptionPane.showConfirmDialog(null, "Deseja alterar DATA INICIAL da PROCURACAO?");
             if (resp == 0){
-                JOptionPane option = new JOptionPane();
                 option.setMessage(data);
                 option.setMessageType(JOptionPane.QUESTION_MESSAGE);
-                JDialog dialog = option.createDialog(null, "Editar data da Procuracao");
+                option.remove(1);
+                dialog = option.createDialog(null, "Editar data da Procuracao");
                 dialog.setVisible(true);
             }
-            if(aux!=null){
-                jLconjunto.setText(aux);
-                db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
-            }            
+            if(mensagem!=null){
+                jLdtini.setText(mensagem);
+                int a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
+                if (a==1){
+                    JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
+                }
+                mensagem=null;
+            }
         }
+        
     }//GEN-LAST:event_jLdtiniMouseClicked
+
+    private void jLdtfinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLdtfinMouseClicked
+        int resp; //resposta de sim ou nao na pergunta: deseja realmente editar?
+        ComboData cb = new ComboData(Integer.valueOf(jLdtfin.getText().split("-")[0]), Integer.valueOf(jLdtfin.getText().split("-")[1]), Integer.valueOf(jLdtfin.getText().split("-")[2]));
+        JButton botao =new JButton("Ok");
+        botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
+                    String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
+                    aux = aux.concat("-");
+                    aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
+                    aux = aux.concat("-");
+                    aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
+                    mensagem = aux;
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        JOptionPane option = new JOptionPane();
+        Object data[] = {"Escolha a Data Final da Procuracao:", cb.dia, cb.mes, cb.ano, botao};
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar DATA FINAL da PROCURACAO?");
+            if (resp == 0){
+                option.setMessage(data);
+                option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+                option.remove(1);
+                dialog = option.createDialog(null, "Editar data da Procuracao");
+                dialog.setVisible(true);
+            }
+            if(mensagem!=null){
+                jLdtfin.setText(mensagem);
+                int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
+                if (a==1){
+                    JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
+                }
+                mensagem=null;
+            }
+        }
+    }//GEN-LAST:event_jLdtfinMouseClicked
 
     
     
