@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import procuracoes.db.Database;
 
 /**
@@ -19,8 +21,10 @@ import procuracoes.db.Database;
 public class BuscaProcuracao extends javax.swing.JFrame {
     
     Database db;
+    int tipo;
     
-    public BuscaProcuracao() {
+    public BuscaProcuracao(int tipo) {
+        this.tipo = tipo;
         db = new Database();
         db.connect();
         initComponents();
@@ -130,23 +134,46 @@ public class BuscaProcuracao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Visualiza v;
-        v = new Visualiza(db.getCaminho(Integer.valueOf(this.jTextField1.getText())), Integer.valueOf(this.jTextField1.getText()));
-        v.getContentPane().setBackground(Color.white);
-        v.setVisible(true);
-        this.dispose();
+        if (this.tipo == 0){
+            Visualiza v;
+            v = new Visualiza(db.getCaminho(Integer.valueOf(this.jTextField1.getText())), Integer.valueOf(this.jTextField1.getText()));
+            v.getContentPane().setBackground(Color.white);
+            v.setVisible(true);
+            this.dispose();
+        }else{
+            int id = Integer.valueOf(this.jTextField1.getText());
+            Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(this.jTextField1.getText())), id);
+            JButton b = new JButton("APAGAR!");
+            v.add(b);
+            b.setBounds(100, 520, 125, 25);
+            b.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int resp;
+                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+                if(resp == 0){
+                    Database db = new Database();
+                    db.connect();
+                    db.apagaProc(id);
+                    v.dispose();
+                    
+                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
+                }                
+            }
+            });
+            v.pack();
+            v.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Inicial i = new Inicial();
-        i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Inicial i = new Inicial();
-        i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 

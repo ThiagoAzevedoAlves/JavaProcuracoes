@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import procuracoes.frames.Inicial;
 import procuracoes.frames.Visualiza;
 
 /**
@@ -60,8 +59,7 @@ public class Tabela implements WindowListener{
 
     @Override
     public void windowClosing(WindowEvent e) {
-        Inicial i = new Inicial();
-        i.setVisible(true);
+        //DONOTHING
     }
 
     @Override

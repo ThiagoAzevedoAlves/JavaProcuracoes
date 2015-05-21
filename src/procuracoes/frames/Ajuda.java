@@ -191,8 +191,6 @@ public class Ajuda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Inicial i = new Inicial();
-        i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 

@@ -142,8 +142,7 @@ public class BuscaProcurador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Inicial i = new Inicial();
-        i.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -160,8 +159,7 @@ public class BuscaProcurador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Inicial i = new Inicial();
-        i.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 

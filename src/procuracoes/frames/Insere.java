@@ -792,8 +792,7 @@ public class Insere extends javax.swing.JFrame {
     }//GEN-LAST:event_jCEntItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Inicial i = new Inicial();
-        i.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

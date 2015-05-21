@@ -594,9 +594,7 @@ public class Visualiza extends javax.swing.JFrame {
 
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Inicial in;
-        in = new Inicial();
-        in.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 

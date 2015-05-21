@@ -19,3 +19,7 @@ r0 - inclusão dos métodos de alteração de Procuradores,
 r1 - inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
 	inclusão do Ícone da aplicação;
 r2 - inclusão dos métodos de alteração de Data Inicial e Data Final das Procurações;
+r3 - inclusão de métodos de Exclusão Da Procuração, e Exibição de uma Janela Auxiliar,
+	para visualização e confirmação da exclusão da Procuração.
+r4 - modificação do design da Janela Principal e remoção de bugs que faziam abrir várias
+	Janelas Principais ao mesmo tempo;
