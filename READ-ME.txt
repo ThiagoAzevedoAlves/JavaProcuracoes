@@ -14,14 +14,17 @@ Base:
 
 Revisões:
 
-r0 - inclusão dos métodos de alteração de Procuradores,
+r0 - Inclusão dos métodos de alteração de Procuradores,
 	inclusão do Plano de Fundo da Janela Principal;
-r1 - inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
+r1 - Inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
 	inclusão do Ícone da aplicação;
-r2 - inclusão dos métodos de alteração de Data Inicial e Data Final das Procurações;
-r3 - inclusão de métodos de Exclusão Da Procuração, e Exibição de uma Janela Auxiliar,
+r2 - Inclusão dos métodos de alteração de Data Inicial e Data Final das Procurações;
+r3 - Inclusão de métodos de Exclusão Da Procuração, e Exibição de uma Janela Auxiliar,
 	para visualização e confirmação da exclusão da Procuração.
-r4 - modificação do design da Janela Principal e remoção de bugs que faziam abrir várias
+r4 - Modificação do design da Janela Principal e remoção de bugs que faziam abrir várias
 	Janelas Principais ao mesmo tempo;
 r5 - Troca das Janelas de Busca por OptionPanes customizados, agilizando a aplicação
 	e removendo 3 Frames com diversos objetos vinculados;
+r6 - Inclusão de métodos que validam a mudança de data, verificando se a data inicial
+	não ultrapassa a data final e Inclusão de um método DragAndDrop para a
+	Janela Principal;

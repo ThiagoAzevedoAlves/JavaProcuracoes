@@ -7,7 +7,9 @@ package procuracoes.frames;
 
 import SK.gnome.morena.MorenaException;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,16 +18,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import procuracoes.db.Database;
+import procuracoes.db.Dataent;
+import procuracoes.db.Dataproc;
 
 public class Inicial extends javax.swing.JFrame {
     
@@ -49,7 +57,7 @@ public class Inicial extends javax.swing.JFrame {
         g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/botao.jpg")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(resizedImg));
+        jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
         //------------------------------------------------------------------------------------------//
         //botao pesquisar--------------------------------------------------------------------------//
         resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -58,7 +66,7 @@ public class Inicial extends javax.swing.JFrame {
         g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/botao_pesquisa.png")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(resizedImg));
+        jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
         //------------------------------------------------------------------------------------------//
         //botao excluir--------------------------------------------------------------------------//
         resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -67,7 +75,7 @@ public class Inicial extends javax.swing.JFrame {
         g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/botao_exclui2.jpg")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(resizedImg));
+        jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
         //------------------------------------------------------------------------------------------//
         //botao sobre--------------------------------------------------------------------------//
         resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -76,7 +84,7 @@ public class Inicial extends javax.swing.JFrame {
         g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/botao_sobre.jpg")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(resizedImg));
+        jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
         //------------------------------------------------------------------------------------------//
         this.getContentPane().setBackground(Color.white);
         this.jPanel1.setBackground(Color.white);
@@ -93,10 +101,10 @@ public class Inicial extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLIncluir = new javax.swing.JLabel();
+        jLBuscar = new javax.swing.JLabel();
+        jLApagar = new javax.swing.JLabel();
+        jLSobre = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,28 +123,28 @@ public class Inicial extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 124, 184), 3, true));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
-        jLabel2.setToolTipText("Adicionar Procuração");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLIncluir.setToolTipText("Adicionar Procuração");
+        jLIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                jLIncluirMouseClicked(evt);
             }
         });
 
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLBuscarMouseClicked(evt);
             }
         });
 
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLApagar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jLApagarMouseClicked(evt);
             }
         });
 
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                jLSobreMouseClicked(evt);
             }
         });
 
@@ -152,16 +160,16 @@ public class Inicial extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLApagar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLSobre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,15 +179,15 @@ public class Inicial extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(149, 149, 149)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,21 +210,21 @@ public class Inicial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIncluirMouseClicked
         createPopupIncluir().show(evt.getComponent(), evt.getX(), evt.getY());
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_jLIncluirMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jLApagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLApagarMouseClicked
         createPopupExcluir().show(evt.getComponent(), evt.getX(), evt.getY());
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jLApagarMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarMouseClicked
         createPopupBuscar().show(evt.getComponent(), evt.getX(), evt.getY());
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLBuscarMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void jLSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSobreMouseClicked
         createPopupAjuda().show(evt.getComponent(), evt.getX(), evt.getY());
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_jLSobreMouseClicked
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         atalhos(evt);
@@ -232,6 +240,7 @@ public class Inicial extends javax.swing.JFrame {
         });
     }
 
+    
     public void apagaProc(int id) {
         Visualiza v = new Visualiza("D:/JavaImoveis/" + Integer.toString(id) + ".pdf", id);
         JButton b = new JButton("APAGAR!");
@@ -257,7 +266,77 @@ public class Inicial extends javax.swing.JFrame {
         this.dispose();
 
     }
+    
+    
+    public class MoveJanela implements MouseListener, MouseMotionListener{
+        
+        JComponent target;
+        Point start_drag;
+        Point start_loc;
+        
+        public MoveJanela(JComponent target) {
+            this.target = target;
+        }
+        
+        public JFrame getFrame(Container target) {
+            if (target instanceof JFrame) {
+                return (JFrame) target;
+            }
+            return getFrame(target.getParent());
+        }
 
+        Point getScreenLocation(MouseEvent e) {
+            Point cursor = e.getPoint();
+            Point target_location = this.target.getLocationOnScreen();
+            return new Point((int) (target_location.getX() + cursor.getX()), (int) (target_location.getY() + cursor.getY()));
+        }
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            this.start_drag = this.getScreenLocation(e);
+            this.start_loc = this.getFrame(this.target).getLocation();
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            Point current = this.getScreenLocation(e);
+            Point offset = new Point((int) current.getX() - (int) start_drag.getX(),(int) current.getY() - (int) start_drag.getY());
+            JFrame frame = this.getFrame(target);
+            Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
+            frame.setLocation(new_location);
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            
+        }
+        
+        
+        
+        
+    }
+    
+    
     private void createPopupFechar() {
 
         JPopupMenu pmenu = new JPopupMenu();
@@ -268,7 +347,10 @@ public class Inicial extends javax.swing.JFrame {
         });
 
         pmenu.add(quitMi);
-        addMouseListener(new MouseAdapter() {
+        MoveJanela mj = new MoveJanela(this.jPanel1);
+        jPanel1.addMouseListener(mj);
+        jPanel1.addMouseMotionListener(mj);
+        jPanel1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) {
@@ -276,8 +358,10 @@ public class Inicial extends javax.swing.JFrame {
                 }
             }
         });
+        
     }
 
+    
     private JPopupMenu createPopupIncluir() {
 
         JPopupMenu pmenu = new JPopupMenu();
@@ -305,6 +389,7 @@ public class Inicial extends javax.swing.JFrame {
         return pmenu;
     }
 
+    
     private JPopupMenu createPopupExcluir() {
 
         JPopupMenu pmenu = new JPopupMenu();
@@ -318,6 +403,7 @@ public class Inicial extends javax.swing.JFrame {
         return pmenu;
     }
 
+    
     private JPopupMenu createPopupBuscar() {
 
         JPopupMenu pmenu = new JPopupMenu();
@@ -343,23 +429,22 @@ public class Inicial extends javax.swing.JFrame {
         return pmenu;
     }
 
+    
     private JPopupMenu createPopupAjuda() {
 
         JPopupMenu pmenu = new JPopupMenu();
 
         JMenuItem Mi = new JMenuItem("Sobre o Sistema de Procurações Mezzari - Ctrl+S");
-        Mi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Ajuda a = new Ajuda();
-                a.setVisible(true);
-            }
+        Mi.addActionListener((ActionEvent e) -> {
+            Ajuda a = new Ajuda();
+            a.setVisible(true);
         });
 
         pmenu.add(Mi);
         return pmenu;
     }
 
+    
     private void atalhos(KeyEvent evt) {
         /*Mostra a key da tecla pressionada*/
         //System.out.println(evt.getKeyCode());  
@@ -404,6 +489,7 @@ public class Inicial extends javax.swing.JFrame {
             this.dispose();
         }
     }
+   
     
     public void buscaProcuracao(){
         Database db;
@@ -463,6 +549,7 @@ public class Inicial extends javax.swing.JFrame {
         
         
     }
+    
     
     public void excluiProcuracao(){
         Database db;
@@ -538,10 +625,11 @@ public class Inicial extends javax.swing.JFrame {
         
     }
 
+    
     public void buscaProcurador(){
         
-        Database db;
-        db = new Database();
+        Dataproc db;
+        db = new Dataproc();
         db.connect();
         
         JButton jb = new JButton("Ok!");
@@ -605,10 +693,11 @@ public class Inicial extends javax.swing.JFrame {
         
     }
     
+    
     public void buscaEntidade(){
         
-        Database db;
-        db = new Database();
+        Dataent db;
+        db = new Dataent();
         db.connect();
         
         JButton jb = new JButton("Ok!");
@@ -677,11 +766,11 @@ public class Inicial extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLApagar;
+    private javax.swing.JLabel jLBuscar;
+    private javax.swing.JLabel jLIncluir;
+    private javax.swing.JLabel jLSobre;
     public javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

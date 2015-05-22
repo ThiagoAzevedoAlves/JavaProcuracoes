@@ -2,7 +2,6 @@ package procuracoes.frames;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.FileNotFoundException;
@@ -26,6 +25,8 @@ import procuracoes.classes.ComboData;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procurador;
 import procuracoes.db.Database;
+import procuracoes.db.Dataent;
+import procuracoes.db.Dataproc;
 
 /**
  *
@@ -35,6 +36,8 @@ import procuracoes.db.Database;
 public class Visualiza extends javax.swing.JFrame {
     
     public Database db;
+    public Dataproc dp;
+    public Dataent de;
     public List<Procurador> procuradores;
     public List<Entidade> entidades;
     public int cod;
@@ -46,6 +49,10 @@ public class Visualiza extends javax.swing.JFrame {
         this.cod = cod;
         db = new Database();
         db.connect();
+        dp = new Dataproc();
+        dp.connect();
+        de = new Dataent();
+        de.connect();
         JPanel jPanel1; //painel de visualizacao
         
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
@@ -123,9 +130,9 @@ public class Visualiza extends javax.swing.JFrame {
     
     public void carregaCampos(){
         procuradores = new ArrayList<>();                              //Lista auxiliar para carregar os procuradores
-        procuradores.addAll(db.getProcuradores(this.cod));             //popula a lista de procuradores
+        procuradores.addAll(dp.getProcuradores(this.cod));             //popula a lista de procuradores
         entidades = new ArrayList<>();                                 //Lista auxiliar para carregar as entidades
-        entidades.addAll(db.getEntidades(this.cod));                   //popula a lista de entidades
+        entidades.addAll(de.getEntidades(this.cod));                   //popula a lista de entidades
         
         this.jLcod.setText(String.valueOf(cod));                       //define o codigo
         this.jLcod.setForeground(Color.red);                           //destaca o código como vermelho
@@ -572,7 +579,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLprocnome.getText();
         int resp;
-        int nproc =  db.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc =  dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -584,8 +591,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLprocnome.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
                 while((nproc != 0)&&(nproc!=naux2)){
-                    db.setNomeProcurador(aux, nproc);
-                    nproc = db.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+                    dp.setNomeProcurador(aux, nproc);
+                    nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
             }
@@ -603,7 +610,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLprocnome.getText();
         int resp;
-        int nproc =  db.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc =  dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -615,8 +622,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLproccpf.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
                 while((nproc != 0)&&(nproc!=naux2)){
-                    db.setCpfProcurador(aux, nproc);
-                    nproc = db.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+                    dp.setCpfProcurador(aux, nproc);
+                    nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
             }
@@ -628,7 +635,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLprocnome.getText();
         int resp;
-        int nproc = db.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
         if (evt.getClickCount() > 1){
             resp = JOptionPane.showConfirmDialog(null, "Deseja alterar os PODERES do PROCURADOR?");
             if (resp == 0){
@@ -637,7 +644,7 @@ public class Visualiza extends javax.swing.JFrame {
             if (aux != null){
                 jLprocpod.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setPoderes(aux);
-                db.setPoderesProcurador(aux, nproc);                
+                dp.setPoderesProcurador(aux, nproc);                
             }
         }
     }//GEN-LAST:event_jLprocpodMouseClicked
@@ -647,7 +654,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLentnome.getText();
         int resp;
-        int nproc =  db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc =  de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -659,8 +666,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLentnome.setText(aux);
                 entidades.get(jCentidade.getSelectedIndex()).setNome(aux);
                 while((nproc != 0)&&(nproc != naux2)){
-                    db.setNomeEntidade(aux, nproc);
-                    nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    de.setNomeEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
             }
@@ -672,7 +679,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLentnome.getText();
         int resp;
-        int nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -684,8 +691,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLentcnpj.setText(aux);
                 entidades.get(jCentidade.getSelectedIndex()).setCnpj(aux);
                 while((nproc != 0)&&(nproc!=naux2)){
-                    db.setCnpjEntidade(aux, nproc);
-                    nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    de.setCnpjEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
             }
@@ -697,7 +704,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLentnome.getText();
         int resp;
-        int nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -709,8 +716,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLentresp.setText(aux);
                 entidades.get(jCentidade.getSelectedIndex()).setResponsavel(aux);
                 while((nproc != 0)&&(nproc != naux2)){
-                    db.setRespEntidade(aux, nproc);
-                    nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    de.setRespEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
             }
@@ -722,7 +729,7 @@ public class Visualiza extends javax.swing.JFrame {
         String aux = null;
         String nomeaux = jLentnome.getText();
         int resp;
-        int nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
         int naux = nproc;
         int naux2 = 0;
         if (evt.getClickCount() > 1){
@@ -734,8 +741,8 @@ public class Visualiza extends javax.swing.JFrame {
                 jLentcpf.setText(aux);
                 entidades.get(jCentidade.getSelectedIndex()).setCpf(aux);
                 while((nproc != 0)&&(nproc != naux2)){
-                    db.setCpfEntidade(aux, nproc);
-                    nproc = db.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    de.setCpfEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
             }
@@ -765,18 +772,15 @@ public class Visualiza extends javax.swing.JFrame {
         int resp; //resposta de sim ou nao na pergunta: deseja realmente editar?
         ComboData cb = new ComboData(Integer.valueOf(jLdtini.getText().split("-")[0]), Integer.valueOf(jLdtini.getText().split("-")[1]), Integer.valueOf(jLdtini.getText().split("-")[2]));
         JButton botao =new JButton("Ok");
-        botao.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
-                    String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
-                    aux = aux.concat("-");
-                    aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
-                    aux = aux.concat("-");
-                    aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
-                    mensagem = aux;
-                    dialog.setVisible(false);
-                }
+        botao.addActionListener((ActionEvent e) -> {
+            if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
+                String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
+                aux = aux.concat("-");
+                aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
+                aux = aux.concat("-");
+                aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
+                mensagem = aux;
+                dialog.setVisible(false);
             }
         });
         JOptionPane option = new JOptionPane();
@@ -792,11 +796,15 @@ public class Visualiza extends javax.swing.JFrame {
             }
             if(mensagem!=null){
                 jLdtini.setText(mensagem);
-                int a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
-                if (a==1){
-                    JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
+                if (verificaMaior(mensagem, jLdtfin.getText()) == 1){
+                    int a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
+                    if (a==1){
+                        JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
+                    }
+                    mensagem=null;
+                }else{
+                    JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
                 }
-                mensagem=null;
             }
         }
         
@@ -830,17 +838,53 @@ public class Visualiza extends javax.swing.JFrame {
             }
             if(mensagem!=null){
                 jLdtfin.setText(mensagem);
-                int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
-                if (a==1){
-                    JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
+                if (verificaMaior(jLdtini.getText(), mensagem) == 1){
+                    int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
+                    if (a==1){
+                        JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
+                    }
+                    mensagem=null;
+                }else{
+                    JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
                 }
-                mensagem=null;
+                
             }
         }
     }//GEN-LAST:event_jLdtfinMouseClicked
 
     
-    
+    public int verificaMaior(String dtini, String dtfin){ //retorna 0 se o dia inicial for o maior ou 1 se o final for maior ou igual
+        int di, df;
+        int mi, mf;
+        int ai, af;
+        
+        di = Integer.valueOf(jLdtini.getText().split("-")[2]);
+        df = Integer.valueOf(jLdtfin.getText().split("-")[2]);
+        
+        mi = Integer.valueOf(jLdtini.getText().split("-")[1]);
+        mf = Integer.valueOf(jLdtfin.getText().split("-")[1]);
+        
+        ai = Integer.valueOf(jLdtini.getText().split("-")[0]);
+        af = Integer.valueOf(jLdtfin.getText().split("-")[0]);
+        
+        if(ai > af){
+            return 0;
+        }else if(ai == af){
+            if (mi > mf){
+                return 0;
+            }else if(mi == mf){
+                if (di > df){
+                    return 0;
+                }else{
+                    return 1;
+                }
+            }else{
+                return 1;
+            }
+        }else{
+            return 1;
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jCentidade;
