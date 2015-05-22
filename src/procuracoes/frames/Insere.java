@@ -754,8 +754,10 @@ public class Insere extends javax.swing.JFrame {
             int i = jCProc.getSelectedIndex();
             Procurador p = new Procurador(jTprocnome.getText(), jTproccpf.getText(), jTprocpod.getText());
             procuradores.add(i, p);
-            jTprocnome.setText("");
-            jTproccpf.setText("");
+            if(Integer.valueOf(jTnproc.getText()) > 1){
+                jTprocnome.setText("");
+                jTproccpf.setText("");
+            }
         }else if (r == 3){
             JOptionPane.showMessageDialog(null, "Por favor, revisar o CPF dos PROCURADORES.");
         }else if (r == 2){
@@ -771,10 +773,12 @@ public class Insere extends javax.swing.JFrame {
             int i = jCEnt.getSelectedIndex();
             Entidade e = new Entidade(jTentnome.getText(), jTentresp.getText(), jtentcpf.getText(), jTentcnpj.getText());
             entidades.add(i, e);
-            jTentnome.setText("");
-            jTentresp.setText("");
-            jtentcpf.setText("");
-            jTentcnpj.setText("");
+            if(Integer.valueOf(jTnent.getText()) > 1){
+                jTentnome.setText("");
+                jTentresp.setText("");
+                jtentcpf.setText("");
+                jTentcnpj.setText("");
+            }
         }else if (r == 3){ 
             JOptionPane.showMessageDialog(null, "Por favor, revisar o CNPJ das ENTIDADES.");
         }else if (r == 2){

@@ -23,3 +23,5 @@ r3 - inclusão de métodos de Exclusão Da Procuração, e Exibição de uma Janela Aux
 	para visualização e confirmação da exclusão da Procuração.
 r4 - modificação do design da Janela Principal e remoção de bugs que faziam abrir várias
 	Janelas Principais ao mesmo tempo;
+r5 - Troca das Janelas de Busca por OptionPanes customizados, agilizando a aplicação
+	e removendo 3 Frames com diversos objetos vinculados;

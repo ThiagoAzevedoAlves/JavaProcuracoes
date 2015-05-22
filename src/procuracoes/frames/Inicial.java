@@ -11,19 +11,26 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import procuracoes.db.Database;
 
 public class Inicial extends javax.swing.JFrame {
-
+    
+    static JDialog dialog;
+    
     public Inicial() {
         initComponents();
         //logo------------------------------------------------------------------------------------//
@@ -77,6 +84,7 @@ public class Inicial extends javax.swing.JFrame {
         this.setIconImage(image.getImage());
 
         this.createPopupFechar();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -104,7 +112,8 @@ public class Inicial extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 124, 184), 3, true));
+        jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
         jLabel2.setToolTipText("Adicionar Procuração");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,7 +157,7 @@ public class Inicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,6 +225,7 @@ public class Inicial extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Inicial().setVisible(true);
             }
@@ -227,22 +237,18 @@ public class Inicial extends javax.swing.JFrame {
         JButton b = new JButton("APAGAR!");
         v.add(b);
         b.setBounds(100, 520, 125, 25);
-        b.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int resp;
-                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
-                if (resp == 0) {
-                    Database db = new Database();
-                    db.connect();
-                    resp = db.apagaProc(id);
-                    if (resp == 1) {
-                        JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
-                        v.dispose();
-                        Inicial i = new Inicial();
-                        i.setVisible(true);
-                    }
+        b.addActionListener((ActionEvent e) -> {
+            int resp;
+            resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+            if (resp == 0) {
+                Database db = new Database();
+                db.connect();
+                resp = db.apagaProc(id);
+                if (resp == 1) {
+                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
+                    v.dispose();
+                    Inicial i = new Inicial();
+                    i.setVisible(true);
                 }
             }
         });
@@ -257,11 +263,8 @@ public class Inicial extends javax.swing.JFrame {
         JPopupMenu pmenu = new JPopupMenu();
 
         JMenuItem quitMi = new JMenuItem("Fechar - Esc");
-        quitMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        quitMi.addActionListener((ActionEvent e) -> {
+            System.exit(0);
         });
 
         pmenu.add(quitMi);
@@ -280,28 +283,22 @@ public class Inicial extends javax.swing.JFrame {
         JPopupMenu pmenu = new JPopupMenu();
 
         JMenuItem digMi = new JMenuItem("Digitalizar Procuracao - Ctrl+D");
-        digMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Digitalizacao d = new Digitalizacao();
-                try {
-                    d.salva();
-                } catch (MorenaException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                }
+        digMi.addActionListener((ActionEvent e) -> {
+            Digitalizacao d = new Digitalizacao();
+            try {
+                d.salva();
+            } catch (MorenaException ex) {
+                JOptionPane.showMessageDialog(null, ex);
             }
         });
 
         pmenu.add(digMi);
 
         JMenuItem manMi = new JMenuItem("Inserir Manualmente - Ctrl+N");
-        manMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Insere in;
-                in = new Insere();
-                in.setVisible(true);
-            }
+        manMi.addActionListener((ActionEvent e)-> {
+            Insere in;
+            in = new Insere();
+            in.setVisible(true);
         });
 
         pmenu.add(manMi);
@@ -313,12 +310,8 @@ public class Inicial extends javax.swing.JFrame {
         JPopupMenu pmenu = new JPopupMenu();
 
         JMenuItem Mi = new JMenuItem("Excluir Procuração - Ctrl+Del");
-        Mi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BuscaProcuracao b = new BuscaProcuracao(1);
-                b.setVisible(true);
-            }
+        Mi.addActionListener((ActionEvent e) -> {
+            excluiProcuracao();
         });
 
         pmenu.add(Mi);
@@ -330,35 +323,20 @@ public class Inicial extends javax.swing.JFrame {
         JPopupMenu pmenu = new JPopupMenu();
 
         JMenuItem procMi = new JMenuItem("Buscar Procuração - Ctrl+F");
-        procMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BuscaProcuracao b;
-                b = new BuscaProcuracao(0);
-                b.setVisible(true);
-            }
+        procMi.addActionListener((ActionEvent e) -> {
+            buscaProcuracao();
         });
         pmenu.add(procMi);
 
         JMenuItem procuMi = new JMenuItem("Buscar Procurador - Ctrl+P");
-        procuMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BuscaProcurador b;
-                b = new BuscaProcurador();
-                b.setVisible(true);
-            }
+        procuMi.addActionListener((ActionEvent e) -> {
+            buscaProcurador();
         });
         pmenu.add(procuMi);
 
         JMenuItem entMi = new JMenuItem("Buscar Entidade - Ctrl+E");
-        entMi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BuscaEntidade b;
-                b = new BuscaEntidade();
-                b.setVisible(true);
-            }
+        entMi.addActionListener((ActionEvent e) -> {
+            buscaEntidade();
         });
         pmenu.add(entMi);
 
@@ -403,21 +381,14 @@ public class Inicial extends javax.swing.JFrame {
             
             //Condição para CTRL + F  
         } else if ((evt.getKeyCode() == KeyEvent.VK_F) && (evt.isControlDown())) {
-            BuscaProcuracao b;
-            b = new BuscaProcuracao(0);
-            b.setVisible(true);
-            
+            buscaProcuracao();            
             //Condição para CTRL + P
         } else if ((evt.getKeyCode() == KeyEvent.VK_P) && (evt.isControlDown())) {
-            BuscaProcurador b;
-            b = new BuscaProcurador();
-            b.setVisible(true);
+            buscaProcurador();
             
             //Condição para CTRL + E
         } else if ((evt.getKeyCode() == KeyEvent.VK_E) && (evt.isControlDown())) {
-            BuscaEntidade b;
-            b = new BuscaEntidade();
-            b.setVisible(true);
+            buscaEntidade();
             
             //Condição para CTRL + S
         } else if ((evt.getKeyCode() == KeyEvent.VK_S) && (evt.isControlDown())) {
@@ -426,16 +397,285 @@ public class Inicial extends javax.swing.JFrame {
             
             //Condição para CTRL + Del 
         } else if ((evt.getKeyCode() == KeyEvent.VK_DELETE) && (evt.isControlDown())) {
-            BuscaProcuracao b = new BuscaProcuracao(1);
-            b.setVisible(true);
+            excluiProcuracao();
             
-            //Condição para CTRL + Esc
+            //Condição para Esc
         } else if ((evt.getKeyCode() == KeyEvent.VK_ESCAPE)) {
             this.dispose();
         }
     }
+    
+    public void buscaProcuracao(){
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("1");
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
 
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            Visualiza v;
+            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
+            v.getContentPane().setBackground(Color.white);
+            v.setVisible(true);
+            dialog.setVisible(false);
+            this.toBack();
+        });
+        
+        Object data[] = {"Digite o código da Procuração:", jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Busca por Procuração");
+        dialog.setVisible(true);
+        
+        
+    }
+    
+    public void excluiProcuracao(){
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("1");
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            int id = Integer.valueOf(jt.getText());
+            Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
+            JButton b = new JButton("APAGAR!");
+            b.setBackground(Color.red);
+            v.add(b);
+            b.setBounds(100, 520, 125, 25);
+            b.addActionListener((ActionEvent e1) -> {
+                int resp;
+                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+                if (resp == 0) {
+                    Database db1 = new Database();
+                    db1.connect();
+                    db1.apagaProc(id);
+                    v.dispose();
+                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
+                }
+            });
+            v.pack();
+            v.setVisible(true);
+            dialog.setVisible(false);
+            this.toBack();
+        });
+        
+        Object data[] = {"Digite o código da Procuração:", jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Apagar Procuração");
+        dialog.setVisible(true);
+        
+        
+    }
+
+    public void buscaProcurador(){
+        
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("");
+        
+        JComboBox jc = new JComboBox();
+        jc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "Cpf"}));
+        jc.addItemListener((ItemEvent e)->{
+            jt.requestFocus();
+        });
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            if(jc.getSelectedIndex() ==  0){
+                db.getProcuradoresbyNome(jt.getText());
+            }else{
+                db.getProcuradoresbyCpf(jt.getText());
+            }
+            dialog.dispose();
+            this.toBack();
+        });
+        
+        Object data[] = {"Escolha o Atributo e o Valor da Pesquisa:", jc, jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Busca por Procurador");
+        dialog.setVisible(true);
+        
+        
+    }
+    
+    public void buscaEntidade(){
+        
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("");
+        
+        JComboBox jc = new JComboBox();
+        jc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "Cpf", "Responsavel", "Cnpj"}));
+        jc.addItemListener((ItemEvent e)->{
+            jt.requestFocus();
+        });
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            if(jc.getSelectedIndex() ==  0){
+                db.getEntidadesbyNome(jt.getText());
+            }else if (jc.getSelectedIndex() ==  1){
+                db.getEntidadesbyCpf(jt.getText());
+            }else if (jc.getSelectedIndex() ==  3){
+                db.getEntidadesbyCnpj(jt.getText());                
+            }else if (jc.getSelectedIndex() ==  2){
+                db.getEntidadesbyResponsavel(jt.getText());
+            }
+            dialog.dispose();
+            this.toBack();
+        });
+        
+        Object data[] = {"Escolha o Atributo e o Valor da Pesquisa:", jc, jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Busca por Entidade");
+        dialog.setVisible(true);
+                
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

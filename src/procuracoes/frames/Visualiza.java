@@ -806,18 +806,15 @@ public class Visualiza extends javax.swing.JFrame {
         int resp; //resposta de sim ou nao na pergunta: deseja realmente editar?
         ComboData cb = new ComboData(Integer.valueOf(jLdtfin.getText().split("-")[0]), Integer.valueOf(jLdtfin.getText().split("-")[1]), Integer.valueOf(jLdtfin.getText().split("-")[2]));
         JButton botao =new JButton("Ok");
-        botao.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
-                    String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
-                    aux = aux.concat("-");
-                    aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
-                    aux = aux.concat("-");
-                    aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
-                    mensagem = aux;
-                    dialog.setVisible(false);
-                }
+        botao.addActionListener((ActionEvent e) -> {
+            if((cb.dia.getSelectedItem()!= null)&&(cb.mes.getSelectedItem()!= null)&&(cb.ano.getSelectedItem()!= null)){
+                String aux = Integer.toString(cb.ano.getSelectedIndex()+1800);
+                aux = aux.concat("-");
+                aux = aux.concat(Integer.toString(cb.mes.getSelectedIndex()+1));
+                aux = aux.concat("-");
+                aux = aux.concat(Integer.toString(cb.dia.getSelectedIndex()+1));
+                mensagem = aux;
+                dialog.setVisible(false);
             }
         });
         JOptionPane option = new JOptionPane();
