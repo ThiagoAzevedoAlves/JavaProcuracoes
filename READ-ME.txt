@@ -28,3 +28,4 @@ r5 - Troca das Janelas de Busca por OptionPanes customizados, agilizando a aplic
 r6 - Inclusão de métodos que validam a mudança de data, verificando se a data inicial
 	não ultrapassa a data final e Inclusão de um método DragAndDrop para a
 	Janela Principal;
+r7 - Modificação do design da Janela Principal e Botões;

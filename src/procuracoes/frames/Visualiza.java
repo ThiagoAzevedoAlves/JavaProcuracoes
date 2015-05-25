@@ -1,6 +1,7 @@
 package procuracoes.frames;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -59,7 +60,6 @@ public class Visualiza extends javax.swing.JFrame {
         this.setIconImage(image.getImage());
         
         JInternalFrame PDFrame = new JInternalFrame("Visualizacao"); //Frame Interno responsável pela exibição do painel de visualização
-        PDFrame.getContentPane().setBackground(Color.white);
         Document document = new Document(); //cria um objeto Documento
         
         
@@ -79,7 +79,6 @@ public class Visualiza extends javax.swing.JFrame {
         SwingController controller = new SwingController(); // inicia o controlador
         SwingViewBuilder factory = new SwingViewBuilder(controller); // Inicia um SwingViewFactory configurado com o controlador
         jPanel1 = factory.buildViewerPanel(); // Usa a fábrica para construir um jPanel pre-configurado com uma UI completa já pelo Viewer     
-        jPanel1.setBackground(Color.white);
         ComponentKeyBinding.install(controller, jPanel1); // adiciona o o controlador no painel
         PDFrame.setBounds(0 , 0, 100, 100); //define a localização e tamanho do frame
         PDFrame.add(jPanel1); //adiciona o painel de visualização ao frame interno
@@ -125,6 +124,10 @@ public class Visualiza extends javax.swing.JFrame {
         
         initComponents();
         carregaCampos();
+        jPanel1.setBackground(Color.white);
+        //PDFrame.getContentPane().setBackground(Color.white);
+        jPanel1.paint(jPanel1.getGraphics());
+        //PDFrame.paint(PDFrame.getGraphics());
         
     }
     
@@ -222,7 +225,7 @@ public class Visualiza extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Visualizacao");
-        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Aparajita", 0, 10)); // NOI18N
         setForeground(java.awt.Color.white);
         setIconImages(null);
@@ -236,11 +239,11 @@ public class Visualiza extends javax.swing.JFrame {
         jSeparator1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jL5.setBackground(new java.awt.Color(255, 255, 255));
-        jL5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jL5.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jL5.setText("Data Inicial:");
 
         jLdtini.setBackground(new java.awt.Color(255, 255, 255));
-        jLdtini.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLdtini.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLdtini.setText("<00/00/0000>");
         jLdtini.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,11 +252,11 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLcod2.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod2.setText("Data Final:");
 
         jLdtfin.setBackground(new java.awt.Color(255, 255, 255));
-        jLdtfin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLdtfin.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLdtfin.setText("<00/00/0000>");
         jLdtfin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,15 +269,15 @@ public class Visualiza extends javax.swing.JFrame {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLcod4.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod4.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod4.setText("Cod:");
 
         jLcod.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod.setText("<00>");
 
         jLcod6.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod6.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod6.setText("Procurador:");
 
         jCproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procurador 1" }));
@@ -285,23 +288,23 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLproc.setBackground(new java.awt.Color(255, 255, 255));
-        jLproc.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLproc.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLproc.setText("</1>");
 
         jLcod8.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod8.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod8.setText("Nome:");
 
         jLcod9.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod9.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod9.setText("Cpf:");
 
         jLcod10.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod10.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod10.setText("Poderes:");
 
         jLcod11.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod11.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod11.setText("Entidade:");
 
         jCentidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entidade 1" }));
@@ -312,31 +315,31 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLentidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLentidade.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLentidade.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLentidade.setText("</1>");
 
         jLcod13.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod13.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod13.setText("Nome:");
 
         jLcod14.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod14.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod14.setText("Cnpj:");
 
         jLcod15.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod15.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod15.setText("Conjunto:");
 
         jLcod16.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod16.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod16.setText("Responsável:");
 
         jLcod17.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod17.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod17.setText("Cpf:");
 
         jLconjunto.setBackground(new java.awt.Color(255, 255, 255));
-        jLconjunto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLconjunto.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLconjunto.setText("<Em conjunto>");
         jLconjunto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,7 +348,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLprocpod.setBackground(new java.awt.Color(255, 255, 255));
-        jLprocpod.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLprocpod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLprocpod.setText("<Poderes>");
         jLprocpod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -354,7 +357,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLprocnome.setBackground(new java.awt.Color(255, 255, 255));
-        jLprocnome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLprocnome.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLprocnome.setText("<Nome>");
         jLprocnome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -363,7 +366,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLproccpf.setBackground(new java.awt.Color(255, 255, 255));
-        jLproccpf.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLproccpf.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLproccpf.setText("<Cpf>");
         jLproccpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -372,7 +375,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLentnome.setBackground(new java.awt.Color(255, 255, 255));
-        jLentnome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLentnome.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLentnome.setText("<Nome>");
         jLentnome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -381,7 +384,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLentcnpj.setBackground(new java.awt.Color(255, 255, 255));
-        jLentcnpj.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLentcnpj.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLentcnpj.setText("<Cnpj>");
         jLentcnpj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,7 +393,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLentresp.setBackground(new java.awt.Color(255, 255, 255));
-        jLentresp.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLentresp.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLentresp.setText("<Responsavel>");
         jLentresp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -399,7 +402,7 @@ public class Visualiza extends javax.swing.JFrame {
         });
 
         jLentcpf.setBackground(new java.awt.Color(255, 255, 255));
-        jLentcpf.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLentcpf.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLentcpf.setText("<Cpf>");
         jLentcpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -488,7 +491,7 @@ public class Visualiza extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(516, Short.MAX_VALUE)
+                .addContainerGap(519, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

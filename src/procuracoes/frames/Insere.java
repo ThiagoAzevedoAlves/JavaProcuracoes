@@ -289,12 +289,13 @@ public class Insere extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel2.setText("Conjunto:");
 
+        jCconjunto.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jCconjunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Em Conjunto", "Isolado", "Em conjunto ou Isoladamente", "Não Consta" }));
 
-        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel23.setText("Caminho:");
 
         jTcaminho.setText("D:/JavaImoveis/");
@@ -329,10 +330,10 @@ public class Insere extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel17.setText("Procuradores:");
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel18.setText("Quantidade de Procuradores:");
 
         jTnproc.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -341,12 +342,13 @@ public class Insere extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel19.setText("Nome:");
 
-        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel20.setText("Cpf:");
 
+        jCProc.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jCProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procurador 1" }));
         jCProc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -354,9 +356,10 @@ public class Insere extends javax.swing.JFrame {
             }
         });
 
-        jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel24.setText("Poderes:");
 
+        jBProcsalva.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jBProcsalva.setText("Salva");
         jBProcsalva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,9 +433,10 @@ public class Insere extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel10.setText("Empresa:");
 
+        jCEnt.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jCEnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empresa 1" }));
         jCEnt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -440,7 +444,7 @@ public class Insere extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel9.setText("Quantidade de Empresas:");
 
         jTnent.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -449,18 +453,19 @@ public class Insere extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel11.setText("Nome:");
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel12.setText("Cnpj:");
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel13.setText("Responsável:");
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel14.setText("Cpf:");
 
+        jBEntsalva.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jBEntsalva.setText("Salva");
         jBEntsalva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -544,7 +549,7 @@ public class Insere extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel6.setText("Data Final:");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -553,7 +558,7 @@ public class Insere extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("/");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel3.setText("Data Inicial:");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -616,10 +621,10 @@ public class Insere extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLcod.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLcod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod.setText("<variavel>");
 
-        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel22.setText("Procuração cod:");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -643,6 +648,7 @@ public class Insere extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -650,6 +656,7 @@ public class Insere extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
         jButton2.setText("Ok");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

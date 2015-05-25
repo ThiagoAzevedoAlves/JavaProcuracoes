@@ -120,13 +120,16 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Conjunto:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jCconjunto">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Liberation Serif" size="12" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Em Conjunto"/>
@@ -140,7 +143,7 @@
         <Component class="javax.swing.JLabel" name="jLabel23">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Caminho:"/>
           </Properties>
@@ -248,7 +251,7 @@
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Procuradores:"/>
           </Properties>
@@ -256,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quantidade de Procuradores:"/>
           </Properties>
@@ -269,7 +272,7 @@
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
@@ -277,7 +280,7 @@
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cpf:"/>
           </Properties>
@@ -288,6 +291,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jCProc">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Liberation Serif" size="12" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
                 <StringItem index="0" value="Procurador 1"/>
@@ -301,7 +307,7 @@
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Poderes:"/>
           </Properties>
@@ -310,6 +316,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBProcsalva">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Liberation Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salva"/>
           </Properties>
           <Events>
@@ -427,13 +436,16 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empresa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jCEnt">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Liberation Serif" size="12" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
                 <StringItem index="0" value="Empresa 1"/>
@@ -447,7 +459,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quantidade de Empresas:"/>
           </Properties>
@@ -460,7 +472,7 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
@@ -468,7 +480,7 @@
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cnpj:"/>
           </Properties>
@@ -483,7 +495,7 @@
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Respons&#xe1;vel:"/>
           </Properties>
@@ -491,7 +503,7 @@
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cpf:"/>
           </Properties>
@@ -502,6 +514,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBEntsalva">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Liberation Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salva"/>
           </Properties>
           <Events>
@@ -581,7 +596,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Final:"/>
           </Properties>
@@ -609,7 +624,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Inicial:"/>
           </Properties>
@@ -681,7 +696,7 @@
         <Component class="javax.swing.JLabel" name="jLcod">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;variavel&gt;"/>
           </Properties>
@@ -689,7 +704,7 @@
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Liberation Serif" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Procura&#xe7;&#xe3;o cod:"/>
           </Properties>
@@ -698,6 +713,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Serif" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
@@ -706,6 +724,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Liberation Serif" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ok"/>
       </Properties>
       <Events>
