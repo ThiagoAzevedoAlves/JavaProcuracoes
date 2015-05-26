@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import procuracoes.classes.Entidade;
-import procuracoes.frames.Inicial;
 
 /**
  *
@@ -103,8 +102,6 @@ public class Dataent extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
         }catch(NegativeArraySizeException ex){
             JOptionPane.showMessageDialog(null, "Nenhuma entidade encontrada com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }
@@ -170,8 +167,6 @@ public class Dataent extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
         }catch(NegativeArraySizeException ex){
             JOptionPane.showMessageDialog(null, "Nenhuma entidade encontrada com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }
@@ -238,8 +233,6 @@ public class Dataent extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
         }catch(NegativeArraySizeException ex){
             JOptionPane.showMessageDialog(null, "Nenhuma Entidade encontrado com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }
@@ -306,8 +299,6 @@ public class Dataent extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
         }catch(NegativeArraySizeException ex){
             JOptionPane.showMessageDialog(null, "Nenhuma Entidade encontrado com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }

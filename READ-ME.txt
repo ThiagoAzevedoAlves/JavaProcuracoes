@@ -14,7 +14,7 @@ Base:
 
 Revisões:
 
-r0 - Inclusão dos métodos de alteração de Procuradores,
+r0 - Inclusão dos métodos de alteração de Procuradores;
 	inclusão do Plano de Fundo da Janela Principal;
 r1 - Inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
 	inclusão do Ícone da aplicação;
@@ -28,4 +28,6 @@ r5 - Troca das Janelas de Busca por OptionPanes customizados, agilizando a aplic
 r6 - Inclusão de métodos que validam a mudança de data, verificando se a data inicial
 	não ultrapassa a data final e Inclusão de um método DragAndDrop para a
 	Janela Principal;
-r7 - Modificação do design da Janela Principal e Botões;
+r7 - Remoção de Bugs; Modificação do design da Janela Principal e Botões;
+r8 - Remoção de Bugs; Criação de uma tabela de usuários, juntamente com uma tela 
+	de Login e todos os métodos responsáveis pela incialização e troca de usuário.

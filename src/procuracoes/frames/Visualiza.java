@@ -70,7 +70,7 @@ public class Visualiza extends javax.swing.JFrame {
         } catch(PDFSecurityException ex) {
             JOptionPane.showMessageDialog(null,"Erro - encriptacao nao suportada " +  ex.getMessage());
         } catch(FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Error - arquivo nao encontrado" +  ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error - arquivo nao encontrado " +  ex.getMessage());
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"Error - IO -" +  ex.getMessage());
         } catch (NullPointerException ex) {

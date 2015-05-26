@@ -23,15 +23,12 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -39,15 +36,17 @@ import javax.swing.JTextField;
 import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
-import sun.awt.WindowClosingListener;
+import procuracoes.db.Datauser;
 
 public class Inicial extends javax.swing.JFrame {
     
     static JDialog dialog;
     boolean cPesq, cIncl, cExcl, cSobr;
+    String user;
     
-    public Inicial() {
+    public Inicial(int tipo, String usuario) {
         initComponents();
+        user = usuario;
         cPesq = false;
         cIncl = false;
         cExcl = false;
@@ -56,26 +55,31 @@ public class Inicial extends javax.swing.JFrame {
         jPBuscar.setBorder(null);
         JPAjuda.setBorder(null);
         JPExcluir.setBorder(null);
+        
+        jLbv.setText("Bem Vindo "+ usuario+" !");
+        
         //logo------------------------------------------------------------------------------------//
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logo.jpg")).getImage(), 0, 0, 1000, 350, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
         g.dispose();
-
+        
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
+        if(tipo==1){
         //-----------------------------------------------------------------------------------------//
-        //botao adicionar--------------------------------------------------------------------------//
         
-        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        g = resizedImg.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
-        g.dispose();
+            //botao adicionar--------------------------------------------------------------------------//
+        
+            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
+            g.dispose();
     
-        jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
-        jLIncluir.setVisible(true);
-        
+            jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
+            jLIncluir.setVisible(true);
+            
             //Adicionar manualmente
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
@@ -96,15 +100,33 @@ public class Inicial extends javax.swing.JFrame {
             jPIncluir.add(jLIdig);
             jLIdig.setIcon(new javax.swing.ImageIcon(resizedImg));
             jLIdig.setVisible(false);
-        //------------------------------------------------------------------------------------------//
-        //botao pesquisar--------------------------------------------------------------------------//
-        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        g = resizedImg.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
-        g.dispose();
+            //------------------------------------------------------------------------------------------//
+            
+                        
+            //botao excluir--------------------------------------------------------------------------//
+            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
+            g.dispose();
+
+            jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
+            //------------------------------------------------------------------------------------------//    
+        }else{
+            jLIncluir.setVisible(false);
+            jLIman.setVisible(false);
+            jLIdig.setVisible(false);
+            jLApagar.setVisible(false);
+        }
         
-        jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
+        //botao pesquisar--------------------------------------------------------------------------//
+            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+            g.dispose();
+        
+            jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
             //Pesquisa Procuracao
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
@@ -133,28 +155,28 @@ public class Inicial extends javax.swing.JFrame {
 
             jLBentidade.setIcon(new javax.swing.ImageIcon(resizedImg));
             jLBentidade.setVisible(false);
-        
-        
+                
         //------------------------------------------------------------------------------------------//
-        //botao excluir--------------------------------------------------------------------------//
-        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        g = resizedImg.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
-        g.dispose();
-
-        jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
-        //------------------------------------------------------------------------------------------//
+        
         //botao sobre--------------------------------------------------------------------------//
-        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        g = resizedImg.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
-        g.dispose();
+            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+            g.dispose();
 
-        jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
-        
+            jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));        
         //------------------------------------------------------------------------------------------//
+            
+        //botao trocar usuario--------------------------------------------------------------------------//
+            resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
+            g.dispose();
+
+            jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
+        //------------------------------------------------------------------------------------------//    
         this.getContentPane().setBackground(Color.white);
         this.jPanel1.setBackground(Color.white);
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
@@ -184,6 +206,9 @@ public class Inicial extends javax.swing.JFrame {
         jLApagar = new javax.swing.JLabel();
         JPAjuda = new javax.swing.JPanel();
         jLSobre = new javax.swing.JLabel();
+        jLLogin = new javax.swing.JLabel();
+        jLsair = new javax.swing.JLabel();
+        jLbv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartório Mezzari - 1º Registro de Imóveis de Pelotas");
@@ -200,10 +225,12 @@ public class Inicial extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 124, 184), 3, true));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
-        jLabel6.setFont(new java.awt.Font("Liberation Serif", 0, 48)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 44)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 124, 184));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Sistema de Procurações");
+        jLabel6.setToolTipText("");
+        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jPIncluir.setBackground(new java.awt.Color(255, 255, 255));
         jPIncluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -371,15 +398,34 @@ public class Inicial extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLLoginMouseClicked(evt);
+            }
+        });
+
+        jLbv.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLbv.setForeground(new java.awt.Color(102, 124, 184));
+        jLbv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbv.setText("Bem Vindo Thiago!");
+        jLbv.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLsair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,16 +433,20 @@ public class Inicial extends javax.swing.JFrame {
                         .addComponent(JPExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JPAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLbv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLsair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(jLbv, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPIncluir, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
@@ -422,12 +472,10 @@ public class Inicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1037, 681));
+        setSize(new java.awt.Dimension(1037, 670));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -544,14 +592,16 @@ public class Inicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLIdigMouseClicked
 
-    public static void main(String args[]) {
+    private void jLLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLoginMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja Trocar de Usuário? ", null, JOptionPane.YES_NO_OPTION);
+        if(resposta == JOptionPane.YES_OPTION){
+            Login l = new Login();
+            l.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLLoginMouseClicked
 
-        java.awt.EventQueue.invokeLater(() -> {
-            new Inicial().setVisible(true);
-        });
-    }
-
-    
+        
     public void apagaProc(int id) {
         Visualiza v = new Visualiza("D:/JavaImoveis/" + Integer.toString(id) + ".pdf", id);
         JButton b = new JButton("APAGAR!");
@@ -567,8 +617,6 @@ public class Inicial extends javax.swing.JFrame {
                 if (resp == 1) {
                     JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
                     v.dispose();
-                    Inicial i = new Inicial();
-                    i.setVisible(true);
                 }
             }
         });
@@ -603,8 +651,7 @@ public class Inicial extends javax.swing.JFrame {
         }
         
         @Override
-        public void mouseClicked(MouseEvent e) {
-            
+        public void mouseClicked(MouseEvent e) {            
         }
 
         @Override
@@ -614,18 +661,15 @@ public class Inicial extends javax.swing.JFrame {
         }
 
         @Override
-        public void mouseReleased(MouseEvent e) {
-            
+        public void mouseReleased(MouseEvent e) {            
         }
 
         @Override
-        public void mouseEntered(MouseEvent e) {
-            
+        public void mouseEntered(MouseEvent e) {            
         }
 
         @Override
-        public void mouseExited(MouseEvent e) {
-            
+        public void mouseExited(MouseEvent e) {            
         }
 
         @Override
@@ -641,9 +685,7 @@ public class Inicial extends javax.swing.JFrame {
         public void mouseMoved(MouseEvent e) {
             
         }
-        
-        
-        
+               
         
     }
     
@@ -898,7 +940,7 @@ public class Inicial extends javax.swing.JFrame {
             }
         };
         jt.addKeyListener(l);
-        jt.selectAll();
+        jt.requestFocus();
         
         jb.addActionListener((ActionEvent e) ->{
             if(jc.getSelectedIndex() ==  0){
@@ -965,8 +1007,7 @@ public class Inicial extends javax.swing.JFrame {
                 }
             }
         };
-        jt.addKeyListener(l);
-        jt.selectAll();
+        jt.addKeyListener(l);        
         
         jb.addActionListener((ActionEvent e) ->{
             if(jc.getSelectedIndex() ==  0){
@@ -982,11 +1023,14 @@ public class Inicial extends javax.swing.JFrame {
             this.toBack();
         });
         
+        
         Object data[] = {"Escolha o Atributo e o Valor da Pesquisa:", jc, jt, jb};
+        
         JOptionPane option = new JOptionPane();
         option.setMessage(data);
         option.setMessageType(JOptionPane.QUESTION_MESSAGE);
         option.remove(1);
+        
         dialog = option.createDialog(null, "Busca por Entidade");
         dialog.setVisible(true);
                 
@@ -1004,9 +1048,12 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLIdig;
     private javax.swing.JLabel jLIman;
     private javax.swing.JLabel jLIncluir;
+    private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLSobre;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLbv;
+    private javax.swing.JLabel jLsair;
     private javax.swing.JPanel jPBuscar;
     private javax.swing.JPanel jPIncluir;
     private javax.swing.JPanel jPanel1;

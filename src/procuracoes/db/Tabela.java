@@ -9,8 +9,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,11 +19,17 @@ import procuracoes.frames.Visualiza;
  *
  * @author Thiago
  */
-public class Tabela implements WindowListener{
+public class Tabela{
     
     Tabela(String[][] dados, String[] colunas, String titulo){
         
         JTable tabela = new JTable(dados,colunas);
+        tabela.getColumn("Data Inicial").setMinWidth(80);
+        tabela.getColumn("Data Final").setMinWidth(80);
+        tabela.getColumn("Data Inicial").setMaxWidth(80);
+        tabela.getColumn("Data Final").setMaxWidth(80);
+        
+        tabela.getColumn("Caminho").setMinWidth(120);
             JScrollPane scroll = new JScrollPane();
             scroll.setViewportView(tabela);
             
@@ -34,13 +38,23 @@ public class Tabela implements WindowListener{
                 @Override
                 public void mouseClicked(MouseEvent e){
                     String s = tabela.getModel().getValueAt(tabela.getSelectedRow(), colunas.length-1).toString();
-                    Visualiza v = new Visualiza(s, (s.charAt(15)-48));
-                    v.setVisible(true);
+                    if(s.substring(36,37).compareTo(".") == 0){
+                        Visualiza v = new Visualiza(s, Integer.valueOf(String.valueOf(s.charAt(35))));
+                        v.setVisible(true);
+                    }else if(s.substring(37,38).compareTo(".") == 0){
+                        String ss = s.substring(35,37);
+                        Visualiza v = new Visualiza(s, Integer.valueOf(ss));
+                        v.setVisible(true);
+                    }else{
+                        String ss = s.substring(35,38);
+                        Visualiza v = new Visualiza(s, Integer.valueOf(ss));
+                        v.setVisible(true);
+                    }                    
+                    
                     f.dispose();
                 }
             });
             f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            f.addWindowListener(this);
             
             f.add(scroll);
             f.setVisible(true);
@@ -51,40 +65,5 @@ public class Tabela implements WindowListener{
             f.setResizable(false);
             f.setTitle(titulo);
     }
-    
-    @Override
-    public void windowOpened(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        //DONOTHING
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        //DONOTHING
-    }
-    
+        
 }

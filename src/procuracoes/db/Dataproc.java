@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import procuracoes.classes.Procurador;
-import procuracoes.frames.Inicial;
 
 /**
  *
@@ -122,8 +121,6 @@ public class Dataproc extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAPROCURADOR\n" +e.getMessage());
         }catch(NegativeArraySizeException e){
             JOptionPane.showMessageDialog(null, "Nenhum Procurador encontrado com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }
@@ -192,8 +189,6 @@ public class Dataproc extends Database{
             JOptionPane.showMessageDialog(null, "BUSCAPROCURADOR\n" +e.getMessage());
         }catch(NegativeArraySizeException e){
             JOptionPane.showMessageDialog(null, "Nenhum Procurador encontrado com os dados inseridos.");
-            Inicial i = new Inicial();
-            i.setVisible(true);
         }
         
     }

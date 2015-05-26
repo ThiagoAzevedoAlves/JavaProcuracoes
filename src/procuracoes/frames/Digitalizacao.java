@@ -27,7 +27,6 @@ import java.util.List;
 import procuracoes.db.Database;
 
 
-
 /**
  *
  * @author Thiago
@@ -58,8 +57,8 @@ public class Digitalizacao extends JFrame{
             Graphics2D g = bimg.createGraphics();                                //cria um graphics2d para manipular a imagem do buffer
             g.drawImage(i.get(npag), 0, 0, null);                                      //desenha o objeto Image no BufferedImage
             try {
-                ImageIO.write(bimg, "jpg", new File("D:/JavaImoveisTeste/teste" + Integer.toString(npag) + ".jpg"));            //Cria um novo arquivo jpg;
-                s.add("D:/JavaImoveisTeste/teste" + Integer.toString(npag) + ".jpg");
+                ImageIO.write(bimg, "jpg", new File("C:/temp/teste" + Integer.toString(npag) + ".jpg"));            //Cria um novo arquivo jpg;
+                s.add("C:/temp/teste" + Integer.toString(npag) + ".jpg");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar imagem " + ex);
             }
@@ -78,8 +77,8 @@ public class Digitalizacao extends JFrame{
                 g = bimg.createGraphics();                                //cria um graphics2d para manipular a imagem do buffer
                 g.drawImage(i.get(npag), 0, 0, null);                                      //desenha o objeto Image no BufferedImage
                 try {
-                    ImageIO.write(bimg, "jpg", new File("D:/JavaImoveisTeste/teste" + Integer.toString(npag) + ".jpg"));            //Cria um novo arquivo jpg;
-                    s.add("D:/JavaImoveisTeste/teste" + Integer.toString(npag) + ".jpg");
+                    ImageIO.write(bimg, "jpg", new File("C:/temp/teste" + Integer.toString(npag) + ".jpg"));            //Cria um novo arquivo jpg;
+                    s.add("C:/temp/teste" + Integer.toString(npag) + ".jpg");
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar imagem " + ex);
                 }
@@ -122,7 +121,7 @@ public class Digitalizacao extends JFrame{
         int cod;
         cod = db.getProcod();
         String ret;
-        ret = "D:/JavaImoveis/"+ Integer.toString(db.getProcod()) + ".pdf";
+        ret = "\\\\servidor\\procuracoes\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf";
         return ret;
     }
 }
