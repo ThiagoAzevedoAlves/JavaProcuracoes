@@ -22,8 +22,11 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import procuracoes.db.Database;
 
 
@@ -37,7 +40,7 @@ public class Digitalizacao extends JFrame{
     public JPanel jPanel1;
     public Database db;
     
-    public void salva()throws MorenaException{
+    public void salva()throws MorenaException, SQLException{
                     
         source = TwainManager.selectSource(null);
         int npag = 0;
@@ -115,7 +118,7 @@ public class Digitalizacao extends JFrame{
         in.setVisible(true);
     }
         
-    public String getNovoCaminho(){
+    public String getNovoCaminho() throws SQLException{
         this.db = new Database();
         this.db.connect();
         int cod;

@@ -6,10 +6,13 @@
 package procuracoes.frames;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -29,7 +32,7 @@ public class Insere extends javax.swing.JFrame {
     public List<Procurador> procuradores;
     public List<Entidade> entidades;
     
-    public Insere() {
+    public Insere() throws SQLException {
         initComponents();
         procuradores = new ArrayList<>();
         entidades = new ArrayList<>();
@@ -753,6 +756,8 @@ public class Insere extends javax.swing.JFrame {
                 db.salva(p);
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (SQLException ex) {
+                Logger.getLogger(Insere.class.getName()).log(Level.SEVERE, null, ex);
             }
             Visualiza v;
             v = new Visualiza(p.getCaminho(), Integer.valueOf(jLcod.getText()));

@@ -23,6 +23,9 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -480,7 +483,11 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        atalhos(evt);
+        try {
+            atalhos(evt);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formKeyPressed
 
     private void jLSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSobreMouseClicked
@@ -579,15 +586,20 @@ public class Inicial extends javax.swing.JFrame {
 
     private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
         Insere in;
-        in = new Insere();
-        in.setVisible(true);
+        try {
+            in = new Insere();
+            in.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jLImanMouseClicked
 
     private void jLIdigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIdigMouseClicked
         Digitalizacao d = new Digitalizacao();
         try {
             d.salva();
-        } catch (MorenaException ex) {
+        } catch (MorenaException | SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_jLIdigMouseClicked
@@ -613,7 +625,11 @@ public class Inicial extends javax.swing.JFrame {
             if (resp == 0) {
                 Database db = new Database();
                 db.connect();
-                resp = db.apagaProc(id);
+                try {
+                    resp = db.apagaProc(id);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 if (resp == 1) {
                     JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
                     v.dispose();
@@ -715,7 +731,7 @@ public class Inicial extends javax.swing.JFrame {
     }
 
     
-    private void atalhos(KeyEvent evt) {
+    private void atalhos(KeyEvent evt) throws SQLException {
         /*Mostra a key da tecla pressionada*/
         //System.out.println(evt.getKeyCode());  
 
@@ -802,11 +818,16 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             Visualiza v;
-            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
-            v.setVisible(true);
-            v.getContentPane().setBackground(Color.WHITE);
-            dialog.setVisible(false);
-            this.toBack();
+            try {
+                v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
+                v.setVisible(true);
+                v.getContentPane().setBackground(Color.WHITE);
+                dialog.setVisible(false);
+                this.toBack();
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         });
         
         Object data[] = {"Digite o código da Procuração:", jt, jb};
@@ -862,26 +883,36 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             int id = Integer.valueOf(jt.getText());
-            Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
-            JButton b = new JButton("APAGAR!");
-            b.setBackground(Color.red);
-            v.add(b);
-            b.setBounds(100, 520, 125, 25);
-            b.addActionListener((ActionEvent e1) -> {
-                int resp;
-                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
-                if (resp == 0) {
-                    Database db1 = new Database();
-                    db1.connect();
-                    db1.apagaProc(id);
-                    v.dispose();
-                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
-                }
-            });
+            Visualiza v;
+            try {
+                v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
+                JButton b = new JButton("APAGAR!");
+                b.setBackground(Color.red);
+                v.add(b);
+                b.setBounds(100, 520, 125, 25);
+                b.addActionListener((ActionEvent e1) ->{
+                    int resp;
+                    resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+                    if (resp == 0) {
+                        Database db1 = new Database();
+                        db1.connect();
+                        try {
+                            db1.apagaProc(id);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        v.dispose();
+                        JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
+                    }
+                });
             v.pack();
             v.setVisible(true);
             dialog.setVisible(false);
             this.toBack();
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         });
         
         Object data[] = {"Digite o código da Procuração:", jt, jb};

@@ -7,8 +7,11 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -47,91 +50,87 @@ public class Visualiza extends javax.swing.JFrame {
     
     public Visualiza(String caminho, int cod) {
         
-        this.cod = cod;
-        db = new Database();
-        db.connect();
-        dp = new Dataproc();
-        dp.connect();
-        de = new Dataent();
-        de.connect();
-        JPanel jPanel1; //painel de visualizacao
-        
-        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
-        this.setIconImage(image.getImage());
-        
-        JInternalFrame PDFrame = new JInternalFrame("Visualizacao"); //Frame Interno responsável pela exibição do painel de visualização
-        Document document = new Document(); //cria um objeto Documento
         
         
         try {
-            document.setFile(caminho); //envia o caminho para o documento
-        } catch(PDFException ex) {
-            JOptionPane.showMessageDialog(null,"Erro ao analizar documento " +  ex.getMessage());
-        } catch(PDFSecurityException ex) {
-            JOptionPane.showMessageDialog(null,"Erro - encriptacao nao suportada " +  ex.getMessage());
-        } catch(FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Error - arquivo nao encontrado " +  ex.getMessage());
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"Error - IO -" +  ex.getMessage());
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null,"Documento não encontrado " +  ex.getMessage());
-        }       
-        SwingController controller = new SwingController(); // inicia o controlador
-        SwingViewBuilder factory = new SwingViewBuilder(controller); // Inicia um SwingViewFactory configurado com o controlador
-        jPanel1 = factory.buildViewerPanel(); // Usa a fábrica para construir um jPanel pre-configurado com uma UI completa já pelo Viewer     
-        ComponentKeyBinding.install(controller, jPanel1); // adiciona o o controlador no painel
-        PDFrame.setBounds(0 , 0, 100, 100); //define a localização e tamanho do frame
-        PDFrame.add(jPanel1); //adiciona o painel de visualização ao frame interno
-
-//impede que o frame se mova mas nao impede de ser editado-----------------------------------------------------------------------------------------------------------//
-        ComponentListener listener = new ComponentListener() { //impede que o frame interno seja movido implementando um listener com a substituição do método componentMoved
-            @Override
-            public void componentResized(ComponentEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                //donothing
+            this.cod = cod;db = new Database();
+            db.connect();
+            dp = new Dataproc();
+            dp.connect();
+            de = new Dataent();
+            de.connect();
+            JPanel jPanel1; //painel de visualizacao
+            ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+            this.setIconImage(image.getImage());
+            JInternalFrame PDFrame = new JInternalFrame("Visualizacao"); //Frame Interno responsável pela exibição do painel de visualização
+            Document document = new Document(); //cria um objeto Documento
+            try {
+                document.setFile(caminho); //envia o caminho para o documento
+            } catch(PDFException ex) {
+                JOptionPane.showMessageDialog(null,"Erro ao analizar documento " +  ex.getMessage());
+            } catch(PDFSecurityException ex) {
+                JOptionPane.showMessageDialog(null,"Erro - encriptacao nao suportada " +  ex.getMessage());
+            } catch(FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null,"Error - arquivo nao encontrado " +  ex.getMessage());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null,"Error - IO -" +  ex.getMessage());
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(null,"Documento não encontrado " +  ex.getMessage());
             }
-
-            @Override
-            public void componentMoved(ComponentEvent e) {
-                PDFrame.setLocation(15, 15);
-            }
-
-            @Override
-            public void componentShown(ComponentEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                //donothing
-            }
-
-            @Override
-            public void componentHidden(ComponentEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                //donothing
-            }
-        };
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------//        
-        
-        PDFrame.addComponentListener(listener); //adicioa o listener ao frame interno;
-        PDFrame.setVisible(true);
-        PDFrame.setFocusable(false);
-        
-        this.add(PDFrame);
-        this.pack();
-        this.setVisible(true);
-
-        // Abre o PDF no view view
-        controller.openDocument(document.getDocumentLocation());
-        controller.getDocumentViewController().setFitMode(0);
-        
-        initComponents();
-        carregaCampos();
-        jPanel1.setBackground(Color.white);
-        //PDFrame.getContentPane().setBackground(Color.white);
+            SwingController controller = new SwingController(); // inicia o controlador
+            SwingViewBuilder factory = new SwingViewBuilder(controller); // Inicia um SwingViewFactory configurado com o controlador
+            jPanel1 = factory.buildViewerPanel(); // Usa a fábrica para construir um jPanel pre-configurado com uma UI completa já pelo Viewer
+            ComponentKeyBinding.install(controller, jPanel1); // adiciona o o controlador no painel
+            PDFrame.setBounds(0 , 0, 100, 100); //define a localização e tamanho do frame
+            PDFrame.add(jPanel1); //adiciona o painel de visualização ao frame interno
+            //impede que o frame se mova mas nao impede de ser editado-----------------------------------------------------------------------------------------------------------//
+            ComponentListener listener = new ComponentListener() { //impede que o frame interno seja movido implementando um listener com a substituição do método componentMoved
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //donothing
+                }
+                
+                @Override
+                public void componentMoved(ComponentEvent e) {
+                    PDFrame.setLocation(15, 15);
+                }
+                
+                @Override
+                public void componentShown(ComponentEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //donothing
+                }
+                
+                @Override
+                public void componentHidden(ComponentEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    //donothing
+                }
+            };
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+            PDFrame.addComponentListener(listener); //adicioa o listener ao frame interno;
+            PDFrame.setVisible(true);
+            PDFrame.setFocusable(false);
+            this.add(PDFrame);
+            this.pack();
+            this.setVisible(true);
+            // Abre o PDF no view view
+            controller.openDocument(document.getDocumentLocation());
+            controller.getDocumentViewController().setFitMode(0);
+            initComponents();
+            carregaCampos();
+            jPanel1.setBackground(Color.white);
+            //PDFrame.getContentPane().setBackground(Color.white);
         jPanel1.paint(jPanel1.getGraphics());
         //PDFrame.paint(PDFrame.getGraphics());
+        } catch(SQLException ex) {
+            Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE,null, ex);
+        }       
         
     }
     
-    public void carregaCampos(){
+    public void carregaCampos() throws SQLException{
         procuradores = new ArrayList<>();                              //Lista auxiliar para carregar os procuradores
         procuradores.addAll(dp.getProcuradores(this.cod));             //popula a lista de procuradores
         entidades = new ArrayList<>();                                 //Lista auxiliar para carregar as entidades
@@ -763,8 +762,12 @@ public class Visualiza extends javax.swing.JFrame {
                 aux = JOptionPane.showInputDialog(null, "Escolha o Tipo de CONJUNTO:", "Editar Procuracao", JOptionPane.QUESTION_MESSAGE, null, options, options[3]).toString();
             }
             if(aux!=null){
-                jLconjunto.setText(aux);
-                db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
+                try {
+                    jLconjunto.setText(aux);
+                    db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }            
         }
     }//GEN-LAST:event_jLconjuntoMouseClicked
@@ -800,11 +803,17 @@ public class Visualiza extends javax.swing.JFrame {
             if(mensagem!=null){
                 jLdtini.setText(mensagem);
                 if (verificaMaior(mensagem, jLdtfin.getText()) == 1){
-                    int a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
-                    if (a==1){
-                        JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
+                    int a;
+                    try {
+                        a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
+                        if (a==1){
+                            JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
+                        }
+                        mensagem=null;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    mensagem=null;
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
                 }
@@ -842,11 +851,15 @@ public class Visualiza extends javax.swing.JFrame {
             if(mensagem!=null){
                 jLdtfin.setText(mensagem);
                 if (verificaMaior(jLdtini.getText(), mensagem) == 1){
-                    int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
-                    if (a==1){
-                        JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
+                    try {
+                        int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
+                        if (a==1){
+                            JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
+                        }
+                        mensagem=null;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    mensagem=null;
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
                 }
