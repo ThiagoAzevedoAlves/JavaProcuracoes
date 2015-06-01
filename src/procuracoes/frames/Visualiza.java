@@ -1,7 +1,6 @@
 package procuracoes.frames;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -293,14 +292,29 @@ public class Visualiza extends javax.swing.JFrame {
         jLcod8.setBackground(new java.awt.Color(255, 255, 255));
         jLcod8.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod8.setText("Nome:");
+        jLcod8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod8MouseClicked(evt);
+            }
+        });
 
         jLcod9.setBackground(new java.awt.Color(255, 255, 255));
         jLcod9.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod9.setText("Cpf:");
+        jLcod9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod9MouseClicked(evt);
+            }
+        });
 
         jLcod10.setBackground(new java.awt.Color(255, 255, 255));
         jLcod10.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod10.setText("Poderes:");
+        jLcod10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod10MouseClicked(evt);
+            }
+        });
 
         jLcod11.setBackground(new java.awt.Color(255, 255, 255));
         jLcod11.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
@@ -320,10 +334,20 @@ public class Visualiza extends javax.swing.JFrame {
         jLcod13.setBackground(new java.awt.Color(255, 255, 255));
         jLcod13.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod13.setText("Nome:");
+        jLcod13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod13MouseClicked(evt);
+            }
+        });
 
         jLcod14.setBackground(new java.awt.Color(255, 255, 255));
         jLcod14.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod14.setText("Cnpj:");
+        jLcod14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod14MouseClicked(evt);
+            }
+        });
 
         jLcod15.setBackground(new java.awt.Color(255, 255, 255));
         jLcod15.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
@@ -332,10 +356,20 @@ public class Visualiza extends javax.swing.JFrame {
         jLcod16.setBackground(new java.awt.Color(255, 255, 255));
         jLcod16.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod16.setText("Responsável:");
+        jLcod16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod16MouseClicked(evt);
+            }
+        });
 
         jLcod17.setBackground(new java.awt.Color(255, 255, 255));
         jLcod17.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLcod17.setText("Cpf:");
+        jLcod17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcod17MouseClicked(evt);
+            }
+        });
 
         jLconjunto.setBackground(new java.awt.Color(255, 255, 255));
         jLconjunto.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
@@ -428,11 +462,10 @@ public class Visualiza extends javax.swing.JFrame {
                         .addComponent(jL5)
                         .addGap(6, 6, 6)
                         .addComponent(jLdtini)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                         .addComponent(jLcod2)
                         .addGap(6, 6, 6)
-                        .addComponent(jLdtfin)
-                        .addContainerGap())
+                        .addComponent(jLdtfin))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -459,6 +492,14 @@ public class Visualiza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLcod13)
+                                    .addComponent(jLcod14))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLentnome, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                                    .addComponent(jLentcnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLcod11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCentidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -466,33 +507,23 @@ public class Visualiza extends javax.swing.JFrame {
                                 .addComponent(jLentidade))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLcod13)
-                                    .addComponent(jLcod14))
-                                .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLentcnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLentnome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLcod17)
-                                .addGap(72, 72, 72)
-                                .addComponent(jLentcpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLcod16)
+                                    .addComponent(jLcod16)
+                                    .addComponent(jLcod17, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLentresp, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(54, 54, 54))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLentcpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLentresp, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jSeparator2)
+            .addComponent(jSeparator1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(519, Short.MAX_VALUE)
+                .addContainerGap(516, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLcod4)
                     .addComponent(jLcod)
@@ -502,62 +533,62 @@ public class Visualiza extends javax.swing.JFrame {
                     .addComponent(jLdtini)
                     .addComponent(jLcod2)
                     .addComponent(jLdtfin))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLcod6))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod11)
-                                .addComponent(jCentidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLentidade))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod13)
-                                .addComponent(jLentnome))
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod14)
-                                .addComponent(jLentcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod16)
-                                .addComponent(jLentresp))
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod17)
-                                .addComponent(jLentcpf))
-                            .addGap(18, 18, 18))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addComponent(jLcod6))
+                                .addComponent(jCproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLproc)))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLprocnome)
+                            .addComponent(jLcod8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLproccpf)
+                            .addComponent(jLcod9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLcod10)
+                            .addComponent(jLprocpod))
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLproc)))
-                            .addGap(13, 13, 13)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLprocnome)
-                                .addComponent(jLcod8))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLproccpf)
-                                .addComponent(jLcod9))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLcod10)
-                                .addComponent(jLprocpod))
-                            .addGap(24, 24, 24)))))
+                                    .addComponent(jLcod11)
+                                    .addComponent(jCentidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLentidade))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLcod13)
+                                    .addComponent(jLentnome))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLcod14)
+                                    .addComponent(jLentcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLcod16)
+                                    .addComponent(jLentresp))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLcod17)
+                                    .addComponent(jLentcpf))
+                                .addGap(18, 18, 18))))))
         );
 
-        setSize(new java.awt.Dimension(1066, 743));
+        setSize(new java.awt.Dimension(1121, 743));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -762,12 +793,8 @@ public class Visualiza extends javax.swing.JFrame {
                 aux = JOptionPane.showInputDialog(null, "Escolha o Tipo de CONJUNTO:", "Editar Procuracao", JOptionPane.QUESTION_MESSAGE, null, options, options[3]).toString();
             }
             if(aux!=null){
-                try {
-                    jLconjunto.setText(aux);
-                    db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
-                } catch (SQLException ex) {
-                    Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                jLconjunto.setText(aux);
+                db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
             }            
         }
     }//GEN-LAST:event_jLconjuntoMouseClicked
@@ -804,15 +831,11 @@ public class Visualiza extends javax.swing.JFrame {
                 jLdtini.setText(mensagem);
                 if (verificaMaior(mensagem, jLdtfin.getText()) == 1){
                     int a;
-                    try {
-                        a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
-                        if (a==1){
-                            JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
-                        }
-                        mensagem=null;
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
+                    a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
+                    if (a==1){
+                        JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
                     }
+                    mensagem=null;
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
@@ -851,15 +874,11 @@ public class Visualiza extends javax.swing.JFrame {
             if(mensagem!=null){
                 jLdtfin.setText(mensagem);
                 if (verificaMaior(jLdtini.getText(), mensagem) == 1){
-                    try {
-                        int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
-                        if (a==1){
-                            JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
-                        }
-                        mensagem=null;
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE, null, ex);
+                    int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
+                    if (a==1){
+                        JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
                     }
+                    mensagem=null;
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
                 }
@@ -867,6 +886,168 @@ public class Visualiza extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jLdtfinMouseClicked
+
+    private void jLcod17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod17MouseClicked
+        String aux = null;
+        String nomeaux = jLentnome.getText();
+        int resp;
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar CPF do RESPONSAVEL?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite o CPF do RESPONSAVEL:", "Editar Entidade", JOptionPane.QUESTION_MESSAGE, null, null, this.jLentcpf.getText()).toString();
+            }
+            if (aux != null){
+                jLentcpf.setText(aux);
+                entidades.get(jCentidade.getSelectedIndex()).setCpf(aux);
+                while((nproc != 0)&&(nproc != naux2)){
+                    de.setCpfEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2 = naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod17MouseClicked
+
+    private void jLcod16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod16MouseClicked
+        String aux = null;
+        String nomeaux = jLentnome.getText();
+        int resp;
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar NOME do RESPONSAVEL?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite o NOME do RESPONSAVEL:", "Editar Entidade", JOptionPane.QUESTION_MESSAGE, null, null, this.jLentresp.getText()).toString();
+            }
+            if (aux != null){
+                jLentresp.setText(aux);
+                entidades.get(jCentidade.getSelectedIndex()).setResponsavel(aux);
+                while((nproc != 0)&&(nproc != naux2)){
+                    de.setRespEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2 = naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod16MouseClicked
+
+    private void jLcod14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod14MouseClicked
+        String aux = null;
+        String nomeaux = jLentnome.getText();
+        int resp;
+        int nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar o CNPJ da ENTIDADE?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite o CNPJ da ENTIDADE:", "Editar Entidade", JOptionPane.QUESTION_MESSAGE, null, null, this.jLentcnpj.getText()).toString();
+            }
+            if (aux != null){
+                jLentcnpj.setText(aux);
+                entidades.get(jCentidade.getSelectedIndex()).setCnpj(aux);
+                while((nproc != 0)&&(nproc!=naux2)){
+                    de.setCnpjEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2=naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod14MouseClicked
+
+    private void jLcod13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod13MouseClicked
+        String aux = null;
+        String nomeaux = jLentnome.getText();
+        int resp;
+        int nproc =  de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar o NOME da ENTIDADE?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite o NOME da ENTIDADE:", "Editar Entidade", JOptionPane.QUESTION_MESSAGE, null, null, this.jLentnome.getText()).toString();
+            }
+            if (aux != null){
+                jLentnome.setText(aux);
+                entidades.get(jCentidade.getSelectedIndex()).setNome(aux);
+                while((nproc != 0)&&(nproc != naux2)){
+                    de.setNomeEntidade(aux, nproc);
+                    nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2 = naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod13MouseClicked
+
+    private void jLcod10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod10MouseClicked
+        String aux = null;
+        String nomeaux = jLprocnome.getText();
+        int resp;
+        int nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar os PODERES do PROCURADOR?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite os PODERES do PROCURADOR:", "Editar Procurador", JOptionPane.QUESTION_MESSAGE, null, null, this.jLprocpod.getText()).toString();
+            }
+            if (aux != null){
+                jLprocpod.setText(aux);
+                procuradores.get(jCproc.getSelectedIndex()).setPoderes(aux);
+                dp.setPoderesProcurador(aux, nproc);                
+            }
+        }
+    }//GEN-LAST:event_jLcod10MouseClicked
+
+    private void jLcod9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod9MouseClicked
+        String aux = null;
+        String nomeaux = jLprocnome.getText();
+        int resp;
+        int nproc =  dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar o CPF do PROCURADOR?");
+            if (resp == 0){
+                aux = JOptionPane.showInputDialog(null, "Digite o CPF do PROCURADOR:", "Editar Procurador", JOptionPane.QUESTION_MESSAGE, null, null, this.jLproccpf.getText()).toString();
+            }
+            if (aux != null){
+                jLproccpf.setText(aux);
+                procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
+                while((nproc != 0)&&(nproc!=naux2)){
+                    dp.setCpfProcurador(aux, nproc);
+                    nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2=naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod9MouseClicked
+
+    private void jLcod8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcod8MouseClicked
+        String aux = null;
+        String nomeaux = jLprocnome.getText();
+        int resp;
+        int nproc =  dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+        int naux = nproc;
+        int naux2 = 0;
+        if (evt.getClickCount() > 1){
+            resp = JOptionPane.showConfirmDialog(null, "Deseja alterar o NOME do PROCURADOR?");
+            if (resp == 0){
+                    aux = JOptionPane.showInputDialog(null, "Digite o NOME do PROCURADOR:", "Editar Procurador", JOptionPane.QUESTION_MESSAGE, null, null, this.jLprocnome.getText()).toString();
+            }
+            if (aux != null){
+                jLprocnome.setText(aux);
+                procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
+                while((nproc != 0)&&(nproc!=naux2)){
+                    dp.setNomeProcurador(aux, nproc);
+                    nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
+                    naux2=naux;
+                }                
+            }
+        }
+    }//GEN-LAST:event_jLcod8MouseClicked
 
     
     public int verificaMaior(String dtini, String dtfin){ //retorna 0 se o dia inicial for o maior ou 1 se o final for maior ou igual

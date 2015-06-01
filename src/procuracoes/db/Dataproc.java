@@ -71,10 +71,10 @@ public class Dataproc extends Database{
             resultSet = prepared.executeQuery();
             
             Procurador proc = new Procurador();
-            int[] n = new int[20];
-            String[] c = new String[20];
-            String[] di = new String[20];
-            String[] df = new String[20];
+            int[] n = new int[200];
+            String[] c = new String[200];
+            String[] di = new String[200];
+            String[] df = new String[200];
             int i;
             i = 0;
             while(resultSet.next()){ //pega o código dos procuradores com o nome parecido
@@ -107,11 +107,21 @@ public class Dataproc extends Database{
             }
             i++;
             String dados[][] = new String[j][4];
+            //desinverte a seleção do caminho - pesquisar uma maneira mais eficiente ------------------------//
+            String temp[] = new String[200];
+            int xx = 0;
+            int xxx = p.size()-1;
+            while(xx <=p.size()-1){
+                temp[xx] = c[xxx];
+                xx++;
+                xxx--;
+            }
+            //------------------------------------------------------------------------------------------------//
             while(i < j){
                 dados[i][0] = p.get(i).getNome();
                 dados[i][1] = di[i];
                 dados[i][2] = df[i];
-                dados[i][3] = c[i];
+                dados[i][3] = temp[i];
                 i++;
             }
             
@@ -138,10 +148,10 @@ public class Dataproc extends Database{
             resultSet = prepared.executeQuery();
             
             Procurador proc = new Procurador();
-            int[] n = new int[20];
-            String[] c = new String[20];
-            String[] di = new String[20];
-            String[] df = new String[20];
+            int[] n = new int[200];
+            String[] c = new String[200];
+            String[] di = new String[200];
+            String[] df = new String[200];
             int i;
             i = 0;
             while(resultSet.next()){ //pega o código dos procuradores com o nome parecido

@@ -19,10 +19,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import procuracoes.db.Datauser;
 
@@ -80,6 +82,7 @@ public class Login extends javax.swing.JFrame {
             }
         };
         jPasswordField1.addKeyListener(l);
+        jTextField1.addKeyListener(l);
     }
     
     
@@ -185,7 +188,9 @@ public class Login extends javax.swing.JFrame {
         Datauser db = new Datauser();
         db.connect();
         String login = jTextField1.getText();
-        String senha = jPasswordField1.getText();
+        char[] ss = jPasswordField1.getPassword();
+        String senha;
+        senha = (String.valueOf(ss));
         if(db.Login(login,senha) == 1){
             Inicial i = new Inicial(db.getTipo(login), db.getNome(login));
             i.setVisible(true);

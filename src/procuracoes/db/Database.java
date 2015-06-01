@@ -33,18 +33,12 @@ public class Database{
     public void connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance(); //carrega o driver do mysql
-            String url = "jdbc:mysql://192.168.2.170:3306/cartorioimoveis"; //acessa a tablea mysql "unimed_biom_teste" no localhost
+            String url = "jdbc:mysql://192.168.2.170:3306/cartorioimoveis?autoReconnect=true"; //acessa a tablea mysql "unimed_biom_teste" no localhost
             String usuario = "Thiago";
             String senha = "root";
             conn = DriverManager.getConnection(url, usuario, senha); //conecta no banco de dados MySql
         }catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException e){
             JOptionPane.showMessageDialog(null, "CONNECT - " + e.getMessage());
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
         }
     }
 //--------------------------------------------------------------------------------------------------------------------------------------------------//    
@@ -66,8 +60,6 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "SALVAENT -" + e.getMessage());
-        }finally{
-            conn.close();
         }
         //salva os procuradores
         try {
@@ -83,8 +75,6 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "SALVA -" + e.getMessage());
-        }finally{
-            conn.close();
         }
         java.sql.Date di = null;
         java.sql.Date df = null;
@@ -125,15 +115,16 @@ public class Database{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "SALVAPROC" + "\n" + preparedStatement.toString() + "\n" + e.getMessage() + " - " + e.getSQLState());
-        }finally{
-            conn.close();
         }
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //retorna o código equivalente à última entrada na tabela+1 -------------------------------------------------------------------------------------------//    
-    public int getProcod() throws SQLException{
+    public int getProcod(){
         try {
+            if (conn.isClosed()){
+                this.connect();
+            }
             preparedStatement = conn.prepareStatement("SELECT MAX(id) FROM procuracao");
             resultSet = preparedStatement.executeQuery();
             preparedStatement = null;
@@ -150,15 +141,13 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETPROCOD -"+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return 1;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
 //Retorna o índice do último Procurador na tabela------------------------------------------------------------------------------------------------------//    
-    public int getLastProc() throws SQLException{
+    public int getLastProc(){
         try {
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT MAX(id) FROM procurador");
@@ -170,15 +159,13 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETLASTPROC - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return -1;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
 //Retorna o índice da ultima Entidade na tabela--------------------------------------------------------------------------------------------------------//    
-    public int getLastEnt() throws SQLException{
+    public int getLastEnt(){
         try {
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT MAX(id) FROM entidade");
@@ -190,15 +177,13 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETLASTENT - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return -1;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //Retorna o caminho da Procuracao com o Id passado como paramentro-------------------------------------------------------------------------------------//    
-    public String getCaminho(int codProc) throws SQLException{
+    public String getCaminho(int codProc){
         try {
             PreparedStatement prepared;
             
@@ -212,15 +197,13 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETCAMINHO - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return null;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
 //Retorna a Data Inicial da procuracao passada como parametro------------------------------------------------------------------------------------------//
-    public String getDtini(int procod) throws SQLException{
+    public String getDtini(int procod){
         try{
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT dtinicial FROM procuracao where idgeral= ?");
@@ -233,15 +216,13 @@ public class Database{
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATAINICIAL - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return null;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //Retorna a Data Final da procuracao passada como parametro--------------------------------------------------------------------------------------------//    
-    public String getDtfin(int procod) throws SQLException{
+    public String getDtfin(int procod){
         try{
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT dtfinal FROM procuracao where idgeral= ?");
@@ -254,15 +235,13 @@ public class Database{
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATAFINAL - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return null;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
 //Retorna o Conjunto da procuracao passada como parametro----------------------------------------------------------------------------------------------//    
-    public String getConjunto(int procod) throws SQLException{
+    public String getConjunto(int procod){
         try{
             PreparedStatement prepared;
             prepared = conn.prepareStatement("SELECT conjunto FROM procuracao where idgeral= ?");
@@ -275,8 +254,6 @@ public class Database{
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETCONJUNTO - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return null;
     }
@@ -288,7 +265,7 @@ public class Database{
     }
     
         
-    public void setConjunto(String conjunto, int id) throws SQLException{
+    public void setConjunto(String conjunto, int id){
         try {
             PreparedStatement prepared = conn.prepareStatement("UPDATE procuracao SET procuracao.conjunto=? WHERE procuracao.idgeral=?");
             prepared.setString(1, conjunto);
@@ -299,13 +276,11 @@ public class Database{
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.toString());
-        }finally{
-            conn.close();
         }
     }
 
     
-    public int setDtini(int procod, String dt) throws SQLException{
+    public int setDtini(int procod, String dt){
         try{
             PreparedStatement prepared;
             prepared = conn.prepareStatement("UPDATE procuracao SET dtinicial=? where idgeral= ?");
@@ -315,14 +290,12 @@ public class Database{
             return 1;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATAINICIAL - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return 0;
     }
 
     
-    public int setDtfin(int procod, String dt) throws SQLException{
+    public int setDtfin(int procod, String dt){
         try{
             PreparedStatement prepared;
             prepared = conn.prepareStatement("UPDATE procuracao SET dtfinal=? where idgeral= ?");
@@ -332,14 +305,12 @@ public class Database{
             return 1;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATAINICIAL - "+ e.getMessage());
-        }finally{
-            conn.close();
         }
         return 0;
     }
 
     
-    public int apagaProc(int id) throws SQLException{
+    public int apagaProc(int id){
         int ret = 0;
         try {
             String SQL = "DELETE from procurador where procurador.id = any (SELECT procuracao.idprocurador from procuracao where procuracao.idgeral=?);";
@@ -357,8 +328,6 @@ public class Database{
             ret=1;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.toString());
-        }finally{
-            conn.close();
         }
         return ret;
     }

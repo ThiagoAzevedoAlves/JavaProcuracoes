@@ -39,7 +39,6 @@ import javax.swing.JTextField;
 import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
-import procuracoes.db.Datauser;
 
 public class Inicial extends javax.swing.JFrame {
     
@@ -180,6 +179,17 @@ public class Inicial extends javax.swing.JFrame {
 
             jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
         //------------------------------------------------------------------------------------------//    
+            
+        
+        //botao trocar fechar--------------------------------------------------------------------------//
+            resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+            g = resizedImg.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
+            g.dispose();
+
+            jLFechar.setIcon(new javax.swing.ImageIcon(resizedImg));        
+        //------------------------------------------------------------------------------------------//    
         this.getContentPane().setBackground(Color.white);
         this.jPanel1.setBackground(Color.white);
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
@@ -210,11 +220,11 @@ public class Inicial extends javax.swing.JFrame {
         JPAjuda = new javax.swing.JPanel();
         jLSobre = new javax.swing.JLabel();
         jLLogin = new javax.swing.JLabel();
-        jLsair = new javax.swing.JLabel();
+        jLFechar = new javax.swing.JLabel();
         jLbv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cartório Mezzari - 1º Registro de Imóveis de Pelotas");
+        setTitle("Cartório Mezzari - 1º Registro de Imóveis de Pelotas v0.1.0");
         setIconImage(getIconImage());
         setIconImages(null);
         setUndecorated(true);
@@ -407,6 +417,12 @@ public class Inicial extends javax.swing.JFrame {
             }
         });
 
+        jLFechar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLFecharMouseClicked(evt);
+            }
+        });
+
         jLbv.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLbv.setForeground(new java.awt.Color(102, 124, 184));
         jLbv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -424,8 +440,9 @@ public class Inicial extends javax.swing.JFrame {
                         .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLsair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -444,7 +461,7 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLsair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -613,6 +630,11 @@ public class Inicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLLoginMouseClicked
 
+    private void jLFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLFecharMouseClicked
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLFecharMouseClicked
+
         
     public void apagaProc(int id) {
         Visualiza v = new Visualiza("D:/JavaImoveis/" + Integer.toString(id) + ".pdf", id);
@@ -625,11 +647,7 @@ public class Inicial extends javax.swing.JFrame {
             if (resp == 0) {
                 Database db = new Database();
                 db.connect();
-                try {
-                    resp = db.apagaProc(id);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                resp = db.apagaProc(id);
                 if (resp == 1) {
                     JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
                     v.dispose();
@@ -818,15 +836,11 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             Visualiza v;
-            try {
-                v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
-                v.setVisible(true);
-                v.getContentPane().setBackground(Color.WHITE);
-                dialog.setVisible(false);
-                this.toBack();
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
+            v.setVisible(true);
+            v.getContentPane().setBackground(Color.WHITE);
+            dialog.setVisible(false);
+            this.toBack();
             
         });
         
@@ -884,34 +898,26 @@ public class Inicial extends javax.swing.JFrame {
         jb.addActionListener((ActionEvent e) ->{
             int id = Integer.valueOf(jt.getText());
             Visualiza v;
-            try {
-                v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
-                JButton b = new JButton("APAGAR!");
-                b.setBackground(Color.red);
-                v.add(b);
-                b.setBounds(100, 520, 125, 25);
-                b.addActionListener((ActionEvent e1) ->{
-                    int resp;
-                    resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
-                    if (resp == 0) {
-                        Database db1 = new Database();
-                        db1.connect();
-                        try {
-                            db1.apagaProc(id);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        v.dispose();
-                        JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
-                    }
-                });
+            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
+            JButton b = new JButton("APAGAR!");
+            b.setBackground(Color.red);
+            v.add(b);
+            b.setBounds(100, 520, 125, 25);
+            b.addActionListener((ActionEvent e1) ->{
+                int resp;
+                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+                if (resp == 0) {
+                    Database db1 = new Database();
+                    db1.connect();
+                    db1.apagaProc(id);
+                    v.dispose();
+                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
+                }
+            });
             v.pack();
             v.setVisible(true);
             dialog.setVisible(false);
             this.toBack();
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
         });
         
@@ -1076,6 +1082,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLBproc;
     private javax.swing.JLabel jLBprocurador;
     private javax.swing.JLabel jLBuscar;
+    private javax.swing.JLabel jLFechar;
     private javax.swing.JLabel jLIdig;
     private javax.swing.JLabel jLIman;
     private javax.swing.JLabel jLIncluir;
@@ -1084,7 +1091,6 @@ public class Inicial extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbv;
-    private javax.swing.JLabel jLsair;
     private javax.swing.JPanel jPBuscar;
     private javax.swing.JPanel jPIncluir;
     private javax.swing.JPanel jPanel1;
