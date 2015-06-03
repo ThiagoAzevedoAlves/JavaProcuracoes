@@ -19,13 +19,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.sql.Time;
+import java.time.Instant;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.Arrays;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import procuracoes.classes.SisLog;
 import procuracoes.db.Datauser;
 
 /**
@@ -194,8 +200,13 @@ public class Login extends javax.swing.JFrame {
         if(db.Login(login,senha) == 1){
             Inicial i = new Inicial(db.getTipo(login), db.getNome(login));
             i.setVisible(true);
+            i.user = jTextField1.getText();
             this.dispose();
+            SisLog S = new SisLog("Login",jTextField1.getText(), "Sucesso");
+        }else{
+            SisLog S = new SisLog("Login","Erro "+jTextField1.getText(), "Erro");
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

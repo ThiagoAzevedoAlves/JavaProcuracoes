@@ -1,0 +1,132 @@
+<Login>
+  <form>Login</form>
+  <usuario>thiago</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-02 20:13:44.552 UTC</data>
+</Login>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Manualmente</acao>
+  <data>2015-06-02 20:13:46.800 UTC</data>
+</InsereProcuracao>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Define Procurador (Procuracao 146) - Nome: ablildo.-Cpf: .-Poderes: nenhunzius</acao>
+  <data>2015-06-02 20:14:05.854 UTC</data>
+</InsereProcuracao>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Define Entidade (Procuracao 146) - Nome: ableusa.-Cnpj: .-Responsavel: .-Cpf: </acao>
+  <data>2015-06-02 20:14:13.236 UTC</data>
+</InsereProcuracao>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Cancelar</acao>
+  <data>2015-06-02 20:14:15.585 UTC</data>
+</InsereProcuracao>
+<Logout>
+  <form>Logout</form>
+  <usuario>thiago</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-02 20:14:16.571 UTC</data>
+</Logout>
+<Login>
+  <form>Login</form>
+  <usuario>thiago</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 12:19:32.61 UTC</data>
+</Login>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Manualmente</acao>
+  <data>2015-06-03 12:19:35.751 UTC</data>
+</InsereProcuracao>
+<InsereProcuracao>
+  <form>InsereProcuracao</form>
+  <usuario>thiago</usuario>
+  <acao>Cancelar</acao>
+  <data>2015-06-03 12:19:37.251 UTC</data>
+</InsereProcuracao>
+<Logout>
+  <form>Logout</form>
+  <usuario>thiago</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 12:19:38.500 UTC</data>
+</Logout>
+<Login>
+  <form>Login</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:08:26.11 UTC</data>
+</Login>
+<BuscaProcuracao>
+  <form>BuscaProcuracao</form>
+  <usuario>teste</usuario>
+  <acao>Procuracao - 10</acao>
+  <data>2015-06-03 13:08:32.517 UTC</data>
+</BuscaProcuracao>
+<BuscaProcuracao>
+  <form>BuscaProcuracao</form>
+  <usuario>teste</usuario>
+  <acao>Cancelado10</acao>
+  <data>2015-06-03 13:08:32.726 UTC</data>
+</BuscaProcuracao>
+<Visualiza>
+  <form>Visualiza</form>
+  <usuario>teste</usuario>
+  <acao>Cancelado</acao>
+  <data>2015-06-03 13:08:42.164 UTC</data>
+</Visualiza>
+<Logout>
+  <form>Logout</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:08:43.670 UTC</data>
+</Logout>
+<Login>
+  <form>Login</form>
+  <usuario>Erro TESTE</usuario>
+  <acao>Erro</acao>
+  <data>2015-06-03 13:16:01.975 UTC</data>
+</Login>
+<Login>
+  <form>Login</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:16:05.72 UTC</data>
+</Login>
+<BuscaProcuracao>
+  <form>BuscaProcuracao</form>
+  <usuario>teste</usuario>
+  <acao>Procuracao - 5</acao>
+  <data>2015-06-03 13:16:12.848 UTC</data>
+</BuscaProcuracao>
+<Visualiza>
+  <form>Visualiza</form>
+  <usuario>teste</usuario>
+  <acao>Cancelado</acao>
+  <data>2015-06-03 13:16:14.844 UTC</data>
+</Visualiza>
+<Logout>
+  <form>Logout</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:16:16.85 UTC</data>
+</Logout>
+<Login>
+  <form>Login</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:16:37.706 UTC</data>
+</Login>
+<Logout>
+  <form>Logout</form>
+  <usuario>teste</usuario>
+  <acao>Sucesso</acao>
+  <data>2015-06-03 13:16:43.779 UTC</data>
+</Logout>

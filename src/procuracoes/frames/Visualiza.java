@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import procuracoes.classes.ComboData;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procurador;
+import procuracoes.classes.SisLog;
 import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
@@ -46,11 +47,12 @@ public class Visualiza extends javax.swing.JFrame {
     public int cod;
     static String mensagem = null;//usado nos Dialogos de edição de data
     static JDialog dialog = null;//usado nos Dialogos de edição de data
+    public String user;
     
-    public Visualiza(String caminho, int cod) {
+    public Visualiza(String caminho, int cod, String usuario) {
         
         
-        
+        this.user = usuario;
         try {
             this.cod = cod;db = new Database();
             db.connect();
@@ -448,7 +450,7 @@ public class Visualiza extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLcod4)
@@ -621,6 +623,7 @@ public class Visualiza extends javax.swing.JFrame {
                     aux = JOptionPane.showInputDialog(null, "Digite o NOME do PROCURADOR:", "Editar Procurador", JOptionPane.QUESTION_MESSAGE, null, null, this.jLprocnome.getText()).toString();
             }
             if (aux != null){
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome do Procurador - " + aux);
                 jLprocnome.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
                 while((nproc != 0)&&(nproc!=naux2)){
@@ -628,13 +631,15 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLprocnomeMouseClicked
 
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        
+        SisLog S = new SisLog("Visualiza", this.user, "Cancelado");
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
@@ -658,7 +663,10 @@ public class Visualiza extends javax.swing.JFrame {
                     dp.setCpfProcurador(aux, nproc);
                     nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
-                }                
+                }
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Procurador - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLproccpfMouseClicked
@@ -677,7 +685,10 @@ public class Visualiza extends javax.swing.JFrame {
             if (aux != null){
                 jLprocpod.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setPoderes(aux);
-                dp.setPoderesProcurador(aux, nproc);                
+                dp.setPoderesProcurador(aux, nproc);
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Poderes do Procurador - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Poderes do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLprocpodMouseClicked
@@ -703,6 +714,9 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome da Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome da Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLentnomeMouseClicked
@@ -727,7 +741,10 @@ public class Visualiza extends javax.swing.JFrame {
                     de.setCnpjEntidade(aux, nproc);
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
-                }                
+                }
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cnpj da Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cnpj da Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLentcnpjMouseClicked
@@ -753,6 +770,9 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Responsavel pela Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Responsavel pela Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLentrespMouseClicked
@@ -778,6 +798,9 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Responsavel pela Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Responsavel pela Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLentcpfMouseClicked
@@ -795,6 +818,9 @@ public class Visualiza extends javax.swing.JFrame {
             if(aux!=null){
                 jLconjunto.setText(aux);
                 db.setConjunto(aux, Integer.valueOf(jLcod.getText()));
+                SisLog S = new SisLog("Visualiza", this.user, "Editar tipo de conjunto - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar tipo de conjunto, Cancelado");
             }            
         }
     }//GEN-LAST:event_jLconjuntoMouseClicked
@@ -833,13 +859,16 @@ public class Visualiza extends javax.swing.JFrame {
                     int a;
                     a = db.setDtini(Integer.valueOf(jLcod.getText()), mensagem);
                     if (a==1){
+                        SisLog S = new SisLog("Visualiza", this.user, "Editar Data Inicial - " + mensagem);
                         JOptionPane.showMessageDialog(null, "DATA INICIAL modificada com sucesso.");
                     }
-                    mensagem=null;
-                    
+                    mensagem=null;                    
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
+                    SisLog S = new SisLog("Visualiza", this.user, "Editar Data Inicial, Cancelado");
                 }
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Data Inicial, Cancelado");
             }
         }
         
@@ -876,13 +905,16 @@ public class Visualiza extends javax.swing.JFrame {
                 if (verificaMaior(jLdtini.getText(), mensagem) == 1){
                     int a = db.setDtfin(Integer.valueOf(jLcod.getText()), mensagem);
                     if (a==1){
+                        SisLog S = new SisLog("Visualiza", this.user, "Editar Data Final - " + mensagem);
                         JOptionPane.showMessageDialog(null, "DATA FINAL modificada com sucesso.");
                     }
                     mensagem=null;
                 }else{
                     JOptionPane.showMessageDialog(null, "DATA INICIAL MAIOR DO QUE A DATA FINAL. Tente Novamente.");
+                    SisLog S = new SisLog("Visualiza", this.user, "Editar Data Final, Cancelado");
                 }
-                
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Data Final, Cancelado");
             }
         }
     }//GEN-LAST:event_jLdtfinMouseClicked
@@ -907,6 +939,9 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
                 }                
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Responsavel pela Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Responsavel pela Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod17MouseClicked
@@ -930,7 +965,10 @@ public class Visualiza extends javax.swing.JFrame {
                     de.setRespEntidade(aux, nproc);
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
-                }                
+                }             
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Responsavel pela Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Responsavel pela Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod16MouseClicked
@@ -955,6 +993,9 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cnpj da Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cnpj da Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod14MouseClicked
@@ -978,7 +1019,10 @@ public class Visualiza extends javax.swing.JFrame {
                     de.setNomeEntidade(aux, nproc);
                     nproc = de.getIdExatoEnt(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2 = naux;
-                }                
+                }
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome da Entidade - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome da Entidade, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod13MouseClicked
@@ -996,7 +1040,10 @@ public class Visualiza extends javax.swing.JFrame {
             if (aux != null){
                 jLprocpod.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setPoderes(aux);
-                dp.setPoderesProcurador(aux, nproc);                
+                dp.setPoderesProcurador(aux, nproc);
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Poderes do Procurador - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Poderes do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod10MouseClicked
@@ -1020,7 +1067,10 @@ public class Visualiza extends javax.swing.JFrame {
                     dp.setCpfProcurador(aux, nproc);
                     nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
-                }                
+                }
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Procurador - " + aux);
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Cpf do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod9MouseClicked
@@ -1038,6 +1088,7 @@ public class Visualiza extends javax.swing.JFrame {
                     aux = JOptionPane.showInputDialog(null, "Digite o NOME do PROCURADOR:", "Editar Procurador", JOptionPane.QUESTION_MESSAGE, null, null, this.jLprocnome.getText()).toString();
             }
             if (aux != null){
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome do Procurador - " + aux);
                 jLprocnome.setText(aux);
                 procuradores.get(jCproc.getSelectedIndex()).setNome(aux);
                 while((nproc != 0)&&(nproc!=naux2)){
@@ -1045,6 +1096,8 @@ public class Visualiza extends javax.swing.JFrame {
                     nproc = dp.getIdExatoProc(Integer.valueOf(jLcod.getText()), nomeaux);
                     naux2=naux;
                 }                
+            }else{
+                SisLog S = new SisLog("Visualiza", this.user, "Editar Nome do Procurador, Cancelado");
             }
         }
     }//GEN-LAST:event_jLcod8MouseClicked

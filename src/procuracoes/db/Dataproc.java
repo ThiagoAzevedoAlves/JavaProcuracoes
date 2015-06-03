@@ -60,7 +60,7 @@ public class Dataproc extends Database{
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //Abre uma tabela com o resultado da pesquisa de Procuradores por nome---------------------------------------------------------------------------------//        
-    public void getProcuradoresbyNome(String nome) {
+    public void getProcuradoresbyNome(String nome, String usuario) {
         String[] colunas = new String[]{"Nome","Data Inicial", "Data Final", "Caminho"}; //seta o cabeçalho
         List <Procurador> p = new ArrayList<>();
         try{ //seleciona atributos das procuraçoes que contenham um procurador com o nome parecido com o digitado
@@ -125,7 +125,7 @@ public class Dataproc extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Procuradores pelo Nome");
+            criaTabela(dados, colunas, "Busca de Procuradores pelo Nome", usuario);
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "BUSCAPROCURADOR\n" +e.getMessage());
@@ -138,7 +138,7 @@ public class Dataproc extends Database{
     
     
     
-    public void getProcuradoresbyCpf(String cpf) {
+    public void getProcuradoresbyCpf(String cpf, String usuario) {
         String[] colunas = new String[]{"Nome", "Cpf","Data Inicial", "Data Final", "Caminho"};
         List <Procurador> p = new ArrayList<>();
         try{
@@ -193,7 +193,7 @@ public class Dataproc extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Procuradores por CPF");
+            criaTabela(dados, colunas, "Busca de Procuradores por CPF", usuario);
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "BUSCAPROCURADOR\n" +e.getMessage());

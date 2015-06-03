@@ -42,7 +42,7 @@ public class Dataent extends Database{
     
 
     
-    public void getEntidadesbyNome(String nome) {
+    public void getEntidadesbyNome(String nome, String usuario) {
         String[] colunas = new String[]{"Nome","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
         try{
@@ -106,7 +106,7 @@ public class Dataent extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Entidades pelo Nome");
+            criaTabela(dados, colunas, "Busca de Entidades pelo Nome", usuario);
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
@@ -117,7 +117,7 @@ public class Dataent extends Database{
     }
     
     
-    public void getEntidadesbyResponsavel(String resp) {
+    public void getEntidadesbyResponsavel(String resp, String usuario) {
         String[] colunas = new String[]{"Responsavel","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
         try{
@@ -171,7 +171,7 @@ public class Dataent extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Entidades pelo Responsavel");
+            criaTabela(dados, colunas, "Busca de Entidades pelo Responsavel", usuario);
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
@@ -182,7 +182,7 @@ public class Dataent extends Database{
     }
     
     
-    public void getEntidadesbyCpf(String cpf) {
+    public void getEntidadesbyCpf(String cpf, String usuario) {
         String[] colunas = new String[]{"Responsavel", "Cpf","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
         try{
@@ -237,7 +237,7 @@ public class Dataent extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Entidades pelo CPF do Responsável");
+            criaTabela(dados, colunas, "Busca de Entidades pelo CPF do Responsável", usuario);
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());
@@ -248,7 +248,7 @@ public class Dataent extends Database{
     }
     
     
-    public void getEntidadesbyCnpj(String cnpj) {
+    public void getEntidadesbyCnpj(String cnpj, String usuario) {
         String[] colunas = new String[]{"Nome", "Cnpj","Data Inicial", "Data Final", "Caminho"};
         List <Entidade> e = new ArrayList<>();
         try{
@@ -303,7 +303,7 @@ public class Dataent extends Database{
                 i++;
             }
             
-            criaTabela(dados, colunas, "Busca de Entidades pelo CNPJ");
+            criaTabela(dados, colunas, "Busca de Entidades pelo CNPJ", usuario);
             
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "BUSCAENTIDADE\n" +ex.getMessage());

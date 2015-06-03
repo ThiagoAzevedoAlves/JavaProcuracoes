@@ -260,8 +260,8 @@ public class Database{
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
     
-    public void criaTabela(String[][] dados, String[] colunas, String titulo){
-        Tabela t = new Tabela(dados, colunas, titulo);
+    public void criaTabela(String[][] dados, String[] colunas, String titulo, String usuario){
+        Tabela t = new Tabela(dados, colunas, titulo, usuario);
     }
     
         

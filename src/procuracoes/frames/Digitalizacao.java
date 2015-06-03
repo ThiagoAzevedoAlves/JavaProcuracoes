@@ -25,8 +25,6 @@ import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import procuracoes.db.Database;
 
 
@@ -40,7 +38,7 @@ public class Digitalizacao extends JFrame{
     public JPanel jPanel1;
     public Database db;
     
-    public void salva()throws MorenaException, SQLException{
+    public void salva(String user)throws MorenaException, SQLException{
                     
         source = TwainManager.selectSource(null);
         int npag = 0;
@@ -114,7 +112,7 @@ public class Digitalizacao extends JFrame{
             JOptionPane.showMessageDialog(null, "Documneto nao encontrado !");
         }
         TwainManager.close();
-        Insere in = new Insere();
+        Insere in = new Insere(user);
         in.setVisible(true);
     }
         

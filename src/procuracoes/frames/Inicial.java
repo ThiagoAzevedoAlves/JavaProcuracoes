@@ -7,6 +7,7 @@ package procuracoes.frames;
 
 import SK.gnome.morena.MorenaException;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -22,6 +23,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -36,6 +38,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import procuracoes.classes.SisLog;
 import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
@@ -229,6 +232,11 @@ public class Inicial extends javax.swing.JFrame {
         setIconImages(null);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -604,18 +612,19 @@ public class Inicial extends javax.swing.JFrame {
     private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
         Insere in;
         try {
-            in = new Insere();
+            in = new Insere(this.user);
             in.setVisible(true);
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Manualmente");
         } catch (SQLException ex) {
             Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }        
     }//GEN-LAST:event_jLImanMouseClicked
 
     private void jLIdigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIdigMouseClicked
         Digitalizacao d = new Digitalizacao();
         try {
-            d.salva();
+            d.salva(this.user);
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Digitalizada");
         } catch (MorenaException | SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -635,31 +644,9 @@ public class Inicial extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLFecharMouseClicked
 
-        
-    public void apagaProc(int id) {
-        Visualiza v = new Visualiza("D:/JavaImoveis/" + Integer.toString(id) + ".pdf", id);
-        JButton b = new JButton("APAGAR!");
-        v.add(b);
-        b.setBounds(100, 520, 125, 25);
-        b.addActionListener((ActionEvent e) -> {
-            int resp;
-            resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
-            if (resp == 0) {
-                Database db = new Database();
-                db.connect();
-                resp = db.apagaProc(id);
-                if (resp == 1) {
-                    JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
-                    v.dispose();
-                }
-            }
-        });
-        v.pack();
-        v.setVisible(true);
-        this.dispose();
-
-    }
-    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        SisLog S = new SisLog("Logout", this.user, "Sucesso");
+    }//GEN-LAST:event_formWindowClosed
     
     public class MoveJanela implements MouseListener, MouseMotionListener{
         
@@ -730,6 +717,7 @@ public class Inicial extends javax.swing.JFrame {
 
         JMenuItem quitMi = new JMenuItem("Fechar - Esc");
         quitMi.addActionListener((ActionEvent e) -> {
+            SisLog S = new SisLog("Logout", this.user, "Sucesso");
             System.exit(0);
         });
 
@@ -757,7 +745,7 @@ public class Inicial extends javax.swing.JFrame {
         if ((evt.getKeyCode() == KeyEvent.VK_D) && (evt.isControlDown())) {
             Digitalizacao d = new Digitalizacao();
             try {
-                d.salva();
+                d.salva(this.user);
             } catch (MorenaException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -765,7 +753,7 @@ public class Inicial extends javax.swing.JFrame {
             //Condição para CTRL + N  
         } else if ((evt.getKeyCode() == KeyEvent.VK_N) && (evt.isControlDown())) {
             Insere in;
-            in = new Insere();
+            in = new Insere(this.user);
             in.setVisible(true);
             
             //Condição para CTRL + F  
@@ -836,12 +824,12 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             Visualiza v;
-            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()));
+            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()), this.user);
+            SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
             v.setVisible(true);
             v.getContentPane().setBackground(Color.WHITE);
             dialog.setVisible(false);
             this.toBack();
-            
         });
         
         Object data[] = {"Digite o código da Procuração:", jt, jb};
@@ -851,8 +839,8 @@ public class Inicial extends javax.swing.JFrame {
         option.remove(1);
         dialog = option.createDialog(null, "Busca por Procuração");
         dialog.setVisible(true);
-        
-        
+        dialog.setName(user);
+                
     }
     
     
@@ -897,28 +885,19 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             int id = Integer.valueOf(jt.getText());
-            Visualiza v;
-            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), id);
-            JButton b = new JButton("APAGAR!");
-            b.setBackground(Color.red);
-            v.add(b);
-            b.setBounds(100, 520, 125, 25);
-            b.addActionListener((ActionEvent e1) ->{
-                int resp;
-                resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja EXCLUIR esta PROCURACAO?");
+            int resp;
+            resp = JOptionPane.showConfirmDialog(null, "Deseja EXCLUIR esta PROCURACAO?");
+            if (resp == 0) {
+                resp = 1;
+                resp = JOptionPane.showConfirmDialog(null, "ECLUINDO esta Procuracao você estará excluíndo também todos os PROCURADORES E ENTIDADES contidos nela.\n Tem CERTEZA que deseja EXCLUIR esta PROCURACAO?");
                 if (resp == 0) {
                     Database db1 = new Database();
                     db1.connect();
                     db1.apagaProc(id);
-                    v.dispose();
+                    SisLog S = new SisLog("ExcluiProcuracao", dialog.getName(), "Sucesso - Procuracao " + jt.getText());
                     JOptionPane.showMessageDialog(null, "PROCURACAO Excluída com sucesso!");
                 }
-            });
-            v.pack();
-            v.setVisible(true);
-            dialog.setVisible(false);
-            this.toBack();
-            
+            }
         });
         
         Object data[] = {"Digite o código da Procuração:", jt, jb};
@@ -928,6 +907,7 @@ public class Inicial extends javax.swing.JFrame {
         option.remove(1);
         dialog = option.createDialog(null, "Apagar Procuração");
         dialog.setVisible(true);
+        dialog.setName(user);
         
         
     }
@@ -981,9 +961,11 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             if(jc.getSelectedIndex() ==  0){
-                db.getProcuradoresbyNome(jt.getText());
+                db.getProcuradoresbyNome(jt.getText(), this.user);
+                SisLog S = new SisLog("BuscaProcurador", dialog.getName(), "Busca por Nome - " + jt.getText());
             }else{
-                db.getProcuradoresbyCpf(jt.getText());
+                db.getProcuradoresbyCpf(jt.getText(), this.user);
+                SisLog S = new SisLog("BuscaProcurador", dialog.getName(), "Busca por Cpf - " + jt.getText());
             }
             dialog.dispose();
             this.toBack();
@@ -996,6 +978,7 @@ public class Inicial extends javax.swing.JFrame {
         option.remove(1);
         dialog = option.createDialog(null, "Busca por Procurador");
         dialog.setVisible(true);
+        dialog.setName(user);
         
         
     }
@@ -1048,13 +1031,17 @@ public class Inicial extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             if(jc.getSelectedIndex() ==  0){
-                db.getEntidadesbyNome(jt.getText());
+                db.getEntidadesbyNome(jt.getText(), this.user);
+                SisLog S = new SisLog("BuscaEntidade", dialog.getName(), "Busca por Nome - " + jt.getText());
             }else if (jc.getSelectedIndex() ==  1){
-                db.getEntidadesbyCpf(jt.getText());
+                db.getEntidadesbyCpf(jt.getText(), this.user);
+                SisLog S = new SisLog("BuscaEntidade", dialog.getName(), "Busca por Cpf - " + jt.getText());
             }else if (jc.getSelectedIndex() ==  3){
-                db.getEntidadesbyCnpj(jt.getText());                
+                db.getEntidadesbyCnpj(jt.getText(), this.user);                
+                SisLog S = new SisLog("BuscaEntidade", dialog.getName(), "Busca por Cnpj - " + jt.getText());
             }else if (jc.getSelectedIndex() ==  2){
-                db.getEntidadesbyResponsavel(jt.getText());
+                db.getEntidadesbyResponsavel(jt.getText(), this.user);
+                SisLog S = new SisLog("BuscaEntidade", dialog.getName(), "Busca por Responsavel - " + jt.getText());
             }
             dialog.dispose();
             this.toBack();
@@ -1070,7 +1057,8 @@ public class Inicial extends javax.swing.JFrame {
         
         dialog = option.createDialog(null, "Busca por Entidade");
         dialog.setVisible(true);
-                
+        dialog.setName(user);
+                        
     }
     
     

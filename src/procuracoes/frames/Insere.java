@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import procuracoes.classes.Entidade;
 import procuracoes.classes.Procuracao;
 import procuracoes.classes.Procurador;
+import procuracoes.classes.SisLog;
 import procuracoes.db.Database;
 
 /**
@@ -31,8 +32,9 @@ public class Insere extends javax.swing.JFrame {
     public Procuracao proc;
     public List<Procurador> procuradores;
     public List<Entidade> entidades;
+    public String user;
     
-    public Insere() throws SQLException {
+    public Insere(String u) throws SQLException {
         initComponents();
         procuradores = new ArrayList<>();
         entidades = new ArrayList<>();
@@ -43,6 +45,7 @@ public class Insere extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.white);
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
         this.setIconImage(image.getImage());
+        this.user=u;
     }
     
     public void setEntidades(){
@@ -288,8 +291,13 @@ public class Insere extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Procurações");
+        setTitle("Nova Procuração");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -752,13 +760,14 @@ public class Insere extends javax.swing.JFrame {
                                         jTcaminho.getText());            
             try {
                 db.salva(p);
+                SisLog S = new SisLog("InsereProcuracao", this.user, "Salva Procuracao (Procuracao " + this.jLcod.getText() + ") - No de Proc=" + jTnproc.getText() + ".-No de Ent=" + jTnent.getText());
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (SQLException ex) {
                 Logger.getLogger(Insere.class.getName()).log(Level.SEVERE, null, ex);
             }
             Visualiza v;
-            v = new Visualiza(p.getCaminho(), Integer.valueOf(jLcod.getText()));
+            v = new Visualiza(p.getCaminho(), Integer.valueOf(jLcod.getText()), this.user);
             v.setVisible(true);
             this.dispose();
         }
@@ -770,6 +779,12 @@ public class Insere extends javax.swing.JFrame {
             int i = jCEnt.getSelectedIndex();
             Entidade e = new Entidade(jTentnome.getText(), jTentresp.getText(), jtentcpf.getText(), jTentcnpj.getText());
             entidades.add(i, e);
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Define Entidade (Procuracao " + this.jLcod.getText() + ") - Nome: " + jTentnome.getText() + ".-Cnpj: " + jTentcnpj.getText() + ".-Responsavel: " + jTentresp.getText() + ".-Cpf: " + jtentcpf.getText());
+            
+            if(jCEnt.getSelectedIndex()<jCEnt.getItemCount()-1){
+                jCEnt.setSelectedIndex(jCEnt.getSelectedIndex()+1);
+                jTentnome.requestFocus();
+            }
         }else if (r == 3){ 
             JOptionPane.showMessageDialog(null, "Por favor, revisar o CNPJ das ENTIDADES.");
         }else if (r == 2){
@@ -794,6 +809,7 @@ public class Insere extends javax.swing.JFrame {
     }//GEN-LAST:event_jCEntItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SisLog S = new SisLog("InsereProcuracao", this.user, "Cancelar");
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -805,9 +821,17 @@ public class Insere extends javax.swing.JFrame {
             procuradores.add(i, p);
             while(i<=Integer.valueOf(jTnproc.getText())*2){
                 if(procuradores.size()> i+1){
-                    procuradores.remove(i+1);
+                    if ((procuradores.get(i+1).nome == null)||(procuradores.get(i+1).nome.equals(procuradores.get(i).nome))){
+                        procuradores.remove(i+1);
+                    }
                 }
                 i++;
+            }
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Define Procurador (Procuracao " + this.jLcod.getText() + ") - Nome: " + jTprocnome.getText() + ".-Cpf: " + jTproccpf.getText() + ".-Poderes: " + jTprocpod.getText());
+            
+            if(jCProc.getSelectedIndex()<jCProc.getItemCount()-1){
+                jCProc.setSelectedIndex(jCProc.getSelectedIndex()+1);
+                jTprocnome.requestFocus();
             }
         }else if (r == 3){
             JOptionPane.showMessageDialog(null, "Por favor, revisar o CPF dos PROCURADORES.");
@@ -831,6 +855,10 @@ public class Insere extends javax.swing.JFrame {
     private void jTnprocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTnprocFocusLost
         this.setProcuradores();
     }//GEN-LAST:event_jTnprocFocusLost
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        SisLog S = new SisLog("InsereProcuracao", this.user, "Cancelar");
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEntsalva;

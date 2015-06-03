@@ -21,7 +21,9 @@ import procuracoes.frames.Visualiza;
  */
 public class Tabela{
     
-    Tabela(String[][] dados, String[] colunas, String titulo){
+    public String user;
+    
+    Tabela(String[][] dados, String[] colunas, String titulo, String usuario){
         
         JTable tabela = new JTable(dados,colunas);
         tabela.getColumn("Data Inicial").setMinWidth(80);
@@ -39,15 +41,15 @@ public class Tabela{
                 public void mouseClicked(MouseEvent e){
                     String s = tabela.getModel().getValueAt(tabela.getSelectedRow(), colunas.length-1).toString();
                     if(s.substring(36,37).compareTo(".") == 0){
-                        Visualiza v = new Visualiza(s, Integer.valueOf(String.valueOf(s.charAt(35))));
+                        Visualiza v = new Visualiza(s, Integer.valueOf(String.valueOf(s.charAt(35))), usuario);
                         v.setVisible(true);
                     }else if(s.substring(37,38).compareTo(".") == 0){
                         String ss = s.substring(35,37);
-                        Visualiza v = new Visualiza(s, Integer.valueOf(ss));
+                        Visualiza v = new Visualiza(s, Integer.valueOf(ss), usuario);
                         v.setVisible(true);
                     }else{
                         String ss = s.substring(35,38);
-                        Visualiza v = new Visualiza(s, Integer.valueOf(ss));
+                        Visualiza v = new Visualiza(s, Integer.valueOf(ss), usuario);
                         v.setVisible(true);
                     }                    
                     

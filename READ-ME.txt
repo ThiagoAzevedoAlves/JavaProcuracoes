@@ -17,24 +17,30 @@ Revisões:
 VERSÃO ALFA:
 r0 - (v0.0.0) - Inclusão dos métodos de alteração de Procuradores;
 	inclusão do Plano de Fundo da Janela Principal;
-r1 - (v0.0.1) - Inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da Procuração,
-	inclusão do Ícone da aplicação;
-r2 - (v0.0.2) - Inclusão dos métodos de alteração de Data Inicial e Data Final das Procurações;
-r3 - (v0.0.3) - Inclusão de métodos de Exclusão Da Procuração, e Exibição de uma Janela Auxiliar,
-	para visualização e confirmação da exclusão da Procuração.
-r4 - (v0.0.4) - Modificação do design da Janela Principal e remoção de bugs que faziam abrir várias
-	Janelas Principais ao mesmo tempo;
-r5 - (v0.0.5) - Troca das Janelas de Busca por OptionPanes customizados, agilizando a aplicação
-	e removendo 3 Frames com diversos objetos vinculados;
-r6 - (v0.0.6) - Inclusão de métodos que validam a mudança de data, verificando se a data inicial
-	não ultrapassa a data final e Inclusão de um método DragAndDrop para a
-	Janela Principal;
+r1 - (v0.0.1) - Inclusão dos métodos de alteração de Entidades e Tipo de Conjunto da
+	Procuração, inclusão do Ícone da aplicação;
+r2 - (v0.0.2) - Inclusão dos métodos de alteração de Data Inicial e Data Final das
+	Procurações;
+r3 - (v0.0.3) - Inclusão de métodos de Exclusão Da Procuração, e Exibição de uma
+	Janela Auxiliar, para visualização e confirmação da exclusão da Procuração.
+r4 - (v0.0.4) - Modificação do design da Janela Principal e remoção de bugs que faziam
+	abrir várias Janelas Principais ao mesmo tempo;
+r5 - (v0.0.5) - Troca das Janelas de Busca por OptionPanes customizados, agilizando
+	a aplicação e removendo 3 Frames com diversos objetos vinculados;
+r6 - (v0.0.6) - Inclusão de métodos que validam a mudança de data, verificando se a
+	data inicial não ultrapassa a data final e Inclusão de um método
+	DragAndDrop para a Janela Principal;
 r7 - (v0.0.7) - Remoção de Bugs; Modificação do design da Janela Principal e Botões;
-r8 - (v0.0.8) - Remoção de Bugs; Criação de uma tabela de usuários, juntamente com uma tela 
-	de Login e todos os métodos responsáveis pela incialização e troca de usuário.
-r9 - (v0.0.9) - Correção na conexão com o banco de dados e dump do banco de dados do dia 28/05/2015;
+r8 - (v0.0.8) - Remoção de Bugs; Criação de uma tabela de usuários, juntamente com
+	uma tela de Login e todos os métodos responsáveis pela incialização e
+	troca de usuário.
+r9 - (v0.0.9) - Correção na conexão com o banco de dados e dump do banco de dados
+	do dia 28/05/2015;
 
 VERSÃO BETA:
 r10 - (v0.1.0) - Correção de erros nos formulários; Adição de um botão de fechar;
 	Adição de um dump do banco de dados do dia 29/05/2015;
 	Liberação para uso em VERSÃO BETA;
+r11 - (v0.1.1) - Correção de erros, adição de um Sistema de Log, onde salva em um
+	arquivo xml, todas as ações que os usuário realizarem, organizando por
+	data e usuário.
