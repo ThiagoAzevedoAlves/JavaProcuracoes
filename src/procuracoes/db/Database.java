@@ -28,8 +28,7 @@ public class Database{
     public PreparedStatement preparedStatement = null;
     public ResultSet resultSet = null;
     
-
-//realiza a coneexão no banco de dados----------------------------------------------------------------------------------------------------------------//
+    /**Realiza a conexão no banco de dados.*/
     public void connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance(); //carrega o driver do mysql
@@ -41,9 +40,13 @@ public class Database{
             JOptionPane.showMessageDialog(null, "CONNECT - " + e.getMessage());
         }
     }
-//--------------------------------------------------------------------------------------------------------------------------------------------------//    
-
-//Salva uma procuração, passando como atributo o objeto Procuração equivalente----------------------------------------------------------------------//    
+    
+    
+    /**Salva uma procuração, passando como atributo o objeto Procuração equivalente
+     * @param proc Objeto da Classe Procuracao
+     * @throws ParseException
+     * @throws SQLException
+     */    
     public void salva(Procuracao proc) throws ParseException, SQLException{
         //salva as entidades
         try {
@@ -117,9 +120,11 @@ public class Database{
             JOptionPane.showMessageDialog(null, "SALVAPROC" + "\n" + preparedStatement.toString() + "\n" + e.getMessage() + " - " + e.getSQLState());
         }
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
-
-//retorna o código equivalente à última entrada na tabela+1 -------------------------------------------------------------------------------------------//    
+    
+    
+    /**Retorna o código equivalente à (última entrada na tabela)+1
+     * @return int
+     */
     public int getProcod(){
         try {
             if (conn.isClosed()){
@@ -144,9 +149,11 @@ public class Database{
         }
         return 1;
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
-//Retorna o índice do último Procurador na tabela------------------------------------------------------------------------------------------------------//    
+
+    /**Retorna o índice do último Procurador na tabela
+     * @return int - indice do ultimo procurador na tabela
+     */    
     public int getLastProc(){
         try {
             PreparedStatement prepared;
@@ -162,9 +169,11 @@ public class Database{
         }
         return -1;
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
-//Retorna o índice da ultima Entidade na tabela--------------------------------------------------------------------------------------------------------//    
+    
+    /**Retorna o índice da ultima Entidade na tabela
+     * @return int - indice da ultima entidade na tabela
+     */    
     public int getLastEnt(){
         try {
             PreparedStatement prepared;
@@ -179,10 +188,13 @@ public class Database{
             JOptionPane.showMessageDialog(null, "GETLASTENT - "+ e.getMessage());
         }
         return -1;
-    }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
-
-//Retorna o caminho da Procuracao com o Id passado como paramentro-------------------------------------------------------------------------------------//    
+    }    
+    
+    
+    /**Retorna o caminho da Procuracao com o Id passado como paramentro
+     * @param codProc id da Procuração
+     * @return String - o caminho da Procuracao
+     */
     public String getCaminho(int codProc){
         try {
             PreparedStatement prepared;
@@ -199,10 +211,13 @@ public class Database{
             JOptionPane.showMessageDialog(null, "GETCAMINHO - "+ e.getMessage());
         }
         return null;
-    }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+    }    
     
-//Retorna a Data Inicial da procuracao passada como parametro------------------------------------------------------------------------------------------//
+    
+    /**Retorna a Data Inicial da procuracao passada como parametro.
+     * @param procod codigo da procuracao.
+     * @return String - Data Inicial.
+     */
     public String getDtini(int procod){
         try{
             PreparedStatement prepared;
@@ -219,9 +234,12 @@ public class Database{
         }
         return null;
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
-
-//Retorna a Data Final da procuracao passada como parametro--------------------------------------------------------------------------------------------//    
+        
+    
+    /**Retorna a Data Final da procuracao passada como parametro
+     * @param procod codigo da Procuracao.
+     * @return String - Data Final.
+     */    
     public String getDtfin(int procod){
         try{
             PreparedStatement prepared;
@@ -238,9 +256,12 @@ public class Database{
         }
         return null;
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
-//Retorna o Conjunto da procuracao passada como parametro----------------------------------------------------------------------------------------------//    
+    
+    /**Retorna o Conjunto da procuracao passada como parametro.
+     * @param procod codigo da Procuracao.
+     * @return String - Tipo de Conjunto da Procuracao.
+     */    
     public String getConjunto(int procod){
         try{
             PreparedStatement prepared;
@@ -257,14 +278,23 @@ public class Database{
         }
         return null;
     }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------//
     
     
+    /**Cria uma tabela a partir dos dados passados.
+     * @param dados String[][] representando os dados que serão exibidos.
+     * @param colunas String[] representando o titulo de cada uma das colunas da tbela.
+     * @param titulo String representando o titulo da janela.
+     * @param usuario String representando o usuario que está efetivando a operacao
+     */
     public void criaTabela(String[][] dados, String[] colunas, String titulo, String usuario){
         Tabela t = new Tabela(dados, colunas, titulo, usuario);
     }
     
-        
+    
+    /**Define o Tipo de Conjunto da Procuracao
+     * @param conjunto String representando Tipo de Conjunto
+     * @param id int representando o id da Procuracao
+     */    
     public void setConjunto(String conjunto, int id){
         try {
             PreparedStatement prepared = conn.prepareStatement("UPDATE procuracao SET procuracao.conjunto=? WHERE procuracao.idgeral=?");
@@ -278,8 +308,13 @@ public class Database{
             JOptionPane.showMessageDialog(null, ex.toString());
         }
     }
-
     
+    
+    /**Define a Data Inicial da Procuracao
+     * @param dt String representando a Data Inicial
+     * @param procod int representando o id da Procuracao
+     * @return int - 1 se OK 0 caso algum erro
+     */
     public int setDtini(int procod, String dt){
         try{
             PreparedStatement prepared;
@@ -293,8 +328,13 @@ public class Database{
         }
         return 0;
     }
-
     
+    
+    /**Define a Data Final da Procuracao
+     * @param dt String representando a Data Final
+     * @param procod int representando o id da Procuracao
+     * @return int - 1 se OK 0 caso algum erro
+     */
     public int setDtfin(int procod, String dt){
         try{
             PreparedStatement prepared;
@@ -308,8 +348,12 @@ public class Database{
         }
         return 0;
     }
-
     
+    
+    /**Apaga a Procuracao pelo ID
+     * @param id int representando o ID da Procuracao
+     * @return int - 1 se OK 0 caso algum erro
+     */
     public int apagaProc(int id){
         int ret = 0;
         try {
@@ -331,5 +375,4 @@ public class Database{
         }
         return ret;
     }
-
 }

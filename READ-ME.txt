@@ -33,7 +33,7 @@ r6 - (v0.0.6) - Inclusão de métodos que validam a mudança de data, verificando s
 r7 - (v0.0.7) - Remoção de Bugs; Modificação do design da Janela Principal e Botões;
 r8 - (v0.0.8) - Remoção de Bugs; Criação de uma tabela de usuários, juntamente com
 	uma tela de Login e todos os métodos responsáveis pela incialização e
-	troca de usuário.
+	troca de usuário;
 r9 - (v0.0.9) - Correção na conexão com o banco de dados e dump do banco de dados
 	do dia 28/05/2015;
 
@@ -43,4 +43,8 @@ r10 - (v0.1.0) - Correção de erros nos formulários; Adição de um botão de fechar
 	Liberação para uso em VERSÃO BETA;
 r11 - (v0.1.1) - Correção de erros, adição de um Sistema de Log, onde salva em um
 	arquivo xml, todas as ações que os usuário realizarem, organizando por
-	data e usuário.
+	data e usuário;
+r12 - (v0.1.2) - Adição de métodos para adicionar e remover Procuradores e Entidades
+	de uma Procuração existente, utilizavel apenas por usuários administradores;
+	Adição de JavaDoc à classe Database; Diminuição do tamanho dos botões,
+	para melhor ajuste à tela;

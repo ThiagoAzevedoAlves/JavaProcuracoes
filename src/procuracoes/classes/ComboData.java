@@ -10,7 +10,6 @@ import java.awt.event.ItemListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,23 +41,20 @@ public class ComboData {
             i++;
         }
         String z[] = new String[31];
-        trocaMes = new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                int j = 1;
-                cal.set(Calendar.MONTH, mes.getSelectedIndex());
-                while (j <= cal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
-                    z[j - 1] = Integer.toString(j);
-                    j++;
-                }
-                while(j<=31){
-                    z[j-1] = null;
-                    j++;
-                }
-                JComboBox diaux = new JComboBox(z);
-                int i = cal.get(Calendar.MONTH); //interessante, declaração usada com o objetivo de atrasar a jvm, pois sem ela ele não monta o modelo corretamente não sei o porque
-                dia.setModel(diaux.getModel());
+        trocaMes = (ItemEvent e) -> {
+            int j = 1;
+            cal.set(Calendar.MONTH, mes.getSelectedIndex());
+            while (j <= cal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
+                z[j - 1] = Integer.toString(j);
+                j++;
             }
+            while(j<=31){
+                z[j-1] = null;
+                j++;
+            }
+            JComboBox diaux = new JComboBox(z);
+            int i1 = cal.get(Calendar.MONTH); //interessante, declaração usada com o objetivo de atrasar a jvm, pois sem ela ele não monta o modelo corretamente não sei o porque
+            dia.setModel(diaux.getModel());
         };
         mes = new JComboBox(m);
         mes.addItemListener(trocaMes);
@@ -69,7 +65,5 @@ public class ComboData {
         }
         ano = new JComboBox(a);
         ano.setSelectedIndex(215);
-
     }
-
 }
