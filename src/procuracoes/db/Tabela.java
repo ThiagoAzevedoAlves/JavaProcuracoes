@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import procuracoes.frames.Visualiza;
+import procuracoes.frames.VisualizaProc;
 
 /**
  *
@@ -41,15 +41,15 @@ public class Tabela{
                 public void mouseClicked(MouseEvent e){
                     String s = tabela.getModel().getValueAt(tabela.getSelectedRow(), colunas.length-1).toString();
                     if(s.substring(36,37).compareTo(".") == 0){
-                        Visualiza v = new Visualiza(s, Integer.valueOf(String.valueOf(s.charAt(35))), usuario);
+                        VisualizaProc v = new VisualizaProc(s, Integer.valueOf(String.valueOf(s.charAt(35))), usuario);
                         v.setVisible(true);
                     }else if(s.substring(37,38).compareTo(".") == 0){
                         String ss = s.substring(35,37);
-                        Visualiza v = new Visualiza(s, Integer.valueOf(ss), usuario);
+                        VisualizaProc v = new VisualizaProc(s, Integer.valueOf(ss), usuario);
                         v.setVisible(true);
                     }else{
                         String ss = s.substring(35,38);
-                        Visualiza v = new Visualiza(s, Integer.valueOf(ss), usuario);
+                        VisualizaProc v = new VisualizaProc(s, Integer.valueOf(ss), usuario);
                         v.setVisible(true);
                     }                    
                     

@@ -26,7 +26,7 @@ import procuracoes.db.Database;
  *
  * @author Thiago
  */
-public class Insere extends javax.swing.JFrame {
+public class InsereProc extends javax.swing.JFrame {
 
     public Database db;
     public Procuracao proc;
@@ -34,7 +34,7 @@ public class Insere extends javax.swing.JFrame {
     public List<Entidade> entidades;
     public String user;
     
-    public Insere(String u) throws SQLException {
+    public InsereProc(String u) throws SQLException {
         initComponents();
         procuradores = new ArrayList<>();
         entidades = new ArrayList<>();
@@ -764,10 +764,10 @@ public class Insere extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (SQLException ex) {
-                Logger.getLogger(Insere.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(InsereProc.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Visualiza v;
-            v = new Visualiza(p.getCaminho(), Integer.valueOf(jLcod.getText()), this.user);
+            VisualizaProc v;
+            v = new VisualizaProc(p.getCaminho(), Integer.valueOf(jLcod.getText()), this.user);
             v.setVisible(true);
             this.dispose();
         }

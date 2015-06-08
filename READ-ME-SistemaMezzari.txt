@@ -1,0 +1,10 @@
+VERSÃO BETA:
+r1 - (v0.1.0) - Inclusão do Sistema MezzariProcuracoes ao Projeto Principal;
+		Inclusão do Sistema MezzariOficios ao Projeto Principal;
+		Inclusão da escolha de Sistema ao realizar Login;
+		Inclusão dos Frames e das Classes de tratamento de Ofícios {
+			*oficios.classes.Oficio.java
+			*oficios.db.Database.java
+			*oficios.frames.Oficios.java
+			*oficios.frames.VisualizaOfic.java
+		}

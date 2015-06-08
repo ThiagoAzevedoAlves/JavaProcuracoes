@@ -69,12 +69,12 @@ public class Ajuda extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("MezzariProcurações");
+        jLabel2.setText("Sistema Mezzari");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel3.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("MezzariProcurações é um sistema desenvolvido");
+        jLabel3.setText("Sistema Mezzari é um sistema desenvolvido");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel4.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N

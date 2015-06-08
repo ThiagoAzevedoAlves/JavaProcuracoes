@@ -43,13 +43,13 @@ import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
 
-public class Inicial extends javax.swing.JFrame {
+public class Procuracoes extends javax.swing.JFrame {
     
     static JDialog dialog;
     boolean cPesq, cIncl, cExcl, cSobr;
     String user;
     
-    public Inicial(int tipo, String usuario) {
+    public Procuracoes(int tipo, String usuario) {
         initComponents();
         user = usuario;
         cPesq = false;
@@ -95,7 +95,7 @@ public class Inicial extends javax.swing.JFrame {
             jLIman.setIcon(new javax.swing.ImageIcon(resizedImg));
             jLIman.setVisible(false);
             
-            //Digitalizar Procuracao
+            //Digitalizar Procuracoes
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -132,7 +132,7 @@ public class Inicial extends javax.swing.JFrame {
             g.dispose();
         
             jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
-            //Pesquisa Procuracao
+            //Pesquisa Procuracoes
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -511,7 +511,7 @@ public class Inicial extends javax.swing.JFrame {
         try {
             atalhos(evt);
         } catch (SQLException ex) {
-            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Procuracoes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formKeyPressed
 
@@ -610,13 +610,13 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBentidadeMouseClicked
 
     private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
-        Insere in;
+        InsereProc in;
         try {
-            in = new Insere(this.user);
+            in = new InsereProc(this.user);
             in.setVisible(true);
             SisLog S = new SisLog("InsereProcuracao", this.user, "Manualmente");
         } catch (SQLException ex) {
-            Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Procuracoes.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }//GEN-LAST:event_jLImanMouseClicked
 
@@ -752,8 +752,8 @@ public class Inicial extends javax.swing.JFrame {
             
             //Condição para CTRL + N  
         } else if ((evt.getKeyCode() == KeyEvent.VK_N) && (evt.isControlDown())) {
-            Insere in;
-            in = new Insere(this.user);
+            InsereProc in;
+            in = new InsereProc(this.user);
             in.setVisible(true);
             
             //Condição para CTRL + F  
@@ -823,8 +823,8 @@ public class Inicial extends javax.swing.JFrame {
         jt.selectAll();
         
         jb.addActionListener((ActionEvent e) ->{
-            Visualiza v;
-            v = new Visualiza(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()), this.user);
+            VisualizaProc v;
+            v = new VisualizaProc(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()), this.user);
             SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
             v.setVisible(true);
             v.getContentPane().setBackground(Color.WHITE);

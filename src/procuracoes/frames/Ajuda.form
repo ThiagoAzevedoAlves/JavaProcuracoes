@@ -122,7 +122,7 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="MezzariProcura&#xe7;&#xf5;es"/>
+        <Property name="text" type="java.lang.String" value="Sistema Mezzari"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>
@@ -132,7 +132,7 @@
           <Font name="Liberation Serif" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="MezzariProcura&#xe7;&#xf5;es &#xe9; um sistema desenvolvido"/>
+        <Property name="text" type="java.lang.String" value="Sistema Mezzari &#xe9; um sistema desenvolvido"/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
     </Component>

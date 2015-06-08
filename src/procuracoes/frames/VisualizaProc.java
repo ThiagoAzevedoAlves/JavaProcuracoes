@@ -44,7 +44,7 @@ import procuracoes.db.Datauser;
  * @author Thiago
  */
 
-public class Visualiza extends javax.swing.JFrame {
+public class VisualizaProc extends javax.swing.JFrame {
     
     public Database db;
     public Dataproc dp;
@@ -57,7 +57,7 @@ public class Visualiza extends javax.swing.JFrame {
     public String user;
     int tipo;
     
-    public Visualiza(String caminho, int cod, String usuario) {
+    public VisualizaProc(String caminho, int cod, String usuario) {
         
         Datauser du = new Datauser();
         du.connect();
@@ -183,7 +183,7 @@ public class Visualiza extends javax.swing.JFrame {
         jPanel1.paint(jPanel1.getGraphics());
         //PDFrame.paint(PDFrame.getGraphics());
         } catch(SQLException ex) {
-            Logger.getLogger(Visualiza.class.getName()).log(Level.SEVERE,null, ex);
+            Logger.getLogger(VisualizaProc.class.getName()).log(Level.SEVERE,null, ex);
         }       
         
     }
@@ -1227,7 +1227,7 @@ public class Visualiza extends javax.swing.JFrame {
                         SisLog S = new SisLog("Visualiza", this.user, "Remover Procurador - " + nomeaux);
                         dp.apaga(nomeaux, nproc);
                         this.dispose();
-                        Visualiza v = new Visualiza(db.getCaminho(nproc), nproc, this.user);
+                        VisualizaProc v = new VisualizaProc(db.getCaminho(nproc), nproc, this.user);
                         JOptionPane.showMessageDialog(null, "Procurador removido com Sucesso!");
                     }else{
                         SisLog S = new SisLog("Visualiza", this.user, "Remover Procurador - Cancelado.");
@@ -1251,7 +1251,7 @@ public class Visualiza extends javax.swing.JFrame {
                     SisLog S = new SisLog("Visualiza", this.user, "Remover Entidade - " + nomeaux);
                     de.apaga(nomeaux, nproc);
                     this.dispose();
-                    Visualiza v = new Visualiza(db.getCaminho(nproc), nproc, this.user);
+                    VisualizaProc v = new VisualizaProc(db.getCaminho(nproc), nproc, this.user);
                     v.toFront();
                     JOptionPane.showMessageDialog(null, "Entidade removida com Sucesso!");
                 }else{
@@ -1277,10 +1277,10 @@ public class Visualiza extends javax.swing.JFrame {
                 dp.connect();
                 try {
                     if(!cpf.getText().equals("")){
-                            if(new Insere(this.user).validaCPF(cpf.getText())){
+                            if(new InsereProc(this.user).validaCPF(cpf.getText())){
                                 dp.add(nome.getText(), cpf.getText(), poderes.getText(), Integer.valueOf(this.jLcod.getText()));
                                 this.dispose();
-                                Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                                VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                                 dialog.dispose();
                                 v.toFront();
                             }else{
@@ -1289,7 +1289,7 @@ public class Visualiza extends javax.swing.JFrame {
                     }else{
                         dp.add(nome.getText(), poderes.getText(), Integer.valueOf(this.jLcod.getText()));
                         this.dispose();
-                        Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                        VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                         dialog.dispose();
                         v.toFront();
                     }
@@ -1327,11 +1327,11 @@ public class Visualiza extends javax.swing.JFrame {
                 de.connect();
                 try {
                     if((!cpf.getText().equals("")) && (!cnpj.getText().equals(""))){
-                            if(new Insere(this.user).validaCPF(cpf.getText())){
-                                if(new Insere(this.user).validaCNPJ(cnpj.getText())){
+                            if(new InsereProc(this.user).validaCPF(cpf.getText())){
+                                if(new InsereProc(this.user).validaCNPJ(cnpj.getText())){
                                     de.add(nome.getText(), cnpj.getText(), responsavel.getText(), cpf.getText(), Integer.valueOf(this.jLcod.getText()));
                                     this.dispose();
-                                    Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                                    VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                                     dialog.dispose();
                                     v.toFront();
                                 }else{
@@ -1341,20 +1341,20 @@ public class Visualiza extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null, "CPF invalido.");
                             }
                     }else if(!cpf.getText().equals("")){
-                        if(new Insere(this.user).validaCPF(cpf.getText())){
+                        if(new InsereProc(this.user).validaCPF(cpf.getText())){
                             de.add(nome.getText(), null, responsavel.getText(), cpf.getText(), Integer.valueOf(this.jLcod.getText()));
                             this.dispose();
-                            Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                            VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                             dialog.dispose();
                             v.toFront();
                         }else{
                             JOptionPane.showMessageDialog(null, "CPF invalido.");
                         }
                     }else if(!cnpj.getText().equals("")){
-                        if(new Insere(this.user).validaCNPJ(cnpj.getText())){
+                        if(new InsereProc(this.user).validaCNPJ(cnpj.getText())){
                             de.add(nome.getText(), cnpj.getText(), responsavel.getText(), null, Integer.valueOf(this.jLcod.getText()));
                             this.dispose();
-                            Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                            VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                             dialog.dispose();
                             v.toFront();
                         }else{
@@ -1363,7 +1363,7 @@ public class Visualiza extends javax.swing.JFrame {
                     }else{
                         de.add(nome.getText(), null, responsavel.getText(), null, Integer.valueOf(this.jLcod.getText()));
                         this.dispose();
-                        Visualiza v = new Visualiza(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
+                        VisualizaProc v = new VisualizaProc(db.getCaminho(Integer.valueOf(jLcod.getText())), Integer.valueOf(jLcod.getText()), this.user);
                         dialog.dispose();
                         v.toFront();
                     }

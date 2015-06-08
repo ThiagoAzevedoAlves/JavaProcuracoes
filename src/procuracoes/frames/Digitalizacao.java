@@ -112,7 +112,7 @@ public class Digitalizacao extends JFrame{
             JOptionPane.showMessageDialog(null, "Documneto nao encontrado !");
         }
         TwainManager.close();
-        Insere in = new Insere(user);
+        InsereProc in = new InsereProc(user);
         in.setVisible(true);
     }
         

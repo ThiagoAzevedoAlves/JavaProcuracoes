@@ -48,3 +48,6 @@ r12 - (v0.1.2) - Adição de métodos para adicionar e remover Procuradores e Entid
 	de uma Procuração existente, utilizavel apenas por usuários administradores;
 	Adição de JavaDoc à classe Database; Diminuição do tamanho dos botões,
 	para melhor ajuste à tela;
+
+Última Revisão (r12)- Sistema adicionado ao SistemaMezzari, para documentação sobre
+versões e revisões, revisar o ARQUIVO DE REVISÃO CONSEQUENTE.
