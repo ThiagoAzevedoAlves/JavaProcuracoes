@@ -106,7 +106,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/procuracoes/recursos/java.jpg"/>
+          <Image iconType="3" name="/recursos/java.jpg"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor Padr&#xe3;o"/>
@@ -236,28 +236,28 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/procuracoes/recursos/mysql.jpg"/>
+              <Image iconType="3" name="/recursos/mysql.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/procuracoes/recursos/TWAIN_logo.png"/>
+              <Image iconType="3" name="/recursos/TWAIN_logo.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/procuracoes/recursos/icepdf.jpg"/>
+              <Image iconType="3" name="/recursos/icepdf.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/procuracoes/recursos/itext.png"/>
+              <Image iconType="3" name="/recursos/itext.png"/>
             </Property>
           </Properties>
         </Component>

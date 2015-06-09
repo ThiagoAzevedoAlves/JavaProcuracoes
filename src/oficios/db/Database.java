@@ -47,8 +47,9 @@ public class Database{
      * @throws ParseException
      * @throws SQLException
      */    
-    public void salva(Oficio ofic) throws ParseException, SQLException{
-                
+    public int salva(Oficio ofic) throws ParseException, SQLException{
+              
+        int ret = 0;
         java.sql.Date d = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         if(ofic.data != null){ //se houver uma data inicial recebe o valor em uma variavel auxiliar
@@ -66,10 +67,12 @@ public class Database{
             preparedStatement.setString(3, ofic.getCaminho());
             preparedStatement.setDate(4, d);
             preparedStatement.executeUpdate(); //executa o update na tabela
+            ret = 1;
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "SALVAOFIC" + "\n" + preparedStatement.toString() + "\n" + e.getMessage() + " - " + e.getSQLState());
+            JOptionPane.showMessageDialog(null, "SALVAOFIC" + "\n" + e.getMessage());            
         }
+        return ret;
     }
     
     
@@ -81,19 +84,12 @@ public class Database{
             if (conn.isClosed()){
                 this.connect();
             }
-            preparedStatement = conn.prepareStatement("SELECT MAX(id) FROM procuracao");
+            preparedStatement = conn.prepareStatement("SELECT MAX(id) FROM oficio");
             resultSet = preparedStatement.executeQuery();
             preparedStatement = null;
             int n;
             while(resultSet.next()){
-                n = resultSet.getInt(1);
-                preparedStatement = conn.prepareStatement("SELECT idgeral FROM procuracao where id= ?");
-                preparedStatement.setInt(1, n);
-                resultSet = preparedStatement.executeQuery();
-                while(resultSet.next()){
-                    n = resultSet.getInt(1);
-                    return n+1;
-                }
+                n = resultSet.getInt(1);                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETPROCOD -"+ e.getMessage());
@@ -177,18 +173,22 @@ public class Database{
      * @param ano int representando o ano do Oficio
      * @return int - 1 se OK 0 caso algum erro
      */
-    public int apagaProc(int numero, int ano){
+    public int apaga(int numero, int ano){
         int ret = 0;
-        try {
-            String SQL = "DELETE from oficio where (oficio.numero=? and oficio.ano=?)";
-            PreparedStatement prepared = conn.prepareStatement(SQL);
-            prepared.setInt(1, numero);
-            prepared.setInt(2, ano);
-            prepared.executeUpdate();            
-            ret=1;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
+        String caminho = this.getCaminho(numero, ano);
+        if (caminho != null){
+            try {
+                String SQL = "DELETE from oficio where (oficio.numero=? and oficio.ano=?)";
+                PreparedStatement prepared = conn.prepareStatement(SQL);
+                prepared.setInt(1, numero);
+                prepared.setInt(2, ano);
+                prepared.executeUpdate();            
+                ret=1;
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
         }
         return ret;
     }
+    
 }

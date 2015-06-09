@@ -122,7 +122,7 @@ public class Digitalizacao extends JFrame{
         int cod;
         cod = db.getProcod();
         String ret;
-        ret = "\\\\servidor\\procuracoes\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf";
+        ret = "\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf";
         return ret;
     }
 }

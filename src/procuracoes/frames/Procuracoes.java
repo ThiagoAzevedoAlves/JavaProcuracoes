@@ -7,7 +7,6 @@ package procuracoes.frames;
 
 import SK.gnome.morena.MorenaException;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -23,7 +22,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -67,7 +65,7 @@ public class Procuracoes extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
         g.dispose();
         
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -79,7 +77,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
     
             jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -89,7 +87,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/DIGITALMENTE.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/DIGITALMENTE.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
             
             jLIman.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -99,7 +97,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/scannere2.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/scannere2.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
             
             jPIncluir.add(jLIdig);
@@ -112,7 +110,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
 
             jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -128,7 +126,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         
             jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -136,7 +134,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesqpessoa2.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesqpessoa2.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
 
             jLBproc.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -146,7 +144,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pessoa2.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pessoa2.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
 
             jLBprocurador.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -155,7 +153,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/empresa2.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/empresa2.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
 
             jLBentidade.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -167,7 +165,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
 
             jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));        
@@ -177,7 +175,7 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
             g.dispose();
 
             jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
@@ -188,14 +186,14 @@ public class Procuracoes extends javax.swing.JFrame {
             resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
             g.dispose();
 
             jLFechar.setIcon(new javax.swing.ImageIcon(resizedImg));        
         //------------------------------------------------------------------------------------------//    
         this.getContentPane().setBackground(Color.white);
         this.jPanel1.setBackground(Color.white);
-        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
         this.setIconImage(image.getImage());
 
         this.createPopupFechar();
@@ -243,7 +241,7 @@ public class Procuracoes extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 124, 184), 3, true));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.lightGray));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 44)); // NOI18N
@@ -445,15 +443,7 @@ public class Procuracoes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 2, Short.MAX_VALUE)
                         .addComponent(jPBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,18 +451,39 @@ public class Procuracoes extends javax.swing.JFrame {
                         .addComponent(JPExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JPAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLbv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLbv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLbv, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -481,7 +492,7 @@ public class Procuracoes extends javax.swing.JFrame {
                     .addComponent(JPExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(JPAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(jPBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                .addGap(9, 9, 9))
         );
 
         BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
@@ -500,7 +511,9 @@ public class Procuracoes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setSize(new java.awt.Dimension(1037, 670));
@@ -519,7 +532,7 @@ public class Procuracoes extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda2.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda2.png")).getImage(), 0, 0, 100, 100, null);
         jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
         //excluiProcuracao();
         Ajuda a = new Ajuda();
@@ -529,7 +542,7 @@ public class Procuracoes extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent w){
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
                 g.dispose();
                 jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
             }
@@ -541,12 +554,12 @@ public class Procuracoes extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc.png")).getImage(), 0, 0, 100, 100, null);
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
         excluiProcuracao();
             
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
                 
@@ -561,7 +574,7 @@ public class Procuracoes extends javax.swing.JFrame {
             jLBentidade.setVisible(true);
             cPesq = true;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar2.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar2.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }else{
             jLBproc.setVisible(false);
@@ -569,7 +582,7 @@ public class Procuracoes extends javax.swing.JFrame {
             jLBentidade.setVisible(false);
             cPesq = false;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }
         
@@ -584,14 +597,14 @@ public class Procuracoes extends javax.swing.JFrame {
             jLIman.setVisible(true);
             cIncl = true;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma2.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma2.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }else{
             jLIdig.setVisible(false);
             jLIman.setVisible(false);
             cIncl = false;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }
         jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));

@@ -71,7 +71,7 @@ public class VisualizaProc extends javax.swing.JFrame {
             de = new Dataent();
             de.connect();
             JPanel jPanel1; //painel de visualizacao
-            ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
             this.setIconImage(image.getImage());
             JInternalFrame PDFrame = new JInternalFrame("Visualizacao"); //Frame Interno responsável pela exibição do painel de visualização
             Document document = new Document(); //cria um objeto Documento
@@ -138,7 +138,7 @@ public class VisualizaProc extends javax.swing.JFrame {
                 BufferedImage resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g = resizedImg.createGraphics();
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 40, 40, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 40, 40, null);
                 g.dispose();
 
                 jLremproc.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -149,7 +149,7 @@ public class VisualizaProc extends javax.swing.JFrame {
                 resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
                 g = resizedImg.createGraphics();
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/add.png")).getImage(), 0, 0, 40, 40, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/add.png")).getImage(), 0, 0, 40, 40, null);
                 g.dispose();
 
                 jLaddproc.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -160,7 +160,7 @@ public class VisualizaProc extends javax.swing.JFrame {
                 resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
                 g = resizedImg.createGraphics();
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 40, 40, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 40, 40, null);
                 g.dispose();
 
                 jLrement.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -171,7 +171,7 @@ public class VisualizaProc extends javax.swing.JFrame {
                 resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
                 g = resizedImg.createGraphics();
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/add2.png")).getImage(), 0, 0, 40, 40, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/add2.png")).getImage(), 0, 0, 40, 40, null);
                 g.dispose();
 
                 jLaddent.setIcon(new javax.swing.ImageIcon(resizedImg));

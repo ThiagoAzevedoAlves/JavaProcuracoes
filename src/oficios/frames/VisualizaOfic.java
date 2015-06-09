@@ -47,7 +47,7 @@ public class VisualizaOfic extends javax.swing.JFrame {
             db.connect();
             
             JPanel jPanel1; //painel de visualizacao
-            ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
             this.setIconImage(image.getImage());
             JInternalFrame PDFrame = new JInternalFrame("Visualizacao"); //Frame Interno responsável pela exibição do painel de visualização
             Document document = new Document(); //cria um objeto Documento
@@ -117,18 +117,9 @@ public class VisualizaOfic extends javax.swing.JFrame {
         
     }
     
-    public void carregaCampos(int numero, int ano) throws SQLException{
-        
-        String n = Integer.toString(numero);
-        int i = n.length();
-        i = 4-i;
-        while(i > 0){
-            n= "0".concat(n);
-            i--;
-        }
-        this.jLcod.setText(n + "/" + ano); //define o codigo
-        this.jLdtini.setText(db.getData(numero, ano));//exibe a data inicial
-                      
+    public void carregaCampos(int numero, int ano) throws SQLException{                
+        this.jLcod.setText(numero + "/" + ano); //define o codigo
+        this.jLdtini.setText(db.getData(numero, ano));//exibe a data inicial                      
     }
     
            

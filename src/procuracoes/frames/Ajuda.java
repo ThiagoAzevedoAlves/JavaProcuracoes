@@ -20,7 +20,7 @@ public class Ajuda extends javax.swing.JFrame {
     public Ajuda() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
-        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
         this.setIconImage(image.getImage());
     }
 
@@ -63,7 +63,7 @@ public class Ajuda extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(234, 4, 4));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/java.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/java.jpg"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
@@ -103,13 +103,13 @@ public class Ajuda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/mysql.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mysql.jpg"))); // NOI18N
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/TWAIN_logo.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/TWAIN_logo.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/icepdf.jpg"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icepdf.jpg"))); // NOI18N
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/itext.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/itext.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

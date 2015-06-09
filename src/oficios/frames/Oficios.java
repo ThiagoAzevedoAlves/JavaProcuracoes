@@ -24,6 +24,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -35,6 +42,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import oficios.classes.Oficio;
 import procuracoes.classes.SisLog;
 import oficios.db.Database;
 
@@ -59,7 +67,7 @@ public class Oficios extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
         g.dispose();
         
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -77,7 +85,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
     
             jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -87,7 +95,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/DIGITALMENTE.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/DIGITALMENTE.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
             
             jLIman.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -97,7 +105,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(75, 75, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/scannere2.png")).getImage(), 0, 0, 75, 75, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/scannere2.png")).getImage(), 0, 0, 75, 75, null);
             g.dispose();
             
             jPIncluir.add(jLIdig);
@@ -109,7 +117,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
 
             jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -123,7 +131,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
 
             jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));        
@@ -133,7 +141,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         
             jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -143,7 +151,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
             g.dispose();
 
             jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
@@ -154,7 +162,7 @@ public class Oficios extends javax.swing.JFrame {
             resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
             g = resizedImg.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
             g.dispose();
 
             jLFechar.setIcon(new javax.swing.ImageIcon(resizedImg));        
@@ -162,7 +170,7 @@ public class Oficios extends javax.swing.JFrame {
             
             this.getContentPane().setBackground(Color.white);
             this.jPanel1.setBackground(Color.white);
-            ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
             this.setIconImage(image.getImage());
 
             this.createPopupFechar();
@@ -205,7 +213,7 @@ public class Oficios extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 124, 184), 3, true));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.lightGray));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 44)); // NOI18N
@@ -219,21 +227,21 @@ public class Oficios extends javax.swing.JFrame {
         jPIncluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPIncluir.setPreferredSize(new java.awt.Dimension(250, 250));
 
-        jLIncluir.setToolTipText("Incluir Procuração");
+        jLIncluir.setToolTipText("Adicionar Ofício");
         jLIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLIncluirMouseClicked(evt);
             }
         });
 
-        jLIman.setToolTipText("Incluir Manualmente");
+        jLIman.setToolTipText("Adicionar Arquivo");
         jLIman.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLImanMouseClicked(evt);
             }
         });
 
-        jLIdig.setToolTipText("Digitalizar Procuração");
+        jLIdig.setToolTipText("Adicionar da Scanner");
         jLIdig.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLIdigMouseClicked(evt);
@@ -298,7 +306,7 @@ public class Oficios extends javax.swing.JFrame {
         JPExcluir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPExcluir.setPreferredSize(new java.awt.Dimension(250, 250));
 
-        jLApagar.setToolTipText("Excluir Procuração");
+        jLApagar.setToolTipText("Excluir Ofício");
         jLApagar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLApagarMouseClicked(evt);
@@ -325,7 +333,7 @@ public class Oficios extends javax.swing.JFrame {
         JPAjuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         JPAjuda.setPreferredSize(new java.awt.Dimension(250, 250));
 
-        jLSobre.setToolTipText("Sobre o Sistema de Procurações Mezzari");
+        jLSobre.setToolTipText("Sobre o Sistema Mezzari");
         jLSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLSobreMouseClicked(evt);
@@ -374,12 +382,13 @@ public class Oficios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
                         .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(40, 40, 40)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -399,7 +408,7 @@ public class Oficios extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -410,7 +419,7 @@ public class Oficios extends javax.swing.JFrame {
                     .addComponent(JPExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(JPAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(jPBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                .addContainerGap())
         );
 
         BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
@@ -429,10 +438,12 @@ public class Oficios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1037, 670));
+        setSize(new java.awt.Dimension(1037, 679));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -448,7 +459,7 @@ public class Oficios extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda2.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda2.png")).getImage(), 0, 0, 100, 100, null);
         jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
         //excluiProcuracao();
         Ajuda a = new Ajuda();
@@ -458,7 +469,7 @@ public class Oficios extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent w){
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+                g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
                 g.dispose();
                 jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
             }
@@ -489,11 +500,13 @@ public class Oficios extends javax.swing.JFrame {
         Graphics2D g = resizedImg.createGraphics();
         
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc.png")).getImage(), 0, 0, 100, 100, null);
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
-
+        
+        this.exclui();
+        
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
 
@@ -504,15 +517,15 @@ public class Oficios extends javax.swing.JFrame {
         Graphics2D g = resizedImg.createGraphics();
         
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar2.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar2.png")).getImage(), 0, 0, 100, 100, null);
         jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
             
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
         g.dispose();        
         jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
         
-        this.buscaOficios();
+        this.buscaOficio();
     }//GEN-LAST:event_jLBuscarMouseClicked
 
     private void jLIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIncluirMouseClicked
@@ -523,28 +536,21 @@ public class Oficios extends javax.swing.JFrame {
             jLIman.setVisible(true);
             cIncl = true;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma2.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma2.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }else{
             jLIdig.setVisible(false);
             jLIman.setVisible(false);
             cIncl = false;
             g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
+            g.drawImage(new ImageIcon(getClass().getResource("/recursos/docma.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }
         jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
     }//GEN-LAST:event_jLIncluirMouseClicked
 
     private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
-        InsereProc in;
-        try {
-            in = new InsereProc(this.user);
-            in.setVisible(true);
-            SisLog S = new SisLog("InsereProcuracao", this.user, "Manualmente");
-        } catch (SQLException ex) {
-            Logger.getLogger(Oficios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.addOficio();
     }//GEN-LAST:event_jLImanMouseClicked
 
     private void jLIdigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIdigMouseClicked
@@ -667,7 +673,7 @@ public class Oficios extends javax.swing.JFrame {
             
             //Condição para CTRL + F  
         } else if ((evt.getKeyCode() == KeyEvent.VK_F) && (evt.isControlDown())) {
-            buscaOficios();            
+            buscaOficio();            
             //Condição para CTRL + P
         
         } else if ((evt.getKeyCode() == KeyEvent.VK_S) && (evt.isControlDown())) {
@@ -685,14 +691,14 @@ public class Oficios extends javax.swing.JFrame {
     }
    
     
-    public void buscaOficios(){
+    public void buscaOficio(){
         Database db;
         db = new Database();
         db.connect();
         
         JButton jb = new JButton("Ok!");
                 
-        JTextField jt = new JTextField("0001/2015");
+        JTextField jt = new JTextField("1/2015");
         KeyListener l = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -726,9 +732,16 @@ public class Oficios extends javax.swing.JFrame {
         
         jb.addActionListener((ActionEvent e) ->{
             VisualizaOfic v;
-            String numero, ano;
-            numero = jt.getText().substring(0, 4);
-            ano = jt.getText().substring(5);
+            String numero = "";
+            String ano;
+            char aux = jt.getText().charAt(0);
+            int i = 1;
+            while(aux != '/'){                
+                numero = numero.concat(String.valueOf(aux));
+                aux = jt.getText().charAt(i);
+                i++;
+            }
+            ano = jt.getText().substring(i);
             v = new VisualizaOfic(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)), Integer.valueOf(numero), Integer.valueOf(ano), this.user);
             SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
             v.setVisible(true);
@@ -747,6 +760,175 @@ public class Oficios extends javax.swing.JFrame {
                 
     }
     
+    public void addOficio(){
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("1/2015");
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            String numero = "";
+            String ano;
+            char aux = jt.getText().charAt(0);
+            int i = 1;
+            while(aux != '/'){                
+                numero = numero.concat(String.valueOf(aux));
+                aux = jt.getText().charAt(i);
+                i++;
+            }
+            ano = jt.getText().substring(i);
+            int resp;
+            resp = JOptionPane.showConfirmDialog(null, "Deseja ADICIONAR O OFICIO " + numero + "/" + ano + "?");
+            if (resp == 0) {
+                try {
+                    Date d1 = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    String d =sdf.format(d1);                    
+                    int teste = db.salva(new Oficio(1, Integer.valueOf(numero), Integer.valueOf(ano), "\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariofic\\"+ano+"\\"+numero+"\\OFÍCIOS.pdf", d));
+                    if(teste==1){
+                        SisLog S = new SisLog("AdicionaOficio", dialog.getName(), "Sucesso - Oficio " + jt.getText());
+                        JOptionPane.showMessageDialog(null, "OFICIO Adicionado com sucesso!");
+                        VisualizaOfic v;
+                        v = new VisualizaOfic(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)), Integer.valueOf(numero), Integer.valueOf(ano), this.user);
+                        v.setVisible(true);
+                        v.getContentPane().setBackground(Color.WHITE);
+                        dialog.setVisible(false);
+                        this.toBack();
+                    }else{
+                        SisLog S = new SisLog("AdicionaOficio", dialog.getName(), "Erro - Oficio " + jt.getText());
+                        JOptionPane.showMessageDialog(null, "Erro ao adicionar Arquivo, por favor revisar número/ano: " + numero + "/" + ano);
+                    }
+                } catch (ParseException | SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
+        });
+        
+        Object data[] = {"Digite o número/ano do Ofício:", jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Inserir Oficio");
+        dialog.setVisible(true);
+        dialog.setName(user);        
+        
+    }
+    
+    
+    public void exclui(){
+        Database db;
+        db = new Database();
+        db.connect();
+        
+        JButton jb = new JButton("Ok!");
+                
+        JTextField jt = new JTextField("");
+        KeyListener l = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jb.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+        };
+        jt.addKeyListener(l);
+        jt.selectAll();
+        
+        jb.addActionListener((ActionEvent e) ->{
+            String numero = "";
+            String ano;
+            char aux = jt.getText().charAt(0);
+            int i = 1;
+            while(aux != '/'){                
+                numero = numero.concat(String.valueOf(aux));
+                aux = jt.getText().charAt(i);
+                i++;
+            }
+            ano = jt.getText().substring(i);
+            int resp;
+            resp = JOptionPane.showConfirmDialog(null, "Deseja EXCLUIR este OFÍCIO?");
+            if (resp == 0) {
+                resp = 1;
+                resp = JOptionPane.showConfirmDialog(null, "ECLUINDO este Ofício você não conseguirá mais encontrá-lo no Sistema.\n Tem CERTEZA que deseja EXCLUIR este OFÍCIO?");
+                if (resp == 0) {
+                    int a = db.apaga(Integer.valueOf(numero),Integer.valueOf(ano));
+                    if(a==1){
+                        SisLog S = new SisLog("ExcluiOficio", dialog.getName(), "Sucesso - Oficio " + jt.getText());
+                        JOptionPane.showMessageDialog(null, "OFICIO Excluído com Sucesso!");
+                    }else{
+                        SisLog S = new SisLog("ExcluiOficio", dialog.getName(), "Erro - Oficio " + jt.getText());
+                        JOptionPane.showMessageDialog(null, "OFÍCIO não encontrado.");
+                    }
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        
+        Object data[] = {"Digite o número/ano do Ofíco que deseja EXCLUIR:", jt, jb};
+        JOptionPane option = new JOptionPane();
+        option.setMessage(data);
+        option.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        option.remove(1);
+        dialog = option.createDialog(null, "Excluir Ofício");
+        dialog.setVisible(true);
+        dialog.setName(user);
+        
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPAjuda;

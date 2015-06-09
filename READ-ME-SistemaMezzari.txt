@@ -8,3 +8,5 @@ r1 - (v0.1.0) - Inclusão do Sistema MezzariProcuracoes ao Projeto Principal;
 			*oficios.frames.Oficios.java
 			*oficios.frames.VisualizaOfic.java
 		}
+r2 - (v0.1.1) - Reposição de Botoes; Inclusão de métodos para adição e remoção de
+		Ofícios pelo painel inicial;
