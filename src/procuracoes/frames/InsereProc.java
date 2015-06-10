@@ -6,6 +6,10 @@
 package procuracoes.frames;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -21,6 +25,7 @@ import procuracoes.classes.Procuracao;
 import procuracoes.classes.Procurador;
 import procuracoes.classes.SisLog;
 import procuracoes.db.Database;
+import procuracoes.db.Dataproc;
 
 /**
  *
@@ -41,11 +46,39 @@ public class InsereProc extends javax.swing.JFrame {
         db = new Database();
         db.connect();
         jLcod.setText(String.valueOf(db.getProcod()));
-        jTcaminho.setText("\\\\servidor\\procuracoes\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf");
+        jTcaminho.setText("\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf");
         this.getContentPane().setBackground(Color.white);
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
         this.setIconImage(image.getImage());
         this.user=u;
+        jTproccpf.addKeyListener(new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jBProcsalva.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jBProcsalva.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == 10){
+                    for(ActionListener a: jBProcsalva.getActionListeners()) {
+                        a.actionPerformed(new ActionEvent(e, 1, null));
+                    }
+                }
+            }
+         });
     }
     
     public void setEntidades(){
@@ -311,7 +344,12 @@ public class InsereProc extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
         jLabel23.setText("Caminho:");
 
-        jTcaminho.setText("\\\\\\servidor\\\\procuracoes\\\\mezzariproc\\\\");
+        jTcaminho.setText("\\\\\\servidor\\\\Repositorio\\\\SistemaMezzari\\\\mezzariproc\\\\");
+            jTcaminho.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jTcaminhoActionPerformed(evt);
+                }
+            });
 
             javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
             jPanel6.setLayout(jPanel6Layout);
@@ -488,6 +526,12 @@ public class InsereProc extends javax.swing.JFrame {
             jLabel20.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
             jLabel20.setText("Cpf:");
 
+            jTprocnome.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    jTprocnomeFocusGained(evt);
+                }
+            });
+
             jCProc.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
             jCProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procurador 1" }));
             jCProc.addItemListener(new java.awt.event.ItemListener() {
@@ -512,35 +556,30 @@ public class InsereProc extends javax.swing.JFrame {
             jPanel4Layout.setHorizontalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel20)
-                                        .addComponent(jLabel19))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTprocnome, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                        .addComponent(jTproccpf)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel18)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTnproc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel17)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jCProc, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel18)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTnproc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(133, 133, 133)
+                            .addComponent(jLabel17)
+                            .addGap(18, 18, 18)
+                            .addComponent(jCProc, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBProcsalva, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTprocpod, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(128, 128, 128)
                             .addComponent(jLabel24))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jBProcsalva, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTprocpod, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTprocnome, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(31, 31, 31)
+                                .addComponent(jTproccpf))))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanel4Layout.setVerticalGroup(
@@ -556,13 +595,13 @@ public class InsereProc extends javax.swing.JFrame {
                         .addComponent(jCProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19)
-                        .addComponent(jTprocnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel20)
                         .addComponent(jTproccpf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel19)
+                        .addComponent(jTprocnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(7, 7, 7)
                     .addComponent(jLabel24)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTprocpod, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -606,7 +645,7 @@ public class InsereProc extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTdi2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTdi3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(218, 218, 218)
@@ -813,6 +852,10 @@ public class InsereProc extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        SisLog S = new SisLog("InsereProcuracao", this.user, "Cancelar");
+    }//GEN-LAST:event_formWindowClosed
+
     private void jBProcsalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcsalvaActionPerformed
         int r = revisaProc();
         if(r == 4){
@@ -828,10 +871,10 @@ public class InsereProc extends javax.swing.JFrame {
                 i++;
             }
             SisLog S = new SisLog("InsereProcuracao", this.user, "Define Procurador (Procuracao " + this.jLcod.getText() + ") - Nome: " + jTprocnome.getText() + ".-Cpf: " + jTproccpf.getText() + ".-Poderes: " + jTprocpod.getText());
-            
+
             if(jCProc.getSelectedIndex()<jCProc.getItemCount()-1){
                 jCProc.setSelectedIndex(jCProc.getSelectedIndex()+1);
-                jTprocnome.requestFocus();
+                jTproccpf.requestFocus();
             }
         }else if (r == 3){
             JOptionPane.showMessageDialog(null, "Por favor, revisar o CPF dos PROCURADORES.");
@@ -856,9 +899,17 @@ public class InsereProc extends javax.swing.JFrame {
         this.setProcuradores();
     }//GEN-LAST:event_jTnprocFocusLost
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        SisLog S = new SisLog("InsereProcuracao", this.user, "Cancelar");
-    }//GEN-LAST:event_formWindowClosed
+    private void jTprocnomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTprocnomeFocusGained
+        if (!"".equals(this.jTproccpf.getText())){
+            Dataproc dp = new Dataproc();
+            dp.connect();
+            jTprocnome.setText(dp.encontra(jTproccpf.getText()));
+        }
+    }//GEN-LAST:event_jTprocnomeFocusGained
+
+    private void jTcaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTcaminhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTcaminhoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEntsalva;

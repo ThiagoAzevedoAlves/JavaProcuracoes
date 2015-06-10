@@ -59,7 +59,7 @@ public class Procuracoes extends javax.swing.JFrame {
         JPAjuda.setBorder(null);
         JPExcluir.setBorder(null);
         
-        jLbv.setText("Bem Vindo "+ usuario+" !");
+        jLbv.setText("Bem Vindo(a) "+ usuario+" !");
         
         //logo------------------------------------------------------------------------------------//
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
@@ -451,19 +451,18 @@ public class Procuracoes extends javax.swing.JFrame {
                         .addComponent(JPExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JPAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLbv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLbv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,12 +477,12 @@ public class Procuracoes extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLbv, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -528,6 +527,24 @@ public class Procuracoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formKeyPressed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        SisLog S = new SisLog("Logout", this.user, "Sucesso");
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jLFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLFecharMouseClicked
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLFecharMouseClicked
+
+    private void jLLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLoginMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja Trocar de Usuário? ", null, JOptionPane.YES_NO_OPTION);
+        if(resposta == JOptionPane.YES_OPTION){
+            Login l = new Login();
+            l.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLLoginMouseClicked
+
     private void jLSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSobreMouseClicked
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
@@ -538,7 +555,7 @@ public class Procuracoes extends javax.swing.JFrame {
         Ajuda a = new Ajuda();
         a.setVisible(true);
         a.addWindowListener(new WindowAdapter() {
-            
+
             @Override
             public void windowClosing(WindowEvent w){
                 g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -547,7 +564,7 @@ public class Procuracoes extends javax.swing.JFrame {
                 jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));
             }
         });
-        
+
     }//GEN-LAST:event_jLSobreMouseClicked
 
     private void jLApagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLApagarMouseClicked
@@ -557,13 +574,25 @@ public class Procuracoes extends javax.swing.JFrame {
         g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc.png")).getImage(), 0, 0, 100, 100, null);
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
         excluiProcuracao();
-            
+
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g.drawImage(new ImageIcon(getClass().getResource("/recursos/exc2.png")).getImage(), 0, 0, 100, 100, null);
         g.dispose();
         jLApagar.setIcon(new javax.swing.ImageIcon(resizedImg));
-                
+
     }//GEN-LAST:event_jLApagarMouseClicked
+
+    private void jLBentidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBentidadeMouseClicked
+        buscaEntidade();
+    }//GEN-LAST:event_jLBentidadeMouseClicked
+
+    private void jLBprocuradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBprocuradorMouseClicked
+        buscaProcurador();
+    }//GEN-LAST:event_jLBprocuradorMouseClicked
+
+    private void jLBprocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBprocMouseClicked
+        buscaProcuracao();
+    }//GEN-LAST:event_jLBprocMouseClicked
 
     private void jLBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarMouseClicked
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -585,9 +614,30 @@ public class Procuracoes extends javax.swing.JFrame {
             g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
             g.dispose();
         }
-        
+
         jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
     }//GEN-LAST:event_jLBuscarMouseClicked
+
+    private void jLIdigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIdigMouseClicked
+        Digitalizacao d = new Digitalizacao();
+        try {
+            d.salva(this.user);
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Digitalizada");
+        } catch (MorenaException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_jLIdigMouseClicked
+
+    private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
+        InsereProc in;
+        try {
+            in = new InsereProc(this.user);
+            in.setVisible(true);
+            SisLog S = new SisLog("InsereProcuracao", this.user, "Manualmente");
+        } catch (SQLException ex) {
+            Logger.getLogger(Procuracoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLImanMouseClicked
 
     private void jLIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIncluirMouseClicked
         BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -609,57 +659,6 @@ public class Procuracoes extends javax.swing.JFrame {
         }
         jLIncluir.setIcon(new javax.swing.ImageIcon(resizedImg));
     }//GEN-LAST:event_jLIncluirMouseClicked
-
-    private void jLBprocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBprocMouseClicked
-        buscaProcuracao();        
-    }//GEN-LAST:event_jLBprocMouseClicked
-
-    private void jLBprocuradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBprocuradorMouseClicked
-        buscaProcurador();
-    }//GEN-LAST:event_jLBprocuradorMouseClicked
-
-    private void jLBentidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBentidadeMouseClicked
-        buscaEntidade();
-    }//GEN-LAST:event_jLBentidadeMouseClicked
-
-    private void jLImanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLImanMouseClicked
-        InsereProc in;
-        try {
-            in = new InsereProc(this.user);
-            in.setVisible(true);
-            SisLog S = new SisLog("InsereProcuracao", this.user, "Manualmente");
-        } catch (SQLException ex) {
-            Logger.getLogger(Procuracoes.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-    }//GEN-LAST:event_jLImanMouseClicked
-
-    private void jLIdigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIdigMouseClicked
-        Digitalizacao d = new Digitalizacao();
-        try {
-            d.salva(this.user);
-            SisLog S = new SisLog("InsereProcuracao", this.user, "Digitalizada");
-        } catch (MorenaException | SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jLIdigMouseClicked
-
-    private void jLLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLoginMouseClicked
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja Trocar de Usuário? ", null, JOptionPane.YES_NO_OPTION);
-        if(resposta == JOptionPane.YES_OPTION){
-            Login l = new Login();
-            l.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jLLoginMouseClicked
-
-    private void jLFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLFecharMouseClicked
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLFecharMouseClicked
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        SisLog S = new SisLog("Logout", this.user, "Sucesso");
-    }//GEN-LAST:event_formWindowClosed
     
     public class MoveJanela implements MouseListener, MouseMotionListener{
         
@@ -1089,7 +1088,7 @@ public class Procuracoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLIncluir;
     private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLSobre;
-    public javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbv;
     private javax.swing.JPanel jPBuscar;

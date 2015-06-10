@@ -5,7 +5,6 @@
  */
 package procuracoes.frames;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -14,8 +13,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
-import oficios.frames.Oficios;
 import procuracoes.classes.SisLog;
 import procuracoes.db.Datauser;
 
@@ -24,33 +21,21 @@ import procuracoes.db.Datauser;
  * @author Thiago
  */
 public class Login extends javax.swing.JFrame {
-    public int tipo;
     
     public Login() {
-        tipo =0;
         initComponents();
         
         ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
         this.setIconImage(image.getImage());
         
         //proc------------------------------------------------------------------------------------//
-        BufferedImage resizedImg = new BufferedImage(300, 80, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage resizedImg = new BufferedImage(320, 80, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logoproc.jpg")).getImage(), 0, 0, 300, 80, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo.jpg")).getImage(), 0, 0, 320, 80, null);
         g.dispose();
 
         jLproc.setIcon(new javax.swing.ImageIcon(resizedImg));        
-        //-----------------------------------------------------------------------------------------//
-        
-        //ofic------------------------------------------------------------------------------------//
-        resizedImg = new BufferedImage(300, 80, BufferedImage.TYPE_INT_ARGB);
-        g = resizedImg.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/procuracoes/recursos/logoofic.jpg")).getImage(), 0, 0, 300, 80, null);
-        g.dispose();
-
-        jLofic.setIcon(new javax.swing.ImageIcon(resizedImg));        
         //-----------------------------------------------------------------------------------------//
                     
         KeyListener l = new KeyListener() {
@@ -100,8 +85,6 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLproc = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLofic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -130,7 +113,6 @@ public class Login extends javax.swing.JFrame {
         jLabel20.setText("Senha:");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3, true));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -146,25 +128,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLproc, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-        );
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLofic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLofic, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -183,7 +146,6 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                             .addComponent(jPasswordField1)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,8 +157,6 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,22 +187,8 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        if(tipo==0){
-            this.tipo = 0;
-            this.jPanel3.setBorder(new LineBorder(Color.red, 3));
-            this.jPanel1.setBorder(new LineBorder(Color.black, 2));
-            tipo=1;
-        }
-    }//GEN-LAST:event_jPanel3MouseClicked
-
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        if (tipo == 1){
-            this.tipo = 0;
-            this.jPanel1.setBorder(new LineBorder(Color.red, 3));
-            this.jPanel3.setBorder(new LineBorder(Color.black, 2));
-            tipo=0;
-        }
+        
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -252,27 +198,15 @@ public class Login extends javax.swing.JFrame {
         char[] ss = jPasswordField1.getPassword();
         String senha;
         senha = (String.valueOf(ss));
-        if(tipo == 0){
-            if(db.Login(login,senha) == 1){
-                Procuracoes i = new Procuracoes(db.getTipo(login), db.getNome(login));
-                i.setVisible(true);
-                i.user = jTextField1.getText();
-                this.dispose();
-                SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
-            }else{
-                SisLog S = new SisLog("Login - Procuracoes","Erro "+jTextField1.getText(), "Erro");
-            }
+        if(db.Login(login,senha) == 1){
+            Procuracoes i = new Procuracoes(db.getTipo(login), db.getNome(login));
+            i.setVisible(true);
+            i.user = jTextField1.getText();
+            this.dispose();
+            SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
         }else{
-            if(db.Login(login,senha) == 1){
-                Oficios i = new Oficios(db.getTipo(login), db.getNome(login));
-                i.setVisible(true);
-                i.user = jTextField1.getText();
-                this.dispose();
-                SisLog S = new SisLog("Login - Oficios",jTextField1.getText(), "Sucesso");
-            }else{
-                SisLog S = new SisLog("Login - Oficios","Erro "+jTextField1.getText(), "Erro");
-            }
-        }
+            SisLog S = new SisLog("Login - Procuracoes","Erro "+jTextField1.getText(), "Erro");
+        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -293,11 +227,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLofic;
     private javax.swing.JLabel jLproc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

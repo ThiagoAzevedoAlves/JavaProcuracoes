@@ -208,6 +208,27 @@ public class Dataproc extends Database{
         return ret;
     }
     //-----------------------------------------------------------------------------------------------------------------------------------------------------//
+    
+    //Retorna o ID de um porcurador pelo Nome--------------------------------------------------------------------------------------------------------------//
+    public String encontra(String cpf){
+        String ret = null;
+        try {
+            PreparedStatement prepared = conn.prepareStatement("SELECT nome from procurador WHERE cpf=?");
+            prepared.setString(1, cpf);
+            resultSet =  prepared.executeQuery();
+            while(resultSet.next()){
+                ret = resultSet.getString(1);
+                return ret;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        return ret;
+    }
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------//
+    
+    
+    
     //Retorna o ID de um porcurador pelo Cpf---------------------------------------------------------------------------------------------------------------//
     public int getIdbyCpfProc(String cpf){
         int ret = 0;

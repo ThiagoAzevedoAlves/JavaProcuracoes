@@ -33,7 +33,7 @@ public class SisLog {
         xstream.alias(f, SisLog.class);
         String xml = xstream.toXML(this);
         try {
-            FileWriter writer = new FileWriter("\\\\servidor\\procuracoes\\log", true);
+            FileWriter writer = new FileWriter("\\\\servidor\\Repositorio\\SistemaMezzari\\log", true);
             PrintWriter out = new PrintWriter(new BufferedWriter(writer));
             out.println(xml);
             out.close();

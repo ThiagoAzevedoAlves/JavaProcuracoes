@@ -26,10 +26,6 @@ import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalField;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,7 +63,7 @@ public class Oficios extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2_blue.jpg")).getImage(), 0, 0, 1000, 350, null);
         g.dispose();
         
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -447,6 +443,7 @@ public class Oficios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+   
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         try {
             atalhos(evt);
@@ -487,7 +484,6 @@ public class Oficios extends javax.swing.JFrame {
     }//GEN-LAST:event_jLLoginMouseClicked
 
     private void jLFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLFecharMouseClicked
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jLFecharMouseClicked
 
@@ -698,7 +694,7 @@ public class Oficios extends javax.swing.JFrame {
         
         JButton jb = new JButton("Ok!");
                 
-        JTextField jt = new JTextField("1/2015");
+        JTextField jt = new JTextField(db.getOficod()+"/"+"2015");
         KeyListener l = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -742,12 +738,18 @@ public class Oficios extends javax.swing.JFrame {
                 i++;
             }
             ano = jt.getText().substring(i);
-            v = new VisualizaOfic(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)), Integer.valueOf(numero), Integer.valueOf(ano), this.user);
-            SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
-            v.setVisible(true);
-            v.getContentPane().setBackground(Color.WHITE);
-            dialog.setVisible(false);
-            this.toBack();
+            if(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)) != null){
+                SisLog S = new SisLog("BuscaOficio", this.user, "Oficio - " + jt.getText());
+                v = new VisualizaOfic(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)), Integer.valueOf(numero), Integer.valueOf(ano), this.user);
+                v.setVisible(true);
+                v.getContentPane().setBackground(Color.WHITE);
+                dialog.setVisible(false);
+                this.toBack();
+            }else{
+                JOptionPane.showMessageDialog(null, "Ofício Não Encontrado.");
+                SisLog S = new SisLog("BuscaOficio", this.user, "Erro Oficio - " + jt.getText());
+                dialog.setVisible(false);
+            }
         });
         Object data[] = {"Digite o número/ano do Ofício:", jt, jb};
         JOptionPane option = new JOptionPane();

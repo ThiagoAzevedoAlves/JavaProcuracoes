@@ -84,12 +84,13 @@ public class Database{
             if (conn.isClosed()){
                 this.connect();
             }
-            preparedStatement = conn.prepareStatement("SELECT MAX(id) FROM oficio");
+            preparedStatement = conn.prepareStatement("SELECT MAX(numero) FROM oficio");
             resultSet = preparedStatement.executeQuery();
             preparedStatement = null;
             int n;
             while(resultSet.next()){
-                n = resultSet.getInt(1);                
+                n = resultSet.getInt(1);
+                return n;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETPROCOD -"+ e.getMessage());
@@ -117,7 +118,7 @@ public class Database{
                 return aux;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "GETCAMINHO - "+ e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ofício Não Encontrado. Erro: " + e.getMessage());
         }
         return null;
     }    

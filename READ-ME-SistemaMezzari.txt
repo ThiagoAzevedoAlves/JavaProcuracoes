@@ -10,3 +10,6 @@ r1 - (v0.1.0) - Inclusão do Sistema MezzariProcuracoes ao Projeto Principal;
 		}
 r2 - (v0.1.1) - Reposição de Botoes; Inclusão de métodos para adição e remoção de
 		Ofícios pelo painel inicial;
+r3 - (v0.1.2) - Troca do Design do Frame de Login; Inclusão de recursos com o fundo azul para o
+		Sistema de Ofícios;  Troca do Design do Frame InsereProc; Adição do Recurso de Busca 
+		de Nome pelo CPF no Frame InserProc;
