@@ -481,8 +481,7 @@ public class Procuracoes extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLbv, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,7 +496,7 @@ public class Procuracoes extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/logo.jpg")).getImage(), 0, 0, WIDTH, HEIGHT, null);
+        g2.drawImage(new javax.swing.ImageIcon(getClass().getResource("/recursos/logo.jpg")).getImage(), 0, 0, WIDTH, HEIGHT, null);
         g2.dispose();
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
         jLabel1.getAccessibleContext().setAccessibleDescription("");
@@ -515,7 +514,7 @@ public class Procuracoes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1037, 670));
+        setSize(new java.awt.Dimension(1037, 683));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1088,7 +1087,7 @@ public class Procuracoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLIncluir;
     private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLSobre;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbv;
     private javax.swing.JPanel jPBuscar;

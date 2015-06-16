@@ -128,7 +128,7 @@
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);&#xa;Graphics2D g2 = resizedImg.createGraphics();&#xa;g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);&#xa;g2.drawImage(new javax.swing.ImageIcon(getClass().getResource(&quot;/procuracoes/recursos/logo.jpg&quot;)).getImage(), 0, 0, WIDTH, HEIGHT, null);&#xa;g2.dispose();&#xa;jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);&#xa;Graphics2D g2 = resizedImg.createGraphics();&#xa;g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);&#xa;g2.drawImage(new javax.swing.ImageIcon(getClass().getResource(&quot;/recursos/logo.jpg&quot;)).getImage(), 0, 0, WIDTH, HEIGHT, null);&#xa;g2.dispose();&#xa;jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>

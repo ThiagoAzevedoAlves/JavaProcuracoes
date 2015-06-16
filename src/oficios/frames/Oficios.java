@@ -63,7 +63,7 @@ public class Oficios extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2_blue.jpg")).getImage(), 0, 0, 1000, 350, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/logo2.jpg")).getImage(), 0, 0, 1000, 350, null);
         g.dispose();
         
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
@@ -421,7 +421,7 @@ public class Oficios extends javax.swing.JFrame {
         BufferedImage resizedImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(new javax.swing.ImageIcon(getClass().getResource("/procuracoes/recursos/logo.jpg")).getImage(), 0, 0, WIDTH, HEIGHT, null);
+        g2.drawImage(new javax.swing.ImageIcon(getClass().getResource("/recursos/logo.jpg")).getImage(), 0, 0, WIDTH, HEIGHT, null);
         g2.dispose();
         jLabel1.setIcon(new javax.swing.ImageIcon(resizedImg));
         jLabel1.getAccessibleContext().setAccessibleDescription("");

@@ -48,7 +48,7 @@ public class InsereProc extends javax.swing.JFrame {
         jLcod.setText(String.valueOf(db.getProcod()));
         jTcaminho.setText("\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariproc\\"+ Integer.toString(db.getProcod()) + ".pdf");
         this.getContentPane().setBackground(Color.white);
-        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
         this.setIconImage(image.getImage());
         this.user=u;
         jTproccpf.addKeyListener(new KeyListener(){

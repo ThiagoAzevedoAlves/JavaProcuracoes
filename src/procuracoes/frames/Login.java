@@ -5,6 +5,8 @@
  */
 package procuracoes.frames;
 
+import geral.frames.servidor;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -25,7 +27,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-        ImageIcon image = new ImageIcon(getClass().getResource("/procuracoes/recursos/icon.png"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
         this.setIconImage(image.getImage());
         
         //proc------------------------------------------------------------------------------------//
@@ -68,6 +70,9 @@ public class Login extends javax.swing.JFrame {
         };
         jPasswordField1.addKeyListener(l);
         jTextField1.addKeyListener(l);
+        
+        this.getContentPane().setBackground(Color.white);
+        this.jPanel1.setBackground(Color.white);
     }
     
     
@@ -90,7 +95,7 @@ public class Login extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.gray, java.awt.Color.lightGray));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.lightGray));
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +185,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -199,11 +204,16 @@ public class Login extends javax.swing.JFrame {
         String senha;
         senha = (String.valueOf(ss));
         if(db.Login(login,senha) == 1){
-            Procuracoes i = new Procuracoes(db.getTipo(login), db.getNome(login));
-            i.setVisible(true);
-            i.user = jTextField1.getText();
-            this.dispose();
-            SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
+            if(db.getTipo(login)==1){
+                servidor s = new servidor(db.getTipo(login), login);
+                s.setVisible(true);
+                this.dispose();
+                SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
+            }else if(db.getTipo(login)==0){
+                Procuracoes p = new Procuracoes(db.getTipo(login), login);
+                p.setVisible(true);
+                this.dispose();
+            }
         }else{
             SisLog S = new SisLog("Login - Procuracoes","Erro "+jTextField1.getText(), "Erro");
         }        
