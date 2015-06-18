@@ -51,7 +51,7 @@
               <Component id="jLcod4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Component id="jLcod" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="769" max="32767" attributes="0"/>
+              <EmptySpace pref="705" max="32767" attributes="0"/>
               <Component id="jL5" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Component id="jLdtini" min="-2" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="522" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="521" max="32767" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -93,7 +93,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="14" style="1"/>
+          <Font name="Square721 BT" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Data de Inser&#xe7;&#xe3;o:"/>
       </Properties>
@@ -104,7 +104,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="14" style="1"/>
+          <Font name="Square721 BT" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;00/00/0000&gt;"/>
       </Properties>
@@ -115,7 +115,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="14" style="1"/>
+          <Font name="Square721 BT" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cod:"/>
       </Properties>
@@ -126,7 +126,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="14" style="1"/>
+          <Font name="Square721 BT" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;00&gt;"/>
       </Properties>

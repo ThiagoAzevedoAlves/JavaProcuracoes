@@ -6,8 +6,8 @@
 package oficios.db;
 
 /**
- *
- * @author Thiago
+ * Classe Responsavel pelas Operações com Banco de Dados envolvendo Ofícios;
+ * @author Thiago Azevedo Alves
  */
 
 import java.sql.Connection;
@@ -32,7 +32,7 @@ public class Database{
     public void connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance(); //carrega o driver do mysql
-            String url = "jdbc:mysql://192.168.2.170:3306/cartorioimoveis?autoReconnect=true";
+            String url = "jdbc:mysql://192.168.2.251:3306/cartorioimoveis?autoReconnect=true";
             String usuario = "Thiago";
             String senha = "root";
             conn = DriverManager.getConnection(url, usuario, senha); //conecta no banco de dados MySql
@@ -71,6 +71,12 @@ public class Database{
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "SALVAOFIC" + "\n" + e.getMessage());            
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
         }
         return ret;
     }
@@ -84,7 +90,7 @@ public class Database{
             if (conn.isClosed()){
                 this.connect();
             }
-            preparedStatement = conn.prepareStatement("SELECT MAX(numero) FROM oficio");
+            preparedStatement = conn.prepareStatement("SELECT MAX(numero) FROM (SELECT numero FROM oficio where ano=2015) as p");
             resultSet = preparedStatement.executeQuery();
             preparedStatement = null;
             int n;
@@ -94,6 +100,12 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETPROCOD -"+ e.getMessage());
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
         }
         return 1;
     }
@@ -119,6 +131,12 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ofício Não Encontrado. Erro: " + e.getMessage());
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
         }
         return null;
     }    
@@ -143,6 +161,12 @@ public class Database{
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATA - "+ e.getMessage());
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
         }
         return null;
     }
@@ -164,6 +188,12 @@ public class Database{
             return 1;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "SETDATA - "+ e.getMessage());
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
         }
         return 0;
     }
@@ -187,6 +217,12 @@ public class Database{
                 ret=1;
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString());
+            }finally{
+                try {
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
+            }
             }
         }
         return ret;

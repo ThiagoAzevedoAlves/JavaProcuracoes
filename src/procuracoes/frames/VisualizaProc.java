@@ -37,11 +37,11 @@ import procuracoes.classes.SisLog;
 import procuracoes.db.Database;
 import procuracoes.db.Dataent;
 import procuracoes.db.Dataproc;
-import procuracoes.db.Datauser;
+import geral.db.Datauser;
 
 /**
- *
- * @author Thiago
+ * Classe Responsável pelo Frame de Visualização de Ofícios;
+ * @author Thiago Azevedo Alves
  */
 
 public class VisualizaProc extends javax.swing.JFrame {
@@ -57,6 +57,12 @@ public class VisualizaProc extends javax.swing.JFrame {
     public String user;
     int tipo;
     
+    /**
+     * 
+     * @param caminho STRING representando o Caminho da Procuração
+     * @param cod INT representando o código da Procuração
+     * @param usuario STRING representando o Usuário do Sistema
+     */
     public VisualizaProc(String caminho, int cod, String usuario) {
         
         Datauser du = new Datauser();
@@ -64,7 +70,8 @@ public class VisualizaProc extends javax.swing.JFrame {
         tipo = du.getTipo(usuario);
         this.user = usuario;
         try {
-            this.cod = cod;db = new Database();
+            this.cod = cod;
+            db = new Database();
             db.connect();
             dp = new Dataproc();
             dp.connect();
@@ -188,6 +195,10 @@ public class VisualizaProc extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método Responsável pela carga dos dados no formulario
+     * @throws SQLException 
+     */
     public void carregaCampos() throws SQLException{
         procuradores = new ArrayList<>();                              //Lista auxiliar para carregar os procuradores
         procuradores.addAll(dp.getProcuradores(this.cod));             //popula a lista de procuradores
@@ -218,6 +229,9 @@ public class VisualizaProc extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método Responsável por atualizar o ComboBox de Procuradores com a quantidade correta.
+     */
     public void setProcuradores(){
         int i = procuradores.size();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -301,11 +315,11 @@ public class VisualizaProc extends javax.swing.JFrame {
         jSeparator1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jL5.setBackground(new java.awt.Color(255, 255, 255));
-        jL5.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jL5.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jL5.setText("Data Inicial:");
 
         jLdtini.setBackground(new java.awt.Color(255, 255, 255));
-        jLdtini.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLdtini.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLdtini.setText("<00/00/0000>");
         jLdtini.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -314,11 +328,11 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLcod2.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod2.setText("Data Final:");
 
         jLdtfin.setBackground(new java.awt.Color(255, 255, 255));
-        jLdtfin.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLdtfin.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLdtfin.setText("<00/00/0000>");
         jLdtfin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -331,17 +345,18 @@ public class VisualizaProc extends javax.swing.JFrame {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLcod4.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod4.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod4.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod4.setText("Cod:");
 
         jLcod.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod.setText("<00>");
 
         jLcod6.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod6.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod6.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod6.setText("Procurador:");
 
+        jCproc.setFont(new java.awt.Font("Square721 BT", 0, 11)); // NOI18N
         jCproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procurador 1" }));
         jCproc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -350,11 +365,11 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLproc.setBackground(new java.awt.Color(255, 255, 255));
-        jLproc.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLproc.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLproc.setText("</1>");
 
         jLprocnome2.setBackground(new java.awt.Color(255, 255, 255));
-        jLprocnome2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLprocnome2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLprocnome2.setText("Nome:");
         jLprocnome2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -363,7 +378,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLproccpf2.setBackground(new java.awt.Color(255, 255, 255));
-        jLproccpf2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLproccpf2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLproccpf2.setText("Cpf:");
         jLproccpf2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -372,7 +387,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         JLprocpod2.setBackground(new java.awt.Color(255, 255, 255));
-        JLprocpod2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        JLprocpod2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         JLprocpod2.setText("Poderes:");
         JLprocpod2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -381,9 +396,10 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLcod11.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod11.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod11.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod11.setText("Entidade:");
 
+        jCentidade.setFont(new java.awt.Font("Square721 BT", 0, 11)); // NOI18N
         jCentidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entidade 1" }));
         jCentidade.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -392,11 +408,11 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentidade.setBackground(new java.awt.Color(255, 255, 255));
-        jLentidade.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentidade.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentidade.setText("</1>");
 
         jLentnome2.setBackground(new java.awt.Color(255, 255, 255));
-        jLentnome2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentnome2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentnome2.setText("Nome:");
         jLentnome2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -405,7 +421,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         JLentcnpj2.setBackground(new java.awt.Color(255, 255, 255));
-        JLentcnpj2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        JLentcnpj2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         JLentcnpj2.setText("Cnpj:");
         JLentcnpj2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -414,11 +430,11 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLcod15.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod15.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod15.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod15.setText("Conjunto:");
 
         jLentresp2.setBackground(new java.awt.Color(255, 255, 255));
-        jLentresp2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentresp2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentresp2.setText("Responsável:");
         jLentresp2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -427,7 +443,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentcpf2.setBackground(new java.awt.Color(255, 255, 255));
-        jLentcpf2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentcpf2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentcpf2.setText("Cpf:");
         jLentcpf2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -436,7 +452,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLconjunto.setBackground(new java.awt.Color(255, 255, 255));
-        jLconjunto.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLconjunto.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLconjunto.setText("<Em conjunto>");
         jLconjunto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -445,7 +461,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLprocpod.setBackground(new java.awt.Color(255, 255, 255));
-        jLprocpod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLprocpod.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLprocpod.setText("<Poderes>");
         jLprocpod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -454,7 +470,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLprocnome.setBackground(new java.awt.Color(255, 255, 255));
-        jLprocnome.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLprocnome.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLprocnome.setText("<Nome>");
         jLprocnome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -463,7 +479,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLproccpf.setBackground(new java.awt.Color(255, 255, 255));
-        jLproccpf.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLproccpf.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLproccpf.setText("<Cpf>");
         jLproccpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -472,7 +488,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentnome.setBackground(new java.awt.Color(255, 255, 255));
-        jLentnome.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentnome.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentnome.setText("<Nome>");
         jLentnome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -481,7 +497,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentcnpj.setBackground(new java.awt.Color(255, 255, 255));
-        jLentcnpj.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentcnpj.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentcnpj.setText("<Cnpj>");
         jLentcnpj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -490,7 +506,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentresp.setBackground(new java.awt.Color(255, 255, 255));
-        jLentresp.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentresp.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentresp.setText("<Responsavel>");
         jLentresp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -499,7 +515,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         });
 
         jLentcpf.setBackground(new java.awt.Color(255, 255, 255));
-        jLentcpf.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLentcpf.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLentcpf.setText("<Cpf>");
         jLentcpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -558,10 +574,11 @@ public class VisualizaProc extends javax.swing.JFrame {
                         .addComponent(jL5)
                         .addGap(6, 6, 6)
                         .addComponent(jLdtini)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                        .addGap(45, 45, 45)
                         .addComponent(jLcod2)
                         .addGap(6, 6, 6)
-                        .addComponent(jLdtfin))
+                        .addComponent(jLdtfin)
+                        .addGap(0, 98, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -629,7 +646,7 @@ public class VisualizaProc extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 510, Short.MAX_VALUE)
+                .addGap(0, 505, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

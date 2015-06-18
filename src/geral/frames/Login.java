@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package procuracoes.frames;
+package geral.frames;
 
-import geral.frames.servidor;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -16,11 +15,16 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import procuracoes.classes.SisLog;
-import procuracoes.db.Datauser;
+import geral.db.Datauser;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import procuracoes.frames.Procuracoes;
 
 /**
- *
- * @author Thiago
+ * JFrame de Confirmação de Usuário e Senha
+ * @author Thiago Azevedi Alves
  */
 public class Login extends javax.swing.JFrame {
     
@@ -30,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
         this.setIconImage(image.getImage());
         
-        //proc------------------------------------------------------------------------------------//
+        //logo------------------------------------------------------------------------------------//
         BufferedImage resizedImg = new BufferedImage(320, 80, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resizedImg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -74,8 +78,7 @@ public class Login extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.white);
         this.jPanel1.setBackground(Color.white);
     }
-    
-    
+       
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -111,10 +114,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLabel19.setText("Login:");
 
-        jLabel20.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLabel20.setText("Senha:");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,7 +152,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                             .addComponent(jPasswordField1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,28 +198,39 @@ public class Login extends javax.swing.JFrame {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         
     }//GEN-LAST:event_jPanel1MouseClicked
-
+    /**
+     * Verifica Usuário e Senha; Após, Abre a Janela de Sistema Referente ao Tipo de Usuário.
+     * @param evt Evento de Clique do Mouse
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Datauser db = new Datauser();
-        db.connect();
-        String login = jTextField1.getText();
-        char[] ss = jPasswordField1.getPassword();
-        String senha;
-        senha = (String.valueOf(ss));
-        if(db.Login(login,senha) == 1){
-            if(db.getTipo(login)==1){
-                servidor s = new servidor(db.getTipo(login), login);
-                s.setVisible(true);
-                this.dispose();
-                SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
-            }else if(db.getTipo(login)==0){
-                Procuracoes p = new Procuracoes(db.getTipo(login), login);
-                p.setVisible(true);
-                this.dispose();
+        try{
+            db.connect();
+            String login = jTextField1.getText();
+            char[] ss = jPasswordField1.getPassword();
+            String senha;
+            senha = (String.valueOf(ss));
+            if(db.Login(login,senha) == 1){ //confirma usuário e senha
+                if(db.getTipo(login)==1){ //se estiverem correto verifica o tipo, se tipo==1 abre escolha de Sistema
+                    servidor s = new servidor(db.getTipo(login), login);
+                    s.setVisible(true);
+                    this.dispose();
+                    SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
+                }else if(db.getTipo(login)==0){ //se tipo==0 abre Sistema de Procuracoes
+                    Procuracoes p = new Procuracoes(db.getTipo(login), login);
+                    p.setVisible(true);
+                    this.dispose();
+                }
+            }else{
+                SisLog S = new SisLog("Login - Procuracoes","Erro "+jTextField1.getText(), "Erro");
             }
-        }else{
-            SisLog S = new SisLog("Login - Procuracoes","Erro "+jTextField1.getText(), "Erro");
-        }        
+        }finally{
+            try {
+                db.conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao Fechar conexão Mysql.");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

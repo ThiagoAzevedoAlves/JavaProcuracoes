@@ -116,30 +116,30 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial Black" size="36" style="0"/>
+          <Font name="Square721 BT" size="36" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Sistema Mezzari"/>
+        <Property name="text" type="java.lang.String" value="SISTEMA MEZZARI"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="18" style="0"/>
+          <Font name="Square721 BT" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Sistema Mezzari &#xe9; um sistema desenvolvido"/>
+        <Property name="text" type="java.lang.String" value="SISTEMA MEZZARI &#xe9; um sistema desenvolvido"/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="18" style="0"/>
+          <Font name="Square721 BT" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="pelo Cart&#xf3;rio Mezzari - 1&#xba; Cart&#xf3;rio de Im&#xf3;veis"/>
@@ -149,7 +149,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="18" style="0"/>
+          <Font name="Square721 BT" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="de Pelotas. Sem fins comerciais, com"/>
@@ -159,7 +159,7 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="18" style="0"/>
+          <Font name="Square721 BT" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="bibliotecas de uso publico licensiadas."/>
@@ -169,7 +169,7 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial Black" size="14" style="0"/>
+          <Font name="Square721 BT" size="14" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>

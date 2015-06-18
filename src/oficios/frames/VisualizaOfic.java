@@ -21,7 +21,7 @@ import org.icepdf.ri.common.SwingViewBuilder;
 import javax.swing.JPanel;
 import procuracoes.classes.SisLog;
 import oficios.db.Database;
-import procuracoes.db.Datauser;
+import geral.db.Datauser;
 
 /**
  *
@@ -36,6 +36,13 @@ public class VisualizaOfic extends javax.swing.JFrame {
     public String user;
     int tipo;
     
+    /**
+     * 
+     * @param caminho STRING Representando o Caminho do Ofício
+     * @param numero INT Representando o Numero do Oficio
+     * @param ano INT Representando o Ano do Oficio
+     * @param usuario STRING Representando o Usuario do Sistema
+     */
     public VisualizaOfic(String caminho, int numero, int ano, String usuario) {
         
         Datauser du = new Datauser();
@@ -117,6 +124,10 @@ public class VisualizaOfic extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método Responsável pela carga dos dados no formulario
+     * @throws SQLException 
+     */
     public void carregaCampos(int numero, int ano) throws SQLException{                
         this.jLcod.setText(numero + "/" + ano); //define o codigo
         this.jLdtini.setText(db.getData(numero, ano));//exibe a data inicial                      
@@ -150,19 +161,19 @@ public class VisualizaOfic extends javax.swing.JFrame {
         jSeparator1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jL5.setBackground(new java.awt.Color(255, 255, 255));
-        jL5.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jL5.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jL5.setText("Data de Inserção:");
 
         jLdtini.setBackground(new java.awt.Color(255, 255, 255));
-        jLdtini.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLdtini.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLdtini.setText("<00/00/0000>");
 
         jLcod4.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod4.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod4.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod4.setText("Cod:");
 
         jLcod.setBackground(new java.awt.Color(255, 255, 255));
-        jLcod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLcod.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLcod.setText("<00>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,7 +185,7 @@ public class VisualizaOfic extends javax.swing.JFrame {
                 .addComponent(jLcod4)
                 .addGap(6, 6, 6)
                 .addComponent(jLcod)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 769, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 705, Short.MAX_VALUE)
                 .addComponent(jL5)
                 .addGap(6, 6, 6)
                 .addComponent(jLdtini)
@@ -184,7 +195,7 @@ public class VisualizaOfic extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 522, Short.MAX_VALUE)
+                .addGap(0, 521, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,8 +209,6 @@ public class VisualizaOfic extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1065, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-   
-    
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         SisLog S = new SisLog("Visualiza", this.user, "Cancelado");

@@ -6,8 +6,8 @@
 package oficios.classes;
 
 /**
- *
- * @author Thiago
+ * Classe que mapeia o Objeto Oficio com o Banco de Dados.
+ * @author Thiago Azevedo Alves
  */
 public class Oficio {
     public int id;
@@ -23,7 +23,14 @@ public class Oficio {
     public void setData(String data) {
         this.data = data;
     }
-    
+    /**
+     * 
+     * @param i INT Representando o ID do Ofício;
+     * @param n INT Representando o NUMERO do Oficio;
+     * @param a INT Reoresentando o ANO do Oficio;
+     * @param c STRING Representando o CAMINHO do Oficio;
+     * @param d STRING Representando a DATA do Oficio;
+     */
     public Oficio(int i, int n, int a, String c, String d){
         this.id = i;
         this.numero = n;

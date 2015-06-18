@@ -20,13 +20,12 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import oficios.classes.Oficio;
 import oficios.frames.Oficios;
 import procuracoes.classes.SisLog;
 import procuracoes.frames.Procuracoes;
 
 /**
- *
+ * Classe Responsável pela Escolha de Banco de Dados
  * @author Thiago
  */
 public class servidor extends javax.swing.JFrame {
@@ -34,6 +33,8 @@ public class servidor extends javax.swing.JFrame {
     String user;
     
     /**
+     * @param tipo int Representando o Tipo de Usuário
+     * @param u String Representando o Nome do Usuário
      * Creates new form servidor
      */
     public servidor(int tipo, String u) {
@@ -95,7 +96,7 @@ public class servidor extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Square721 BT", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 124, 184));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Selecione o Sistema Onde Deseja Entrar!");
@@ -106,7 +107,7 @@ public class servidor extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Square721 BT", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 124, 184));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Bem Vindo(a)!");
@@ -168,7 +169,10 @@ public class servidor extends javax.swing.JFrame {
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLprocMouseClicked
-
+    
+    /**
+     * Classe Responável pelo Drag'n'Drop da Janela
+     */
     public class MoveJanela implements MouseListener, MouseMotionListener{
         
         JComponent target;
@@ -231,7 +235,10 @@ public class servidor extends javax.swing.JFrame {
         
     }
     
-        
+    
+    /**
+     * Método Responsável por Criar um Janela de PopoUp com a opção de Fechar o Programa.
+     */
     private void createPopupFechar() {
 
         JPopupMenu pmenu = new JPopupMenu();

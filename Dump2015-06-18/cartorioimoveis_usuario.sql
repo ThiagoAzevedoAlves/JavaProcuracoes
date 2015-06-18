@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.23, for Win32 (x86)
 --
--- Host: 192.168.2.170    Database: cartorioimoveis
+-- Host: 192.168.2.251    Database: cartorioimoveis
 -- ------------------------------------------------------
 -- Server version	5.6.24-log
 
@@ -31,7 +31,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'thiago','Thiago Azevedo Alves','cartorio7',1),(2,'teste','teste',NULL,0);
+INSERT INTO `usuario` VALUES (1,'thiago','Thiago Azevedo Alves','cartorio7',1),(2,'teste','Thiago Azevedo',NULL,0),(3,'gerson','Gerson',NULL,1),(4,'carla','Carla',NULL,0),(5,'mauricio','Mauricio',NULL,0),(6,'paulo','Paulo',NULL,0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-27  9:56:59
+-- Dump completed on 2015-06-18 17:22:40

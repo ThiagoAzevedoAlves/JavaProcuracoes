@@ -122,7 +122,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Conjunto:"/>
           </Properties>
@@ -130,7 +130,7 @@
         <Component class="javax.swing.JComboBox" name="jCconjunto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="12" style="1"/>
+              <Font name="Square721 BT" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -145,7 +145,7 @@
         <Component class="javax.swing.JLabel" name="jLabel23">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Caminho:"/>
           </Properties>
@@ -175,58 +175,55 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jBEntsalva" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jBEntsalva" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTentcnpj" max="-2" attributes="0"/>
-                              <Component id="jTentnome" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTentresp" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel14" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jtentcpf" min="-2" pref="240" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel14" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jCEnt" min="-2" pref="124" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTnent" min="-2" pref="31" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jTentnome" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtentcpf" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jCEnt" min="-2" pref="124" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jTentcnpj" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTnent" min="-2" pref="31" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jTentresp" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -244,27 +241,31 @@
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTentnome" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTentcnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTentresp" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTentnome" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtentcpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtentcpf" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jBEntsalva" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="jBEntsalva" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTentresp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -274,7 +275,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empresa:"/>
           </Properties>
@@ -282,7 +283,7 @@
         <Component class="javax.swing.JComboBox" name="jCEnt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="12" style="1"/>
+              <Font name="Square721 BT" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -297,7 +298,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quantidade de Empresas:"/>
           </Properties>
@@ -307,31 +308,13 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTnentFocusLost"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nome:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cnpj:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTentnome">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[241, 20]"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTentcnpj">
           <Properties>
@@ -343,17 +326,9 @@
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Respons&#xe1;vel:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cpf:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTentresp">
@@ -363,22 +338,54 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="jBEntsalva">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Square721 BT" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Salva"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEntsalvaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel11">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Square721 BT" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nome:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTentnome">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[241, 20]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTentnomeFocusGained"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Square721 BT" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cpf:"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JTextField" name="jtentcpf">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[242, 20]"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jBEntsalva">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Salva"/>
-          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEntsalvaActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtentcpfFocusGained"/>
           </Events>
         </Component>
       </SubComponents>
@@ -402,35 +409,41 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTnproc" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jCProc" min="-2" pref="124" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jBProcsalva" min="-2" pref="315" max="-2" attributes="0"/>
-                      <Component id="jTprocpod" min="-2" pref="315" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTprocnome" pref="250" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jLabel20" max="32767" attributes="0"/>
+                              <Component id="jLabel19" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTprocnome" max="32767" attributes="0"/>
                               <Component id="jTproccpf" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jCProc" min="-2" pref="124" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jTnproc" min="-2" pref="31" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jBProcsalva" min="-2" pref="315" max="-2" attributes="0"/>
+                                  <Component id="jTprocpod" min="-2" pref="315" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -472,7 +485,7 @@
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Procuradores:"/>
           </Properties>
@@ -480,7 +493,7 @@
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quantidade de Procuradores:"/>
           </Properties>
@@ -493,7 +506,7 @@
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
@@ -501,7 +514,7 @@
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cpf:"/>
           </Properties>
@@ -516,7 +529,7 @@
         <Component class="javax.swing.JComboBox" name="jCProc">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="12" style="1"/>
+              <Font name="Square721 BT" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -531,7 +544,7 @@
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Poderes:"/>
           </Properties>
@@ -541,7 +554,7 @@
         <Component class="javax.swing.JButton" name="jBProcsalva">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="12" style="1"/>
+              <Font name="Square721 BT" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salva"/>
           </Properties>
@@ -622,7 +635,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Final:"/>
           </Properties>
@@ -650,7 +663,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Inicial:"/>
           </Properties>
@@ -713,7 +726,7 @@
                       <Component id="jLcod" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -722,7 +735,7 @@
         <Component class="javax.swing.JLabel" name="jLcod">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;variavel&gt;"/>
           </Properties>
@@ -730,7 +743,7 @@
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Serif" size="14" style="1"/>
+              <Font name="Square721 BT" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Procura&#xe7;&#xe3;o cod:"/>
           </Properties>
@@ -740,7 +753,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="12" style="1"/>
+          <Font name="Square721 BT" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
@@ -751,7 +764,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Serif" size="12" style="1"/>
+          <Font name="Square721 BT" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ok"/>
       </Properties>

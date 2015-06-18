@@ -5,6 +5,9 @@
  */
 package oficios.frames;
 
+import procuracoes.classes.Digitalizacao;
+import geral.frames.Ajuda;
+import geral.frames.Login;
 import procuracoes.frames.*;
 import SK.gnome.morena.MorenaException;
 import java.awt.Color;
@@ -42,12 +45,21 @@ import oficios.classes.Oficio;
 import procuracoes.classes.SisLog;
 import oficios.db.Database;
 
+/**
+ * Classe Responsável pelo Tela Principal do Sistema de Ofícios.
+ * @author Thiago
+ */
 public class Oficios extends javax.swing.JFrame {
     
     static JDialog dialog;
     boolean cPesq, cIncl, cExcl, cSobr;
     public String user;
     
+    /**
+     * 
+     * @param tipo INT Representando o Tipo de Usuário
+     * @param usuario STRING Representando o Nome do Usuário
+     */
     public Oficios(int tipo, String usuario){
         initComponents();
         user = usuario;
@@ -73,8 +85,7 @@ public class Oficios extends javax.swing.JFrame {
         jPBuscar.setBorder(null);
         jPIncluir.setBorder(null);
         
-        if(tipo==1){            
-            
+        if(tipo==1){        
         
             //botao adicionar--------------------------------------------------------------------------//
         
@@ -124,52 +135,52 @@ public class Oficios extends javax.swing.JFrame {
             jLIncluir.setVisible(false);
         }
         //botao sobre--------------------------------------------------------------------------//
-            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-            g = resizedImg.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
-            g.dispose();
+        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        g = resizedImg.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/ajuda.png")).getImage(), 0, 0, 100, 100, null);
+        g.dispose();
 
-            jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));        
-            //------------------------------------------------------------------------------------------//
-            
-            //botao pesquisar--------------------------------------------------------------------------//
-            resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-            g = resizedImg.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
-            g.dispose();
-        
-            jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
-            //------------------------------------------------------------------------------------------//
-            
-            //botao trocar usuario--------------------------------------------------------------------------//
-            resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
-            g = resizedImg.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
-            g.dispose();
+        jLSobre.setIcon(new javax.swing.ImageIcon(resizedImg));        
+        //------------------------------------------------------------------------------------------//
 
-            jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
-            //------------------------------------------------------------------------------------------//    
-            
-        
-            //botao fechar--------------------------------------------------------------------------//
-            resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
-            g = resizedImg.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.drawImage(new ImageIcon(getClass().getResource("/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
-            g.dispose();
+        //botao pesquisar--------------------------------------------------------------------------//
+        resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        g = resizedImg.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/pesquisar.png")).getImage(), 0, 0, 100, 100, null);
+        g.dispose();
 
-            jLFechar.setIcon(new javax.swing.ImageIcon(resizedImg));        
-            //------------------------------------------------------------------------------------------//    
-            
-            this.getContentPane().setBackground(Color.white);
-            this.jPanel1.setBackground(Color.white);
-            ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
-            this.setIconImage(image.getImage());
+        jLBuscar.setIcon(new javax.swing.ImageIcon(resizedImg));
+        //------------------------------------------------------------------------------------------//
 
-            this.createPopupFechar();
+        //botao trocar usuario--------------------------------------------------------------------------//
+        resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+        g = resizedImg.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/log.png")).getImage(), 0, 0, 40, 40, null);
+        g.dispose();
+
+        jLLogin.setIcon(new javax.swing.ImageIcon(resizedImg));        
+        //------------------------------------------------------------------------------------------//    
+
+
+        //botao fechar--------------------------------------------------------------------------//
+        resizedImg = new BufferedImage(40, 40, BufferedImage.TYPE_INT_ARGB);
+        g = resizedImg.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(new ImageIcon(getClass().getResource("/recursos/fechar.png")).getImage(), 0, 0, 40, 40, null);
+        g.dispose();
+
+        jLFechar.setIcon(new javax.swing.ImageIcon(resizedImg));        
+        //------------------------------------------------------------------------------------------//    
+
+        this.getContentPane().setBackground(Color.white);
+        this.jPanel1.setBackground(Color.white);
+        ImageIcon image = new ImageIcon(getClass().getResource("/recursos/icon.png"));
+        this.setIconImage(image.getImage());
+
+        this.createPopupFechar();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -212,10 +223,10 @@ public class Oficios extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.lightGray));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 44)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Square721 BT", 0, 44)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 124, 184));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Sistema de Ofícios");
+        jLabel6.setText("SISTEMA DE OFÍCIOS");
         jLabel6.setToolTipText("");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -364,7 +375,7 @@ public class Oficios extends javax.swing.JFrame {
             }
         });
 
-        jLbv.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLbv.setFont(new java.awt.Font("Square721 BT", 0, 44)); // NOI18N
         jLbv.setForeground(new java.awt.Color(102, 124, 184));
         jLbv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbv.setText("Bem Vindo Thiago!");
@@ -559,6 +570,9 @@ public class Oficios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLIdigMouseClicked
     
+    /**
+    * Classe Responável pelo Drag'n'Drop da Janela
+    */
     public class MoveJanela implements MouseListener, MouseMotionListener{
         
         JComponent target;
@@ -621,7 +635,9 @@ public class Oficios extends javax.swing.JFrame {
         
     }
     
-        
+    /**
+     * Método Responsável por Criar um Janela de PopoUp com a opção de Fechar o Programa.
+     */    
     private void createPopupFechar() {
 
         JPopupMenu pmenu = new JPopupMenu();
@@ -647,7 +663,9 @@ public class Oficios extends javax.swing.JFrame {
         
     }
 
-    
+    /**
+     * Método Responsável por Criar os Atalhos de Teclado.
+     */
     private void atalhos(KeyEvent evt) throws SQLException {
         /*Mostra a key da tecla pressionada*/
         //System.out.println(evt.getKeyCode());  
@@ -686,14 +704,16 @@ public class Oficios extends javax.swing.JFrame {
         }
     }
    
-    
+    /**
+     * Método que Abre uma janela para busca de OFICIO pelo NUMERO/ANO
+     */
     public void buscaOficio(){
         Database db;
         db = new Database();
         db.connect();
         
         JButton jb = new JButton("Ok!");
-                
+        //Define a Ação da tecla ENTER no jtextfiled-----------------------------------------------------//        
         JTextField jt = new JTextField(db.getOficod()+"/"+"2015");
         KeyListener l = new KeyListener() {
             @Override
@@ -723,34 +743,37 @@ public class Oficios extends javax.swing.JFrame {
                 }
             }
         };
+        //-----------------------------------------------------------------------------------------------------//
         jt.addKeyListener(l);
         jt.selectAll();
         
+        //Define a Ação de clique no Botão de OK -------------------------------------------------------------//
         jb.addActionListener((ActionEvent e) ->{
             VisualizaOfic v;
             String numero = "";
             String ano;
             char aux = jt.getText().charAt(0);
             int i = 1;
-            while(aux != '/'){                
+            while(aux != '/'){ //Separa uma String em numero/ano  
                 numero = numero.concat(String.valueOf(aux));
                 aux = jt.getText().charAt(i);
                 i++;
             }
             ano = jt.getText().substring(i);
-            if(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)) != null){
+            if(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)) != null){ //Se existir um arquivo Cria um Janela de Visualização
                 SisLog S = new SisLog("BuscaOficio", this.user, "Oficio - " + jt.getText());
                 v = new VisualizaOfic(db.getCaminho(Integer.valueOf(numero), Integer.valueOf(ano)), Integer.valueOf(numero), Integer.valueOf(ano), this.user);
                 v.setVisible(true);
                 v.getContentPane().setBackground(Color.WHITE);
                 dialog.setVisible(false);
                 this.toBack();
-            }else{
+            }else{ //-------------------------------------------------------------//Caso contrário retorna erro
                 JOptionPane.showMessageDialog(null, "Ofício Não Encontrado.");
                 SisLog S = new SisLog("BuscaOficio", this.user, "Erro Oficio - " + jt.getText());
                 dialog.setVisible(false);
             }
         });
+        //-----------------------------------------------------------------------------------------------------------//
         Object data[] = {"Digite o número/ano do Ofício:", jt, jb};
         JOptionPane option = new JOptionPane();
         option.setMessage(data);
@@ -762,6 +785,9 @@ public class Oficios extends javax.swing.JFrame {
                 
     }
     
+    /**
+     * Método que Abre uma janela para INSERÇÃO de OFICIOS pelo NUMERO/ANO
+     */
     public void addOficio(){
         Database db;
         db = new Database();
@@ -770,6 +796,7 @@ public class Oficios extends javax.swing.JFrame {
         JButton jb = new JButton("Ok!");
                 
         JTextField jt = new JTextField("1/2015");
+        //Define a Ação da tecla ENTER no jtextfiled-----------------------------------------------------//
         KeyListener l = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -798,15 +825,17 @@ public class Oficios extends javax.swing.JFrame {
                 }
             }
         };
+        //---------------------------------------------------------------------------------------------//
         jt.addKeyListener(l);
         jt.selectAll();
         
+        //Define a Ação de clique no Botão de OK -------------------------------------------------------------//
         jb.addActionListener((ActionEvent e) ->{
             String numero = "";
             String ano;
             char aux = jt.getText().charAt(0);
             int i = 1;
-            while(aux != '/'){                
+            while(aux != '/'){//Separa uma String em numero/ano  
                 numero = numero.concat(String.valueOf(aux));
                 aux = jt.getText().charAt(i);
                 i++;
@@ -816,10 +845,12 @@ public class Oficios extends javax.swing.JFrame {
             resp = JOptionPane.showConfirmDialog(null, "Deseja ADICIONAR O OFICIO " + numero + "/" + ano + "?");
             if (resp == 0) {
                 try {
+                    //Converte a Data para String ----//
                     Date d1 = new Date(System.currentTimeMillis());
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                     String d =sdf.format(d1);                    
-                    int teste = db.salva(new Oficio(1, Integer.valueOf(numero), Integer.valueOf(ano), "\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariofic\\"+ano+"\\"+numero+"\\OFÍCIOS.pdf", d));
+                    //Converte a Data para String ----//
+                    int teste = db.salva(new Oficio(1, Integer.valueOf(numero), Integer.valueOf(ano), "\\\\servidor\\Repositorio\\SistemaMezzari\\mezzariofic\\"+ano+"\\"+numero+"\\OFICIOS.pdf", d));
                     if(teste==1){
                         SisLog S = new SisLog("AdicionaOficio", dialog.getName(), "Sucesso - Oficio " + jt.getText());
                         JOptionPane.showMessageDialog(null, "OFICIO Adicionado com sucesso!");
@@ -838,6 +869,7 @@ public class Oficios extends javax.swing.JFrame {
                 }
             }
         });
+        //---------------------------------------------------------------------------------------------------//
         
         Object data[] = {"Digite o número/ano do Ofício:", jt, jb};
         JOptionPane option = new JOptionPane();
@@ -850,7 +882,9 @@ public class Oficios extends javax.swing.JFrame {
         
     }
     
-    
+    /**
+     * Método que Abre uma janela para EXCLUSÃO de OFICIOS pelo NUMERO/ANO
+     */
     public void exclui(){
         Database db;
         db = new Database();

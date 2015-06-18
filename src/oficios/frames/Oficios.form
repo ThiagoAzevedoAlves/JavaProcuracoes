@@ -135,13 +135,13 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Black" size="44" style="0"/>
+              <Font name="Square721 BT" size="44" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b8" green="7c" red="66" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Sistema de Of&#xed;cios"/>
+            <Property name="text" type="java.lang.String" value="SISTEMA DE OF&#xcd;CIOS"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="verticalAlignment" type="int" value="3"/>
           </Properties>
@@ -370,7 +370,7 @@
         <Component class="javax.swing.JLabel" name="jLbv">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Black" size="36" style="0"/>
+              <Font name="Square721 BT" size="44" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b8" green="7c" red="66" type="rgb"/>

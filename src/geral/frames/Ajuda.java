@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package procuracoes.frames;
+package geral.frames;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -66,33 +66,33 @@ public class Ajuda extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/java.jpg"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Square721 BT", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sistema Mezzari");
+        jLabel2.setText("SISTEMA MEZZARI");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jLabel3.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Square721 BT", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Sistema Mezzari é um sistema desenvolvido");
+        jLabel3.setText("SISTEMA MEZZARI é um sistema desenvolvido");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel4.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Square721 BT", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("pelo Cartório Mezzari - 1º Cartório de Imóveis");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel5.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Square721 BT", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("de Pelotas. Sem fins comerciais, com");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel6.setFont(new java.awt.Font("Liberation Serif", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Square721 BT", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("bibliotecas de uso publico licensiadas.");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Square721 BT", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Desenvolvido por: THIAGO AZEVEDO ALVES");

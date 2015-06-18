@@ -5,6 +5,9 @@
  */
 package procuracoes.frames;
 
+import procuracoes.classes.Digitalizacao;
+import geral.frames.Ajuda;
+import geral.frames.Login;
 import SK.gnome.morena.MorenaException;
 import java.awt.Color;
 import java.awt.Container;
@@ -244,10 +247,10 @@ public class Procuracoes extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.lightGray));
         jPanel1.setForeground(new java.awt.Color(102, 124, 184));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 44)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Square721 BT", 0, 44)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 124, 184));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Sistema de Procurações");
+        jLabel6.setText("SISTEMA DE PROCURAÇÕES");
         jLabel6.setToolTipText("");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -429,7 +432,7 @@ public class Procuracoes extends javax.swing.JFrame {
             }
         });
 
-        jLbv.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLbv.setFont(new java.awt.Font("Square721 BT", 0, 44)); // NOI18N
         jLbv.setForeground(new java.awt.Color(102, 124, 184));
         jLbv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbv.setText("Bem Vindo Thiago!");
@@ -834,13 +837,18 @@ public class Procuracoes extends javax.swing.JFrame {
         jt.selectAll();
         
         jb.addActionListener((ActionEvent e) ->{
-            VisualizaProc v;
-            v = new VisualizaProc(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()), this.user);
-            SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
-            v.setVisible(true);
-            v.getContentPane().setBackground(Color.WHITE);
-            dialog.setVisible(false);
-            this.toBack();
+            if(db.getCaminho(Integer.valueOf(jt.getText()))!=null){
+                VisualizaProc v;
+                v = new VisualizaProc(db.getCaminho(Integer.valueOf(jt.getText())), Integer.valueOf(jt.getText()), this.user);
+                SisLog S = new SisLog("BuscaProcuracao", this.user, "Procuracao - " + jt.getText());
+                v.setVisible(true);
+                v.getContentPane().setBackground(Color.WHITE);
+                dialog.setVisible(false);
+                this.toBack();
+            }else{
+                JOptionPane.showMessageDialog(null, "Documento NÃO encontrado.");
+                SisLog S = new SisLog("BuscaProcuracao", this.user, "Erro, Procuracao - " + jt.getText());
+            }
         });
         
         Object data[] = {"Digite o código da Procuração:", jt, jb};

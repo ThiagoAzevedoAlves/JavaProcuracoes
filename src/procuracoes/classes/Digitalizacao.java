@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package procuracoes.frames;
+package procuracoes.classes;
 import SK.gnome.morena.*;
 import SK.gnome.twain.TwainManager;
 import SK.gnome.twain.TwainSource;
@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import procuracoes.db.Database;
+import procuracoes.frames.InsereProc;
 
 
 /**

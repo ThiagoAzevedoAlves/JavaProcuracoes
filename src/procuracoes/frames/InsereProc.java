@@ -283,15 +283,15 @@ public class InsereProc extends javax.swing.JFrame {
         jCEnt = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         jTnent = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTentnome = new javax.swing.JTextField();
         jTentcnpj = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jTentresp = new javax.swing.JTextField();
-        jtentcpf = new javax.swing.JTextField();
         jBEntsalva = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTentnome = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jtentcpf = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -335,13 +335,13 @@ public class InsereProc extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLabel2.setText("Conjunto:");
 
-        jCconjunto.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+        jCconjunto.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
         jCconjunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Em Conjunto", "Isoladamente", "Em conjunto ou Isoladamente", "Não Consta" }));
 
-        jLabel23.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
         jLabel23.setText("Caminho:");
 
         jTcaminho.setText("\\\\\\servidor\\\\Repositorio\\\\SistemaMezzari\\\\mezzariproc\\\\");
@@ -381,10 +381,10 @@ public class InsereProc extends javax.swing.JFrame {
             jPanel2.setBackground(new java.awt.Color(255, 255, 255));
             jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-            jLabel10.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel10.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel10.setText("Empresa:");
 
-            jCEnt.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jCEnt.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jCEnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empresa 1" }));
             jCEnt.addItemListener(new java.awt.event.ItemListener() {
                 public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -392,7 +392,7 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jLabel9.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel9.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel9.setText("Quantidade de Empresas:");
 
             jTnent.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -401,31 +401,41 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jLabel11.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
-            jLabel11.setText("Nome:");
-
-            jLabel12.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel12.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel12.setText("Cnpj:");
-
-            jTentnome.setPreferredSize(new java.awt.Dimension(241, 20));
 
             jTentcnpj.setPreferredSize(new java.awt.Dimension(241, 20));
 
-            jLabel13.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel13.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel13.setText("Responsável:");
-
-            jLabel14.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
-            jLabel14.setText("Cpf:");
 
             jTentresp.setPreferredSize(new java.awt.Dimension(215, 20));
 
-            jtentcpf.setPreferredSize(new java.awt.Dimension(242, 20));
-
-            jBEntsalva.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jBEntsalva.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jBEntsalva.setText("Salva");
             jBEntsalva.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jBEntsalvaActionPerformed(evt);
+                }
+            });
+
+            jLabel11.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
+            jLabel11.setText("Nome:");
+
+            jTentnome.setPreferredSize(new java.awt.Dimension(241, 20));
+            jTentnome.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    jTentnomeFocusGained(evt);
+                }
+            });
+
+            jLabel14.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
+            jLabel14.setText("Cpf:");
+
+            jtentcpf.setPreferredSize(new java.awt.Dimension(242, 20));
+            jtentcpf.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    jtentcpfFocusGained(evt);
                 }
             });
 
@@ -436,42 +446,39 @@ public class InsereProc extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jBEntsalva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addContainerGap())
+                        .addComponent(jBEntsalva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(19, 19, 19)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTentnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtentcpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCEnt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addComponent(jLabel11))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTentcnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTentnome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTentresp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtentcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jCEnt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTnent, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(24, 24, 24)
+                                .addComponent(jTentcnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTnent, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTentresp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addContainerGap())
             );
             jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,33 +492,35 @@ public class InsereProc extends javax.swing.JFrame {
                         .addComponent(jCEnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel11)
-                        .addComponent(jTentnome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(jTentcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel13)
-                        .addComponent(jTentresp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jTentnome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel14)
-                        .addComponent(jtentcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtentcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jBEntsalva)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addComponent(jBEntsalva))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(jTentresp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             jPanel4.setBackground(new java.awt.Color(255, 255, 255));
             jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-            jLabel17.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel17.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel17.setText("Procuradores:");
 
-            jLabel18.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel18.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel18.setText("Quantidade de Procuradores:");
 
             jTnproc.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -520,10 +529,10 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jLabel19.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel19.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel19.setText("Nome:");
 
-            jLabel20.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel20.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel20.setText("Cpf:");
 
             jTprocnome.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -532,7 +541,7 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jCProc.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jCProc.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jCProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Procurador 1" }));
             jCProc.addItemListener(new java.awt.event.ItemListener() {
                 public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -540,10 +549,10 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jLabel24.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel24.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel24.setText("Poderes:");
 
-            jBProcsalva.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jBProcsalva.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jBProcsalva.setText("Salva");
             jBProcsalva.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -559,28 +568,31 @@ public class InsereProc extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel18)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
-                            .addComponent(jTnproc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel17)
-                            .addGap(18, 18, 18)
-                            .addComponent(jCProc, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jBProcsalva, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTprocpod, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(128, 128, 128)
-                            .addComponent(jLabel24))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTprocnome, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(31, 31, 31)
-                                .addComponent(jTproccpf))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTprocnome)
+                                .addComponent(jTproccpf)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCProc, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTnproc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jBProcsalva, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTprocpod, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(128, 128, 128)
+                                        .addComponent(jLabel24)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addContainerGap())
             );
             jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,7 +625,7 @@ public class InsereProc extends javax.swing.JFrame {
             jPanel5.setBackground(new java.awt.Color(255, 255, 255));
             jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-            jLabel6.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel6.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel6.setText("Data Final:");
 
             jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -622,7 +634,7 @@ public class InsereProc extends javax.swing.JFrame {
             jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
             jLabel8.setText("/");
 
-            jLabel3.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel3.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel3.setText("Data Inicial:");
 
             jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -685,10 +697,10 @@ public class InsereProc extends javax.swing.JFrame {
             jPanel7.setBackground(new java.awt.Color(255, 255, 255));
             jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-            jLcod.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLcod.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLcod.setText("<variavel>");
 
-            jLabel22.setFont(new java.awt.Font("Liberation Serif", 1, 14)); // NOI18N
+            jLabel22.setFont(new java.awt.Font("Square721 BT", 1, 14)); // NOI18N
             jLabel22.setText("Procuração cod:");
 
             javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -709,10 +721,10 @@ public class InsereProc extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLcod)
                         .addComponent(jLabel22))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(15, Short.MAX_VALUE))
             );
 
-            jButton1.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jButton1.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jButton1.setText("Cancelar");
             jButton1.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,7 +732,7 @@ public class InsereProc extends javax.swing.JFrame {
                 }
             });
 
-            jButton2.setFont(new java.awt.Font("Liberation Serif", 1, 12)); // NOI18N
+            jButton2.setFont(new java.awt.Font("Square721 BT", 1, 12)); // NOI18N
             jButton2.setText("Ok");
             jButton2.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -910,6 +922,22 @@ public class InsereProc extends javax.swing.JFrame {
     private void jTcaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTcaminhoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTcaminhoActionPerformed
+
+    private void jtentcpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtentcpfFocusGained
+        if (!"".equals(this.jtentcpf.getText())){
+            Dataproc dp = new Dataproc();
+            dp.connect();
+            jTentresp.setText(dp.encontra(jtentcpf.getText()));
+        }
+    }//GEN-LAST:event_jtentcpfFocusGained
+
+    private void jTentnomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTentnomeFocusGained
+        if (!"".equals(this.jTentcnpj.getText())){
+            Dataproc dp = new Dataproc();
+            dp.connect();
+            jTentnome.setText(dp.encontra(jTentcnpj.getText()));
+        }
+    }//GEN-LAST:event_jTentnomeFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEntsalva;
