@@ -69,7 +69,7 @@ public class Oficios extends javax.swing.JFrame {
         cSobr = false;
         JPAjuda.setBorder(null);
                
-        jLbv.setText("Bem Vindo "+ usuario+" !");
+        jLbv.setText("Bem Vindo(a) "+ usuario+" !");
         
         //logo------------------------------------------------------------------------------------//
         BufferedImage resizedImg = new BufferedImage(1000, 350, BufferedImage.TYPE_INT_ARGB);

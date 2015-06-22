@@ -17,3 +17,4 @@ r4 - (v0.1.3) - Criada Nova Janela de Seleção de Sistema Principal; Configuração
 		Tipo de Usuário; Adicionado dump do banco de dados do dia 16/06/2015;
 r5 - (v0.1.4) - Correção de erros; Adição de Javadocs; Padronização e Organização do Código;
 		Inclusão do Dump da data 18/06/2015;
+r6 - (V0.1.5) - Correção de erros;

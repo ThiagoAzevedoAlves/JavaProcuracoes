@@ -100,12 +100,6 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "GETPROCOD -"+ e.getMessage());
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
         }
         return 1;
     }
@@ -131,12 +125,6 @@ public class Database{
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ofício Não Encontrado. Erro: " + e.getMessage());
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
         }
         return null;
     }    
@@ -161,12 +149,6 @@ public class Database{
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "GETDATA - "+ e.getMessage());
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
         }
         return null;
     }
@@ -188,12 +170,6 @@ public class Database{
             return 1;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "SETDATA - "+ e.getMessage());
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
         }
         return 0;
     }
@@ -217,12 +193,6 @@ public class Database{
                 ret=1;
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString());
-            }finally{
-                try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
             }
         }
         return ret;

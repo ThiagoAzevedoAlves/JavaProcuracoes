@@ -17,9 +17,8 @@ import javax.swing.ImageIcon;
 import procuracoes.classes.SisLog;
 import geral.db.Datauser;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import oficios.frames.Oficios;
 import procuracoes.frames.Procuracoes;
 
 /**
@@ -211,14 +210,18 @@ public class Login extends javax.swing.JFrame {
             String senha;
             senha = (String.valueOf(ss));
             if(db.Login(login,senha) == 1){ //confirma usuário e senha
-                if(db.getTipo(login)==1){ //se estiverem correto verifica o tipo, se tipo==1 abre escolha de Sistema
-                    servidor s = new servidor(db.getTipo(login), login);
+                if(db.getTipo(login)==0){ //se estiverem correto verifica o tipo, se tipo==1 abre escolha de Sistema
+                    servidor s = new servidor(db.getTipo(login), db.getNome(login));
                     s.setVisible(true);
                     this.dispose();
                     SisLog S = new SisLog("Login - Procuracoes",jTextField1.getText(), "Sucesso");
-                }else if(db.getTipo(login)==0){ //se tipo==0 abre Sistema de Procuracoes
-                    Procuracoes p = new Procuracoes(db.getTipo(login), login);
+                }else if(db.getTipo(login)==1){ //se tipo==0 abre Sistema de Procuracoes
+                    Procuracoes p = new Procuracoes(db.getTipo(login), db.getNome(login));
                     p.setVisible(true);
+                    this.dispose();
+                }else if(db.getTipo(login)==2){ //se tipo==0 abre Sistema de Procuracoes
+                    Oficios o = new Oficios(db.getTipo(login), db.getNome(login));
+                    o.setVisible(true);
                     this.dispose();
                 }
             }else{
