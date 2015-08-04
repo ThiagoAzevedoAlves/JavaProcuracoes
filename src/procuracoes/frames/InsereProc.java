@@ -117,8 +117,6 @@ public class InsereProc extends javax.swing.JFrame {
         }
     }
     
-    
-    
     public boolean revisaData(){
         try {
             Integer.parseInt(jTdi1.getText());

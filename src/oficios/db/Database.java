@@ -71,12 +71,6 @@ public class Database{
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "SALVAOFIC" + "\n" + e.getMessage());            
-        }finally{
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao encerrar conexão Mysql.");
-            }
         }
         return ret;
     }
