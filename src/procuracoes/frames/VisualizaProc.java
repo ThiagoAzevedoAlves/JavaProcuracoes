@@ -2,7 +2,6 @@ package procuracoes.frames;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
@@ -58,7 +57,6 @@ public class VisualizaProc extends javax.swing.JFrame {
     int tipo;
     
     /**
-     * 
      * @param caminho STRING representando o Caminho da Procuração
      * @param cod INT representando o código da Procuração
      * @param usuario STRING representando o Usuário do Sistema
@@ -111,7 +109,7 @@ public class VisualizaProc extends javax.swing.JFrame {
                 
                 @Override
                 public void componentMoved(ComponentEvent e) {
-                    PDFrame.setLocation(15, 15);
+                    PDFrame.setLocation(15, 10);
                 }
                 
                 @Override

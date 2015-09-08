@@ -974,8 +974,13 @@ public class InsereProc extends javax.swing.JFrame {
                 proc = readNomes(file.getPath());
                 int i = 0;
                 while(i < Integer.valueOf(quant)){
-                    Procurador p = new Procurador(proc[i][1], proc[i][0], "DIVERSOS");
-                    procuradores.add(i, p);
+                    if (validaCPF(proc[i][0])==true){
+                        Procurador p = new Procurador(proc[i][1], proc[i][0], "DIVERSOS");
+                        procuradores.add(i, p);
+                    }else{
+                        Procurador p = new Procurador(proc[i][1], "", "DIVERSOS");
+                        procuradores.add(i, p);
+                    }                    
                     i++;
                 }
                 //CONTINUA AQUI ----------------------->//
@@ -989,18 +994,17 @@ public class InsereProc extends javax.swing.JFrame {
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString());
                 ex.printStackTrace();
-            }
-            
+            }            
         }
     }//GEN-LAST:event_jBProcArquivoActionPerformed
 
-    private String readQuant(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+    private String readQuant(String filePath) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
         return reader.readLine();
     }
     
-    private String [][] readNomes(String fileName) throws IOException {
-        FileReader f = new FileReader(fileName);
+    private String [][] readNomes(String filePath) throws IOException {
+        FileReader f = new FileReader(filePath);
         BufferedReader reader = new BufferedReader(f);
         String [][] nomes = new String[1000][1000];
         String s = reader.readLine();

@@ -73,8 +73,8 @@ public class Dataent extends Database{
                 }
                 i++;
             }
+            i--;
             int j = i;
-            i--;            
             while (i>=0){
                 prepared = conn.prepareStatement("SELECT * from entidade where entidade.id = ?");
                 prepared.setInt(1, n[i]);
@@ -88,19 +88,11 @@ public class Dataent extends Database{
             }
             i++;
             String dados[][] = new String[j][4];
-        //desinverte a seleção de procuradores----------------------------------------------------------------------//
-            List<Entidade> entaux = new ArrayList<>();            
-            while(i < j){
-                entaux.add(new Entidade(e.get(i).getNome(),e.get(i).getResponsavel(), e.get(i).getCpf(), e.get(i).getCnpj()));
-                i++;
-            }
-            i = 0;
-        //---------------------------------------------------------------------------------------------------------//
             while(i < j){
                 dados[i][0] = e.get(i).getNome();
-                dados[i][1] = di[i];
-                dados[i][2] = df[i];
-                dados[i][3] = c[i];
+                dados[i][1] = di[j-i];
+                dados[i][2] = df[j-i];
+                dados[i][3] = c[j-i];
                 i++;
             }
             
@@ -147,8 +139,9 @@ public class Dataent extends Database{
                 }
                 i++;
             }
-            int j = i;
             i--;
+            int j = i;
+            
             while (i>=0){
                 prepared = conn.prepareStatement("SELECT * from entidade where entidade.id = ?");
                 prepared.setInt(1, n[i]);
@@ -162,19 +155,11 @@ public class Dataent extends Database{
             }
             i++;
             String dados[][] = new String[j][4];
-        //desinverte a seleção de procuradores----------------------------------------------------------------------//
-            List<Entidade> entaux = new ArrayList<>();            
-            while(i < j){
-                entaux.add(new Entidade(e.get(i).getNome(),e.get(i).getResponsavel(), e.get(i).getCpf(), e.get(i).getCnpj()));
-                i++;
-            }
-            i = 0;
-        //---------------------------------------------------------------------------------------------------------//
             while(i < j){
                 dados[i][0] = e.get(i).getResponsavel();
-                dados[i][1] = di[i];
-                dados[i][2] = df[i];
-                dados[i][3] = c[i];
+                dados[i][1] = di[j-i];
+                dados[i][2] = df[j-i];
+                dados[i][3] = c[j-i];
                 i++;
             }
             
@@ -221,8 +206,9 @@ public class Dataent extends Database{
                 }
                 i++;
             }
-            int j = i;
             i--;
+            int j = i;
+            
             while (i>=0){
                 prepared = conn.prepareStatement("SELECT * from entidade where entidade.id = ?");
                 prepared.setInt(1, n[i]);
@@ -236,20 +222,12 @@ public class Dataent extends Database{
             }
             i++;
             String dados[][] = new String[j][5];
-        //desinverte a seleção de procuradores----------------------------------------------------------------------//
-            List<Entidade> entaux = new ArrayList<>();            
-            while(i < j){
-                entaux.add(new Entidade(e.get(i).getNome(),e.get(i).getResponsavel(), e.get(i).getCpf(), e.get(i).getCnpj()));
-                i++;
-            }
-            i = 0;
-        //---------------------------------------------------------------------------------------------------------//
             while(i < j){
                 dados[i][0] = e.get(i).getResponsavel();
                 dados[i][1] = e.get(i).getCpf();
-                dados[i][2] = di[i];
-                dados[i][3] = df[i];
-                dados[i][4] = c[i];
+                dados[i][2] = di[j-i];
+                dados[i][3] = df[j-i];
+                dados[i][4] = c[j-i];
                 i++;
             }
             
@@ -296,8 +274,9 @@ public class Dataent extends Database{
                 }
                 i++;
             }
-            int j = i;
             i--;
+            int j = i;
+            
             while (i>=0){
                 prepared = conn.prepareStatement("SELECT * from entidade where entidade.id = ?");
                 prepared.setInt(1, n[i]);
@@ -311,20 +290,12 @@ public class Dataent extends Database{
             }
             i++;
             String dados[][] = new String[j][5];
-        //desinverte a seleção de procuradores----------------------------------------------------------------------//
-            List<Entidade> entaux = new ArrayList<>();            
-            while(i < j){
-                entaux.add(new Entidade(e.get(i).getNome(),e.get(i).getResponsavel(), e.get(i).getCpf(), e.get(i).getCnpj()));
-                i++;
-            }
-            i = 0;
-        //---------------------------------------------------------------------------------------------------------//
             while(i < j){
                 dados[i][0] = e.get(i).getNome();
                 dados[i][1] = e.get(i).getCnpj();
-                dados[i][2] = di[i];
-                dados[i][3] = df[i];
-                dados[i][4] = c[i];
+                dados[i][2] = di[j-i];
+                dados[i][3] = df[j-i];
+                dados[i][4] = c[j-i];
                 i++;
             }
             

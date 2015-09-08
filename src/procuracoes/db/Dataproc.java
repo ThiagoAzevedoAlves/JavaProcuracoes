@@ -77,8 +77,8 @@ public class Dataproc extends Database{
                 }
                 i++;
             }
-            int j = i;
             i--;
+            int j = i;
             while (i>=0){
                 prepared = conn.prepareStatement("SELECT * from procurador where procurador.id = ?");
                 prepared.setInt(1, n[i]);
@@ -92,22 +92,13 @@ public class Dataproc extends Database{
             }
             i++;
             String dados[][] = new String[j][4];
-        //desinverte a seleção de procuradores----------------------------------------------------------------------//
-            List<Procurador> procaux = new ArrayList<>();            
             while(i < j){
-                procaux.add(new Procurador(p.get(i).getNome(), p.get(i).getCpf(), p.get(i).getPoderes()));
+                dados[i][0] = p.get(i).getNome();
+                dados[i][1] = di[j-i];
+                dados[i][2] = df[j-i];
+                dados[i][3] = c[j-i];
                 i++;
             }
-            i = 0;
-        //---------------------------------------------------------------------------------------------------------//
-            while(i<j){
-                dados[i][0] = procaux.get(i).getNome();
-                dados[i][1] = di[i];
-                dados[i][2] = df[i];
-                dados[i][3] = c[i];
-                i++;
-            }
-            
             criaTabela(dados, colunas, "Busca de Procuradores pelo Nome", usuario);
             
         }catch(SQLException e){
@@ -152,7 +143,7 @@ public class Dataproc extends Database{
             }
             int j = i;
             i--;
-            while (i>=0){
+            while(i>=0){
                 prepared = conn.prepareStatement("SELECT * from procurador where procurador.id = ?");
                 prepared.setInt(1, n[i]);
                 resultSet = prepared.executeQuery();
