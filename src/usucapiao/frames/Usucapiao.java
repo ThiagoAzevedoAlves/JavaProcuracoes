@@ -47,7 +47,7 @@ import procuracoes.classes.SisLog;
 import oficios.db.Database;
 
 /**
- * Classe Responsável pelo Tela Principal do Sistema de Ofícios.
+ * Classe Responsável pelo Tela Principal do Sistema de Usucapiao.
  * @author Thiago
  */
 public class Usucapiao extends javax.swing.JFrame {
